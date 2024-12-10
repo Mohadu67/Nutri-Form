@@ -381,6 +381,55 @@ input[type="checkbox"] {
 
 
 
+/*<--------------------------------------------------------- Graph page calorie-------------------------------------------------------->*/
+
+
+
+.graph {
+    list-style: none;
+    margin: 40px auto;
+
+
+}
+
+.graph ul {
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.graph p {
+    font-family: 'Merriweather';
+    font-size: medium;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*<---------------------------------------------------------- Media Queries ------------------------------------->*/
 @media (min-width: 768px) {
 
@@ -408,6 +457,22 @@ input[type="checkbox"] {
 
         form {
             width: 80%;
+        }
+
+        .graph {
+            list-style: none;
+            margin: 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            margin: 0px auto;
+        }
+
+        .graph ul {
+            border: 1px solid #333;
+            border-radius: 8px;
+            flex-direction: column;
+            padding: 10px;
         }
         
         footer div {
