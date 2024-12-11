@@ -107,11 +107,7 @@ footer {
     border-top: 2px solid var(--couleur-text-noir);
     padding: 20px 10px;
     text-align: center;
-    font-size: 8px;
-}
-
-footer div .logo {
-    height: 150px;
+    font-size: 12px;
 }
 
 footer div {
@@ -121,11 +117,23 @@ footer div {
     gap: 20px;
 }
 
-/* Styles pour les navigations */
+.logo {
+    content: url('domaine-logo.svg');
+    height: 55px;
+}
+
+
+footer .menu-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: row;
+}
+
 footer nav {
     display: flex;
-    gap: 15px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 footer nav a {
@@ -148,9 +156,9 @@ footer nav a:hover {
 .reseau {
     margin: 10px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px; 
-    justify-items: center; 
+    grid-template-columns: repeat(4, 1fr); /* Quatre icônes sur une ligne */
+    gap: 15px;
+    justify-items: center;
 }
 
 .reseau a img {
@@ -160,8 +168,9 @@ footer nav a:hover {
 }
 
 .reseau a img:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
+
 
 
 
@@ -331,8 +340,8 @@ input[type="checkbox"] {
     background-color: var(--couleur-bouton-selection);
     border-radius: 10px;
     font-size: 16px;
-    padding: 5%;
-    margin: 5%;
+    padding: 11px;
+    margin: 8px;
 
 }
 
@@ -397,14 +406,78 @@ input[type="checkbox"] {
     border-radius: 8px;
     width: 80%;
     margin: 20px auto;
-    padding: 20px;
+    padding: 10px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+}
+
+.graph ul:hover {
+    transform: rotateY(0deg) rotateX(12deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .graph p {
     font-family: 'Merriweather';
     font-size: medium;
-    padding: 20px;
+    padding: 10px;
     margin: 0 auto;
+}
+
+.graph img {
+    height: 50px;
+}
+
+
+/*<------------------------------ Page Mentions et Confidentialité ------------------------------>*/
+
+/* Conteneur principal */
+
+/* Titres */
+.mentions h1, .mentions h2 {
+    font-family: 'Merriweather', serif;
+    color: var(--couleur-text-noir);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--couleur-bouton-action);
+    padding-bottom: 10px;
+}
+
+.mentions h1 {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.mentions h2 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+}
+
+/* Paragraphes */
+.mentions p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Listes */
+.mentions ul {
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.mentions ul li {
+    margin-bottom: 10px;
+    list-style: disc;
+}
+
+/* Liens */
+.mentions a {
+    color: var(--couleur-bouton-action);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.mentions a:hover {
+    color: var(--couleur-bouton-selection);
 }
 
 
@@ -451,12 +524,21 @@ input[type="checkbox"] {
             max-width: 20%;
         }
 
+        .logo {
+            content: url('Logo.svg');
+            height: 100px;
+        }
+
         footer {
             font-size: 12px;
         }
 
         form {
             width: 80%;
+        }
+
+        .reseau {
+            grid-template-columns: repeat(2, 1fr); /* Quatre icônes sur une ligne */
         }
 
         .graph {
@@ -486,6 +568,23 @@ input[type="checkbox"] {
             flex-direction: column;
         }
 
-    
+        
+        .form label {
+            font-size: 16px;
+        }
+
+        .resultat p {
+            font-size: 16px;
+            height: 15em;
+            width: 15em;
+        }
+
+        .resultat h2 {
+            width: 15em;
+        }
+
+        .form p {
+            font-size: 16px;
+        }
 
 }
