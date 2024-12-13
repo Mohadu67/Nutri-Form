@@ -34,35 +34,33 @@ img, picture, video, canvas, svg {
     --couleur-bouton-action: #F7B186;
     --couleur-bouton-selection: #B5EAD7;
     --couleur-text-noir: #333;
+    --font-titre: 'Merriweather', serif;
+    --font-p: 'Montserrat', sans-serif;
 
 }
 
 /*<-------------------------------- Styles globaux--------------------------->*/
 body {
     background-color: var(--couleur-principale);
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-p);
     text-align: center;
 }
 
 h1, h2, h3, nav, a {
-    font-family: 'Merriweather', serif;
+    font-family: var(--font-titre)
 }
 
 
 /*<---------------------------------Header----------------------------------> */
+
+/* Mobile-First */
 header div {
     padding: 15px 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 40px;
 }
-
-header div img {
-    height: 15em;
-    height: auto;
-    width: 25%;
-}
-
 
 header div nav {
     display: flex;
@@ -72,7 +70,13 @@ header div nav {
     height: auto;
 }
 
-header div nav a {
+nav.menu {
+    display: none;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+header div a {
     text-decoration: none;
     color: var(--couleur-text-noir);
     font-weight: bold;
@@ -98,6 +102,51 @@ header div nav a:hover {
 .orange:hover {
     background-color: var(--couleur-bouton-action);
 }
+
+/* Menu Burger */
+.logo {
+    max-width: 150px;
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Cacher la checkbox */
+.burger-toggle {
+    display: none;
+}
+
+/* Transition des spans pour le menu burger */
+.burger-toggle:checked + .burger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); 
+}
+
+.burger-toggle:checked + .burger span:nth-child(2) {
+    opacity: 0; 
+}
+
+.burger-toggle:checked + .burger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); 
+}
+
+/* Afficher le menu quand la checkbox est cochée */
+.burger-toggle:checked ~ .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 
 
 
@@ -178,7 +227,6 @@ footer nav a:hover {
 /*<----------------------------------------------------- MAIN GENERALE --------------------------------------> */
 
 main {
-    margin: 8%;
     padding: 5%;
 }
 
@@ -194,15 +242,23 @@ main section ul {
 }
 
 main section article img {
-    width: 400%;
-    height: 300%;
+    width: 300%;
+    height: 200%;
   }
 
   main section article {
     text-align: start;
     width: 80%;
-    height: 60%;
-    margin: 25% auto;
+    margin: 40px auto;
+}
+
+article summary {
+    margin: 20px;
+    list-style: none;
+    background-color: var(--couleur-bouton-action);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 8px;
 }
 
 
@@ -335,63 +391,49 @@ input[type="checkbox"] {
 
 /*------------------------------- RESULTAT CALCULE ---------------------------->*/
 
+
+.resultat {
+    display: flex;
+    gap: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+}
+
+
+.bloc {
+    border: 2px solid var(--couleur-bouton-selection);
+    margin: 20px auto;
+    border-radius: 8px;
+    min-height: 150px;
+    padding: 3px;
+
+}
+
 .resultat h2 {
-    border: 0 solid var(--couleur-bouton-selection);
     background-color: var(--couleur-bouton-selection);
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 16px;
-    padding: 11px;
-    margin: 8px;
-
+    padding: 5px 10px;
+    width: fit-content;
+    margin: 20px auto;
 }
 
-
-.resultat p {
-    border: 3px solid var(--couleur-bouton-selection);
-    padding: 5%;
-    margin:  5%;
-    border-radius: 15px;
-}
-
-#more {
-    display: none;
-    text-align: center;
-}
-
-#myBtn {
-    margin: 3%;
-    padding: 2%;
-    background-color: #F7B186;
+.bloc summary {
+    list-style: none;
+    font-size: 12px;
+    background-color: var(--couleur-bouton-action);
     border-radius: 8px;
+    width: fit-content;
+    margin: 5px auto;
+    padding: 4px;
+
 }
-
-
-
-
-  
-  
-
-  /*<--------------------------------------------------------- PAGE CONTACT-------------------------------------------------------->*/
-
-  .contact-form {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: left;
-  }
-
-  .contact-form h1 {
-    text-align: center;
-
-  }
-
-
-
 
 /*<--------------------------------------------------------- Graph page calorie-------------------------------------------------------->*/
-
 
 
 .graph {
@@ -483,50 +525,36 @@ input[type="checkbox"] {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*<---------------------------------------------------------- Media Queries ------------------------------------->*/
 @media (min-width: 768px) {
 
-        header div nav {
+        .burger-toggle {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+        }
+
+        nav.menu {
+            display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        header div nav a {
-            font-size: 80%;
-        }
-
+            
         main section ul {
             flex-direction: row;
             justify-content: space-evenly;
         }
 
         button#homme, button#femme {
-            max-width: 20%;
-        }
+                max-width: 20%;
+            }
 
         .logo {
-            content: url('Logo.svg');
-            height: 100px;
+            content: url('Logo-complet.svg');
+            height: 150px;
         }
 
         footer {
@@ -573,15 +601,16 @@ input[type="checkbox"] {
             font-size: 16px;
         }
 
-        .resultat p {
-            font-size: 16px;
-            height: 15em;
-            width: 15em;
+        .resultat {
+            max-width: 500px;
+            margin: 10px auto;
         }
 
-        .resultat h2 {
-            width: 15em;
+        .bloc {
+            min-height: 250px;
+            padding: 10px;
         }
+
 
         .form p {
             font-size: 16px;
