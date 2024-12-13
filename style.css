@@ -241,10 +241,10 @@ main section ul {
 
 }
 
-main section article img {
-    width: 300%;
-    height: 200%;
-  }
+main section article img, section article p {
+    width: 80%;
+}
+
 
   main section article {
     text-align: start;
