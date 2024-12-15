@@ -53,7 +53,10 @@ h1, h2, h3, nav, a {
 
 /*<---------------------------------Header----------------------------------> */
 
-/* Mobile-First */
+header div > a:first-child {
+    border: none;
+}
+
 header div {
     padding: 15px 20px;
     display: flex;
@@ -103,7 +106,6 @@ header div nav a:hover {
     background-color: var(--couleur-bouton-action);
 }
 
-/* Menu Burger */
 .logo {
     max-width: 150px;
 }
@@ -122,12 +124,11 @@ header div nav a:hover {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Cacher la checkbox */
 .burger-toggle {
     display: none;
 }
 
-/* Transition des spans pour le menu burger */
+
 .burger-toggle:checked + .burger span:nth-child(1) {
     transform: translateY(8px) rotate(45deg); 
 }
@@ -140,7 +141,7 @@ header div nav a:hover {
     transform: translateY(-8px) rotate(-45deg); 
 }
 
-/* Afficher le menu quand la checkbox est cochée */
+
 .burger-toggle:checked ~ .menu {
     display: flex;
     flex-direction: column;
@@ -201,11 +202,11 @@ footer nav a:hover {
     color: #fff;
 }
 
-/* Réseaux sociaux */
+
 .reseau {
     margin: 10px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Quatre icônes sur une ligne */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 15px;
     justify-items: center;
 }
@@ -473,9 +474,6 @@ input[type="checkbox"] {
 
 /*<------------------------------ Page Mentions et Confidentialité ------------------------------>*/
 
-/* Conteneur principal */
-
-/* Titres */
 .mentions h1, .mentions h2 {
     font-family: 'Merriweather', serif;
     color: var(--couleur-text-noir);
@@ -494,13 +492,11 @@ input[type="checkbox"] {
     margin-top: 30px;
 }
 
-/* Paragraphes */
 .mentions p {
     margin-bottom: 15px;
     text-align: justify;
 }
 
-/* Listes */
 .mentions ul {
     margin-left: 20px;
     padding-left: 20px;
@@ -511,7 +507,6 @@ input[type="checkbox"] {
     list-style: disc;
 }
 
-/* Liens */
 .mentions a {
     color: var(--couleur-bouton-action);
     text-decoration: underline;
@@ -555,6 +550,7 @@ input[type="checkbox"] {
         .logo {
             content: url('Logo-complet.svg');
             height: 150px;
+            margin-right: 100px;
         }
 
         footer {
@@ -566,7 +562,7 @@ input[type="checkbox"] {
         }
 
         .reseau {
-            grid-template-columns: repeat(2, 1fr); /* Quatre icônes sur une ligne */
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .graph {
