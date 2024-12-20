@@ -568,7 +568,7 @@ input[type="checkbox"] {
         }
 
         form {
-            width: 80%;
+            width: 60%;
         }
 
         .reseau {
@@ -608,7 +608,7 @@ input[type="checkbox"] {
         }
 
         .resultat {
-            max-width: 500px;
+            max-width: 800px;
             margin: 10px auto;
         }
 
