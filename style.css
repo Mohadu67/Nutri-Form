@@ -9,6 +9,8 @@
 @font-face {
     font-family: 'Montserrat';
     src: url('/Assets/font/Montserrat-VariableFont_wght.ttf') format('truetype');
+
+
 }
 
 /*<------------------------------ Reset global ---------------------------->*/
@@ -264,6 +266,13 @@ article summary {
 
 
 /*<--------------------- MAIN PAGE ACCUEIL--------------------------------->*/
+
+
+
+.introutils {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
 main .introutils ul li {
     color: var(--couleur-text-noir);
