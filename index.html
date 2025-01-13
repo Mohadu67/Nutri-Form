@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="image/png" href="Logo.svg"/>
     <link rel="stylesheet" href="style.css"/>
-    <script src="/Script.js"></script>
+    <script defer src="/scripts.js"></script>
     <title>Accueil</title>
 </head>
 
@@ -20,8 +20,8 @@
 
             <input type="checkbox" id="burger-toggle" class="burger-toggle">
             <label for="burger-toggle" class="burger">
-                <span></span>
-                <span></span>
+                <span class="org"></span>
+                <span class="org"></span>
                 <span></span>
             </label>
             <nav class="menu">
@@ -99,26 +99,23 @@
 
     <footer>
         <div>
-             <a href="index.html">
+            <a href="index.html">
                 <img src="domaine-logo.svg" alt="logo du site" class="logo">
             </a>
     
-            <!-- Conteneur pour les deux menus -->
             <div class="menu-nav">
-                <!-- Première nav : Accueil et Contact -->
-                <nav class="nav-principale">
+
+                <nav>
                     <a href="index.html">Accueil</a>
                     <a href="contact.html">Contact</a>
                 </nav>
     
-                <!-- Deuxième nav : IMC et Calorie -->
-                <nav class="nav-secondaire">
+                <nav>
                     <a class="orange" href="IMC.html">IMC</a>
                     <a class="orange" href="calorie.html">Calorie</a>
                 </nav>
             </div>
     
-            <!-- Réseaux sociaux -->
             <div class="reseau">
                 <a target="_blank" href="#"><img src="facebook.svg" alt="icone facebook" class="icone"></a>
                 <a target="_blank" href="#"><img src="instagram.svg" alt="icone Instagram" class="icone"></a>
