@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: 'Merriweather';
-    src: url('/Merriweather-Regular.ttf') format('truetype');
+    src: url('/Merriweather-Black.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('/Montserrat-VariableFont_wght.ttf') format('truetype');
+    src: url('/Montserrat-Regular.ttf') format('truetype');
 
 
 }
