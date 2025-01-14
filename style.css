@@ -412,7 +412,6 @@ input[type="checkbox"] {
     border: 2px solid var(--couleur-bouton-selection);
     margin: 20px auto;
     border-radius: 8px;
-    min-height: 150px;
     padding: 3px;
     width: 80%;
 
@@ -430,11 +429,11 @@ input[type="checkbox"] {
 .more-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 1.5s ease;
+    transition: max-height 2s ease;
 }
 
 .more-content.open {
-    max-height: 300px;
+    max-height: 500px;
 }
 
 .learn-more {
@@ -442,7 +441,7 @@ input[type="checkbox"] {
     border-radius: 10px;
     border: none;
     padding: 5px 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .imc-graph {
@@ -451,7 +450,7 @@ input[type="checkbox"] {
     margin: 30px 0;
     border: 1px solid var(--couleur-text-noir);
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
 }
 
 .main-bar {
@@ -512,7 +511,27 @@ input[type="checkbox"] {
     background-color: rgb(160, 99, 59);
     border: none;
     position: absolute;
-    top: 0;
+    top: 28px;
+}
+
+.dynamic-bar {
+    display: none;
+    transition: left 1.5s ease, opacity 1.5s ease;
+    opacity: 0; 
+
+}
+
+
+.dynamic-bar p {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--couleur-bouton-selection);
+    padding: 3px 10px;
+    border-radius: 5px;
 }
 
 .alert {
@@ -520,10 +539,10 @@ input[type="checkbox"] {
     color: var(--couleur-text-noir);
     padding: 20px;
     border-radius: 5px;
-    width: 80%; /* Ajuste la largeur si nécessaire */
-    position: fixed; /* Fixe l'alerte sur la page */
-    left: 50%; /* Place l'alerte au milieu horizontalement */
-    transform: translate(-50%, -50%); /* Déplace l'alerte pour qu'elle soit parfaitement centrée */
+    width: 80%; 
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .alert button {
@@ -717,7 +736,6 @@ input[type="checkbox"] {
         }
 
         .bloc {
-            min-height: 250px;
             padding: 10px;
         }
 
@@ -728,5 +746,10 @@ input[type="checkbox"] {
         .alert {
             width: 60%;
           }
+
+          .imc-graph {
+            width: 70%;
+            margin: 30px auto;
+        }
 
 }

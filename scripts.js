@@ -18,8 +18,7 @@ btns.forEach(function(btn) {
 });
 
 
-
-//<----------------------Calcule IMC----------------------------------->
+//<---------------------------Affiche d'un msg---------------------->
 
 function showCustomAlert(message) {
     const alertDiv = document.getElementById('customAlert');
@@ -27,13 +26,18 @@ function showCustomAlert(message) {
     
     alertMessage.textContent = message;
     alertDiv.style.display = 'block';
-  }
-  
-  function closeAlert() {
+}
+
+function closeAlert() {
     const alertDiv = document.getElementById('customAlert');
     alertDiv.style.display = 'none';
   }
   
+
+
+
+  //<----------------------Calcule IMC----------------------------------->
+
   function calculerIMC(event) {
     event.preventDefault();
   
@@ -50,27 +54,39 @@ function showCustomAlert(message) {
   }
   
   document.getElementById('imcForm').addEventListener('submit', calculerIMC);
-  
 
 
+// <--------------------------IMC Graph---------------------------------->
 function updateIMCGraph(imc) {
     const minIMC = 18;
     const maxIMC = 40;
-
-
     const graphWidth = document.querySelector('.main-bar').offsetWidth;
-
-
     const imcPercentage = (imc - minIMC) / (maxIMC - minIMC);
-
-
     const limitedPercentage = Math.max(0, Math.min(1, imcPercentage));
-
-
     const dynamicPosition = limitedPercentage * (graphWidth - document.querySelector('.dynamic-bar').offsetWidth);
-
     const dynamicBar = document.querySelector('.dynamic-bar');
+
+    dynamicBar.style.display = 'block';
+    setTimeout(() => { 
+        dynamicBar.style.opacity = '1'; 
+        dynamicBar.style.left = dynamicPosition + 'px';
+    }, 10);
+    dynamicBar.style.opacity = '0';
+    
     dynamicBar.style.left = dynamicPosition + 'px';
+    
+    const imcResultElement = document.getElementById('imcResult');
+    imcResultElement.textContent = imc;
+    
+    if (imc < 18.5) {
+        imcResultElement.style.color = 'blue';
+    } else if (imc >= 18.5 && imc < 25) {
+        imcResultElement.style.color = 'green';
+    } else {
+        imcResultElement.style.color = 'red';
+    }
 }
+
+
 
 
