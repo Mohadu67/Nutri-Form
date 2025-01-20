@@ -291,6 +291,7 @@ a.button {
     background-color: var(--couleur-bouton-action);
     padding: 10px 20px;
     display: inline-block;
+    cursor: pointer;
 }
 
 
@@ -329,6 +330,7 @@ form fieldset button {
     background-color: var(--couleur-principale);
     border: 3px solid var(--couleur-bouton-selection);
     padding: 2%;
+    cursor: pointer;
 }
 
 form fieldset button:hover {
@@ -337,6 +339,7 @@ form fieldset button:hover {
 
 form fieldset button:focus {
     background-color: #B5EAD7;
+    
 }
 
 form input, form textarea {
@@ -348,19 +351,13 @@ form input, form textarea {
 }
 
 form button {
-    background-color: #f7f6f2;
-    border: 3px solid var(--couleur-bouton-action);
+    background-color: var(--couleur-bouton-action);
     padding: 12px 30px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
     width: 80%;
     margin: 5%;
     cursor: pointer;
-}
-
-form button:hover {
-    background-color: var(--couleur-bouton-action);
-    border: none;
 }
 
 
@@ -505,8 +502,12 @@ input[type="checkbox"] {
     transform: translatey(-30px);
 }
 
+#imcResult {
+    font-family: var(--font-titre);
+}
+
 .alert {
-    background-color: var(--couleur-bouton-selection);
+    background-color: var(--couleur-bouton-action);
     color: var(--couleur-text-noir);
     padding: 20px;
     border-radius: 5px;
@@ -514,6 +515,10 @@ input[type="checkbox"] {
     position: fixed;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 3px solid var(--couleur-text-noir);
+    z-index: 10;
+    top: 50%;
+    font-family: var(--font-titre);
 }
 
 .alert button {
@@ -526,6 +531,7 @@ input[type="checkbox"] {
     border-radius: 5px;
     display: block;
     margin: 10px auto;
+    cursor: pointer;
 }
 
 .alert button:hover {
@@ -718,5 +724,15 @@ input[type="checkbox"] {
             width: 60%;
           }
 
+
+          form button:hover {
+            background-color: var(--couleur-bouton-action);
+            border: none;
+        }
+
+        form button {
+            background-color: #f7f6f2;
+            border: 3px solid var(--couleur-bouton-action);
+        }
 
 }
