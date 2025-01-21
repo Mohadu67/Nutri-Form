@@ -170,6 +170,61 @@ function updateContent(category) {
 
 
 
+// Fonction de calcul des calories
+function calculerCalories(event) {
+    event.preventDefault(); // Empêche le rechargement de la page lors de la soumission du formulaire
 
+    // Récupérer les valeurs du formulaire
+    const sexe = document.querySelector('input[name="sexe"]:checked').value;
+    const taille = parseFloat(document.getElementById('taille').value);
+    const poids = parseFloat(document.getElementById('poids').value);
+    const age = parseInt(document.getElementById('age').value);
+    const activité = document.querySelector('input[name="activité"]:checked').value;
+    const formule = document.getElementById('calorie-formula').value;
 
+    let tmb = 0; // BMR (Basal Metabolic Rate)
+    
+    // Calcul du TMB selon la formule choisie
+    if (formule === 'mifflin') {
+        if (sexe === 'huey') {
+            // Formule de Mifflin-St Jeor pour les hommes
+            tmb = 10 * poids + 6.25 * taille - 5 * age + 5;
+        } else {
+            // Formule de Mifflin-St Jeor pour les femmes
+            tmb = 10 * poids + 6.25 * taille - 5 * age - 161;
+        }
+    } else if (formule === 'harris') {
+        if (sexe === 'huey') {
+            // Formule de Harris-Benedict pour les hommes
+            tmb = 66.5 + (13.75 * poids) + (5.003 * taille) - (6.75 * age);
+        } else {
+            // Formule de Harris-Benedict pour les femmes
+            tmb = 655 + (9.563 * poids) + (1.850 * taille) - (4.676 * age);
+        }
+    } else if (formule === 'katch') {
+        // Formule de Katch-McArdle (utilise la masse maigre)
+        const masseGrasse = 1 - 0.24; // Ex : pour 24% de graisse corporelle
+        const masseMagre = poids * masseGrasse; // Masse maigre
+        tmb = 370 + (21.6 * masseMagre); // Katch-McArdle pour les athlètes
+    }
+
+    // Ajuster le TMB en fonction de l'activité physique
+    let facteurActivité = 1.2; // Valeur par défaut pour "peu actif"
+    if (activité === 'moyen') {
+        facteurActivité = 1.55;
+    } else if (activité === 'actif') {
+        facteurActivité = 1.75;
+    } else if (activité === 'trésactif') {
+        facteurActivité = 1.9;
+    }
+
+    // Calcul des calories nécessaires pour maintenir le poids
+    const calories = tmb * facteurActivité;
+
+    // Afficher le résultat
+    alert("Votre besoin calorique quotidien est de : " + calories.toFixed(0) + " calories.");
+}
+
+// Ajouter un écouteur d'événements au formulaire pour déclencher le calcul
+document.getElementById('calorieForm').addEventListener('submit', calculerCalories);
 

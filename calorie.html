@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="logo/Logo.svg"/>
     <link rel="stylesheet" href="style.css">
-    <script defer src="scripts.js"></script>
     <title>NutriForm-Calorie</title>
+    <meta name="description" content="C'est un site de calcule de l'imc et calorie pour perdre le bide">
 </head>
 
 <body>   
-
+    
     <header>
 
-
+        
         <div>
             <a href="index.html">
                 <img src="domaine-logo.svg" alt="logo du site" class="logo">
@@ -29,109 +29,175 @@
                 <a class="orange" href="IMC.html">IMC</a>
                 <a href="contact.html">Contact</a>
                 
-
+                
             </nav>
         </div>
-                
-      
+        
+        
     </header>
 
     <main>
         
-         
+        
         <section class="form">
+            
+            <h1>Calculateur d'Apport Calorique</h1>
+            
+            
 
-                <h1>Calculateur d'Apport Calorique</h1>
-                <form>
-                    
-                        <fieldset>
-                        
-                            <select id="calorie-formula" name="calorie-formula" required>
+            <form id="calorieForm">
+                <fieldset>
+                    <select id="calorie-formula" name="calorie-formula" required>
+                        <option value="standard">Formule Standard</option>
+                        <option value="mifflin">Formule de Mifflin-St Jeor</option>
+                        <option value="harris">Formule de Harris-Benedict</option>
+                        <option value="katch">Formule de Katch-McArdle</option>
+                    </select>
+                </fieldset>
+            
+                <fieldset class="sexe">
 
-                                <option value="standard">Formule Standard</option>
-                                <option value="mifflin">Formule de Mifflin-St Jeor</option>
-                                <option value="harris">Formule de Harris-Benedict</option>
-                                <option value="katch">Formule de Katch-McArdle</option>
+                    <input type="radio" id="huey-homme" name="sexe" value="huey" checked />
+                    <label for="huey-homme">Homme</label>
+                    
+                    <input type="radio" id="dewey-femme" name="sexe" value="dewey" />
+                    <label for="dewey-femme">Femme</label>
+                </fieldset>
+            
+                <label for="taille">Taille (cm) :</label>
+                <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
+            
+                <label for="poids">Poids (kg) :</label>
+                <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
+            
+                <label for="age">Âge (ans) :</label>
+                <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
+            
+                <fieldset class="activité">
 
-                            </select>
+                    <input type="radio" id="peuactif" name="activité" value="peuactif" checked />
+                    <label for="peuactif">Peu actif</label>
+                    
+                    <input type="radio" id="moyen" name="activité" value="moyen" />
+                    <label for="moyen">Moyen</label>
+            
+                    <input type="radio" id="actif" name="activité" value="actif" />
+                    <label for="actif">Actif</label>
+            
+                    <input type="radio" id="tresactif" name="activité" value="trésactif" />
+                    <label for="tresactif">Très actif</label>
+                </fieldset>
+            
+                <button>Calculer</button>
+            </form>
+            
+            
+            <script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('calorieForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Empêche le rechargement de la page
 
-                        </fieldset>
-                    
-                       
-                        <fieldset>
-                            <button type="button" data-value="homme">Homme</button>
-                            <button type="button" data-value="femme">Femme</button>
-                            <input type="hidden" name="sexe" id="sexe" required>
+        // Récupérer les valeurs du formulaire
+        const sexe = document.querySelector('input[name="sexe"]:checked').value;
+        const taille = parseFloat(document.getElementById('taille').value);
+        const poids = parseFloat(document.getElementById('poids').value);
+        const age = parseInt(document.getElementById('age').value);
+        const activité = document.querySelector('input[name="activité"]:checked').value;
+        const formule = document.getElementById('calorie-formula').value;
 
-                        </fieldset>
-                    
-                      
-                        
-                        <label for="taille">Taille (cm) :</label>
-                        <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
-                    
-                        <label for="poids">Poids (kg) :</label>
-                        <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
-                    
-                        <label for="age">Âge (ans) :</label>
-                        <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
-                    
-                        
-                        <fieldset>
-                        
-                            <button type="button" data-value="peuactif">Peu actif</button>
-                            <button type="button" data-value="moyen">Moyen</button>
-                            <button type="button" data-value="actif">Actif</button>
-                            <button type="button" data-value="trésactif">Trés actif</button>
-                            <input type="hidden" name="sexe" id="sexe" required>
-                         </fieldset>
-                    
-                        <button type="submit">Calculer Mon IMC</button>
+        let tmb = 0; // BMR (Basal Metabolic Rate)
+        
+        // Calcul du TMB selon la formule choisie
+        if (formule === 'mifflin') {
+            if (sexe === 'huey') {
+                // Formule de Mifflin-St Jeor pour les hommes
+                tmb = 10 * poids + 6.25 * taille - 5 * age + 5;
+            } else {
+                // Formule de Mifflin-St Jeor pour les femmes
+                tmb = 10 * poids + 6.25 * taille - 5 * age - 161;
+            }
+        } else if (formule === 'harris') {
+            if (sexe === 'huey') {
+                // Formule de Harris-Benedict pour les hommes
+                tmb = 66.5 + (13.75 * poids) + (5.003 * taille) - (6.75 * age);
+            } else {
+                // Formule de Harris-Benedict pour les femmes
+                tmb = 655 + (9.563 * poids) + (1.850 * taille) - (4.676 * age);
+            }
+        } else if (formule === 'katch') {
+            // Formule de Katch-McArdle (utilise la masse maigre)
+            const masseGrasse = 1 - 0.24; // Ex : pour 24% de graisse corporelle
+            const masseMagre = poids * masseGrasse; // Masse maigre
+            tmb = 370 + (21.6 * masseMagre); // Katch-McArdle pour les athlètes
+        }
 
-                </form>
+        // Ajuster le TMB en fonction de l'activité physique
+        let facteurActivité = 1.2; // Valeur par défaut pour "peu actif"
+        if (activité === 'moyen') {
+            facteurActivité = 1.55;
+        } else if (activité === 'actif') {
+            facteurActivité = 1.75;
+        } else if (activité === 'trésactif') {
+            facteurActivité = 1.9;
+        }
 
+        // Calcul des calories nécessaires pour maintenir le poids
+        const calories = tmb * facteurActivité;
+
+        // Afficher les résultats pour chaque objectif
+        document.getElementById('caloriePerdre').textContent = (calories - 500).toFixed(0);  // Perdre du poids (500 calories de moins)
+        document.getElementById('calorieStabiliser').textContent = calories.toFixed(0);        // Stabiliser
+        document.getElementById('caloriePrendre').textContent = (calories + 500).toFixed(0);  // Prendre du poids (500 calories en plus)
+    });
+});
+
+            </script>
+            
+                
+                <!----------------------------------------------------Retour resultat----------------------------------->
                 <div class="graph">
-                        <ul>
-                            <li>
-                                <p>Perdre du poids</p>
-                            </li>
-
-                            <li> <img src="graphdown.svg" alt=""></li>
-
-                            <li><p>consommation calorie par jour</p></li>
-                            <li>"Resultat"</li>
-                            <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>Stabiliser</p>
-                            </li>
-
-                            <li> <img src="graph.svg" alt=""></li>
-
-                            <li><p>consommation calorie par jour</p></li>
-                            <li>"Resultat"</li>
-                            <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>Prendre du poids</p>
-                            </li>
-
-                            <li> <img src="graphup.svg" alt=""></li>
-
-                            <li><p>consommation calorie par jour</p></li>
-                            <li>"Resultat"</li>
-                            <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
-                        </ul>
+                    <ul>
+                        <li>
+                            <p>Perdre du poids</p>
+                        </li>
+                        <li> 
+                            <img src="graphdown.svg" alt="">
+                        </li>
+                        <li><p>consommation calorie par jour</p></li>
+                        <li><p id="caloriePerdre"></p></li>
+                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>Stabiliser</p>
+                        </li>
+                        <li> 
+                            <img src="graph.svg" alt="">
+                        </li>
+                        <li><p>consommation calorie par jour</p></li>
+                        <li><p id="calorieStabiliser"></p></li>
+                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>Prendre du poids</p>
+                        </li>
+                        <li> 
+                            <img src="graphup.svg" alt="">
+                        </li>
+                        <li><p>consommation calorie par jour</p></li>
+                        <li><p id="caloriePrendre"></p></li>
+                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
+                    </ul>
                 </div>
+                
                   
                 <div class="resultat">
 
                     <div class="column">
                 
                         <h2>Que signifie cela</h2>
-                
+                        
                         <div class="bloc">
                             <p>
                                 <strong>Calcule des calories</strong><br>
@@ -163,11 +229,11 @@
                         </div>
                 
                     </div>
-                
+                    
                     <div class="column">
                 
                         <h2>Et ensuite ?</h2>
-                
+                        
                         <div class="bloc">
                             <p>
                                 <strong>Réévaluez votre alimentation</strong><br>
@@ -226,7 +292,7 @@
                 </div>   
                 <img src="formule.jpg" alt="photo d'une grenouille avec une valise qui marche avec un titre à côté time for change">
             </article>
-        
+            
             <article>
                 <div>
                     <h2>Pourquoi les besoins caloriques varient-ils ?</h2>
@@ -245,7 +311,7 @@
                 </div>
                 <img src="diversity-5582454_1280.jpg" alt="photo d'une femme qui tient un mètre ruban pour montrer des unités de mesures">
             </article>
-        
+            
             <article>
                 <div>
 
@@ -292,9 +358,9 @@
         </section>
         
     </main>
-
-
-
+    
+    
+    
     <footer>
         <div>
             <a href="index.html">
@@ -302,12 +368,12 @@
             </a>
     
             <div class="menu-nav">
-
+                
                 <nav>
                     <a href="index.html">Accueil</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-    
+                
                 <nav>
                     <a class="orange" href="IMC.html">IMC</a>
                     <a class="orange" href="calorie.html">Calorie</a>
@@ -321,10 +387,11 @@
                 <a target="_blank" href="#"><img src="twitter-x.svg" alt="icone Twitter" class="icone"></a>
             </div>
         </div>
-    
+        
         <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
     </footer>
-
+    
+    <script src="scripts.js"></script>
 </body>
 
 
