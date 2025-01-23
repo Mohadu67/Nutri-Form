@@ -47,7 +47,7 @@
 
             <form id="calorieForm">
                 <fieldset>
-                    <select id="calorie-formula" name="calorie-formula" required>
+                    <select id="liste-deroulante" name="liste-deroulante" required>
                         <option value="standard">Formule Standard</option>
                         <option value="mifflin">Formule de Mifflin-St Jeor</option>
                         <option value="harris">Formule de Harris-Benedict</option>
@@ -86,72 +86,14 @@
             
                     <input type="radio" id="tresactif" name="activité" value="trésactif" />
                     <label for="tresactif">Très actif</label>
+
                 </fieldset>
             
                 <button>Calculer</button>
             </form>
             
             
-            <script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('calorieForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Empêche le rechargement de la page
 
-        // Récupérer les valeurs du formulaire
-        const sexe = document.querySelector('input[name="sexe"]:checked').value;
-        const taille = parseFloat(document.getElementById('taille').value);
-        const poids = parseFloat(document.getElementById('poids').value);
-        const age = parseInt(document.getElementById('age').value);
-        const activité = document.querySelector('input[name="activité"]:checked').value;
-        const formule = document.getElementById('calorie-formula').value;
-
-        let tmb = 0; // BMR (Basal Metabolic Rate)
-        
-        // Calcul du TMB selon la formule choisie
-        if (formule === 'mifflin') {
-            if (sexe === 'huey') {
-                // Formule de Mifflin-St Jeor pour les hommes
-                tmb = 10 * poids + 6.25 * taille - 5 * age + 5;
-            } else {
-                // Formule de Mifflin-St Jeor pour les femmes
-                tmb = 10 * poids + 6.25 * taille - 5 * age - 161;
-            }
-        } else if (formule === 'harris') {
-            if (sexe === 'huey') {
-                // Formule de Harris-Benedict pour les hommes
-                tmb = 66.5 + (13.75 * poids) + (5.003 * taille) - (6.75 * age);
-            } else {
-                // Formule de Harris-Benedict pour les femmes
-                tmb = 655 + (9.563 * poids) + (1.850 * taille) - (4.676 * age);
-            }
-        } else if (formule === 'katch') {
-            // Formule de Katch-McArdle (utilise la masse maigre)
-            const masseGrasse = 1 - 0.24; // Ex : pour 24% de graisse corporelle
-            const masseMagre = poids * masseGrasse; // Masse maigre
-            tmb = 370 + (21.6 * masseMagre); // Katch-McArdle pour les athlètes
-        }
-
-        // Ajuster le TMB en fonction de l'activité physique
-        let facteurActivité = 1.2; // Valeur par défaut pour "peu actif"
-        if (activité === 'moyen') {
-            facteurActivité = 1.55;
-        } else if (activité === 'actif') {
-            facteurActivité = 1.75;
-        } else if (activité === 'trésactif') {
-            facteurActivité = 1.9;
-        }
-
-        // Calcul des calories nécessaires pour maintenir le poids
-        const calories = tmb * facteurActivité;
-
-        // Afficher les résultats pour chaque objectif
-        document.getElementById('caloriePerdre').textContent = (calories - 500).toFixed(0);  // Perdre du poids (500 calories de moins)
-        document.getElementById('calorieStabiliser').textContent = calories.toFixed(0);        // Stabiliser
-        document.getElementById('caloriePrendre').textContent = (calories + 500).toFixed(0);  // Prendre du poids (500 calories en plus)
-    });
-});
-
-            </script>
             
                 
                 <!----------------------------------------------------Retour resultat----------------------------------->
@@ -192,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 
                   
-                <div class="resultat">
+                <!-- <div class="resultat">
 
                     <div class="column">
                 
@@ -262,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                     </div>
                 
-                </div>
+                </div> -->
                 
                 
                 

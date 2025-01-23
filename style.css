@@ -295,17 +295,17 @@ a.button {
 }
 
 
-/*<--------------------------------------- TOUT LES FORMULAIRES --------------------------------->*/ 
+/*<--------------------------------------- LES FORMULAIRES DE CALCULE --------------------------------->*/ 
 
 form {
-    padding: 30px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     width: 100%;
 }
 
-select#calorie-formula {
+select#liste-deroulante {
     background-color: var(--couleur-principale);
     font-size: 16px;
     border: 2px solid var(--couleur-bouton-selection);
@@ -361,15 +361,14 @@ form button {
 }
 
 
-
 input[type="radio"] {
     display: none;
   }
   
 
-  fieldset label {
+fieldset label {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 6px;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -378,12 +377,12 @@ input[type="radio"] {
   }
   
 
-  input[type="radio"]:checked + label {
+input[type="radio"]:checked + label {
     background-color: var(--couleur-bouton-selection);
     font-weight: bold;
   }
   
-  fieldset label:hover {
+fieldset label:hover {
     background-color: var(--couleur-bouton-selection);
   }
   
