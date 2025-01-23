@@ -62,90 +62,67 @@ header div > a:first-child {
 header div {
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 40px;
+    margin: 30px auto;
+
 }
 
-header div nav {
+/* Menu burger  */
+
+
+label.burger {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 15%;
-    height: auto;
+    cursor: pointer;
 }
 
-nav.menu {
+
+label span {
+    border: 2px solid black;
+    margin: 5px;
+    width: 40px;
+    height: 0;
+    transition: all 0.8s ease; 
+}
+
+label .org {
+    border: 2px solid var(--couleur-bouton-action);
+}
+
+
+label span a {
+    opacity: 0;
+    transition: all 0.8s ease;
     display: none;
-}
-
-header div a {
-    text-decoration: none;
     color: var(--couleur-text-noir);
-    font-weight: bold;
-    font-size: 60%;
-    border: 2px solid var(--couleur-text-noir);
-    border-radius: 5px;
-    padding: 8%;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-header div nav a:hover {
-    background-color: var(--couleur-text-noir);
-    color: var(--couleur-principale);
-    border-color: var(--couleur-text-noir);
+
+.burger-toggle:checked ~ label span {
+    width: 200px; 
+    height: 40px; 
+    border-radius: 10px;
 }
 
-.orange {
-    background-color: var(--couleur-principale);
-    color: var(--couleur-text-noir);
-    border-color: var(--couleur-bouton-action);
-}
 
-.orange:hover {
-    background-color: var(--couleur-bouton-action);
-}
-
-.logo {
-    max-width: 150px;
-}
-
-.burger {
+.burger-toggle:checked ~ label span a {
+    opacity: 1; 
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    right: 40px;
+    text-decoration: none;
+    justify-content: center;
+    padding: 8px;
 }
 
-.burger span {
-    width: 35px;
-    height: 2px;
-    background-color: #333;
-    transition: all 0.6s ease;
+
+a.orange {
+    text-decoration: none;
 }
 
-span.org {
-    background-color: var(--couleur-bouton-action);
-}
 
 .burger-toggle {
     display: none;
-}
-
-.burger-toggle:checked + .burger span {
-    width: 0px;
-    background-color: #333;
-    margin: 20px ;
-}
-
-.burger-toggle:checked ~ .menu {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 0;
-    gap: 20px;
-    
-    
 }
 
 /*<------------------------------------------- Footer--------------------------------------------> */
@@ -183,6 +160,10 @@ footer nav {
     gap: 10px;
 }
 
+footer nav a.orange {
+    border: 2px solid var(--couleur-bouton-action);
+}
+
 footer nav a {
     text-decoration: none;
     color: var(--couleur-text-noir);
@@ -195,10 +176,13 @@ footer nav a {
 }
 
 footer nav a:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--couleur-text-noir);
+    color: var(--couleur-principale);
 }
 
+footer nav a.orange:hover {
+    background-color: var(--couleur-bouton-action);
+}
 
 .reseau {
     margin: 10px;
@@ -229,7 +213,6 @@ main section ul {
     padding-top: 40px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
     list-style: none;
     padding: 0;
     margin: 10%;
@@ -273,6 +256,7 @@ main .introutils ul li {
     border: 2px solid var(--couleur-text-noir);
     border-radius: 5px;
     padding: 20px;
+    margin: 20px;
     transition: all 0.3s ease;
 }
 
@@ -292,6 +276,10 @@ a.button {
     padding: 10px 20px;
     display: inline-block;
     cursor: pointer;
+}
+
+a.button:hover {
+    color:var(--couleur-principale);
 }
 
 
@@ -460,7 +448,7 @@ input[type="checkbox"] {
 .more-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 2s ease;
+    transition: max-height 1s ease;
 }
 
 .more-content.open {
@@ -490,7 +478,6 @@ input[type="checkbox"] {
     border-radius: 10px;
     height: 1px;
     width: 80%;
-
     position: relative;
 }
 
@@ -603,28 +590,31 @@ input[type="checkbox"] {
 }
 
 .graph img {
-    height: 50px;
+    height: 30px;
 }
 
 p#caloriePerdre {
-    font-size: 32px;
+    font-size: 18px;
     background-color: var(--couleur-bouton-action);
     border-radius: 10px;
-    padding: 0;
+    padding: 0 30px;
+    width: fit-content;
 }
 
 #calorieStabiliser{
-    font-size: 32px;
+    font-size: 18px;
     background-color: var(--couleur-bouton-action);
     border-radius: 10px;
-    padding: 0;
+    padding: 0 30px;
+    width: fit-content;
 }
 
 #caloriePrendre {
-    font-size: 32px;
+    font-size: 18px;
     background-color: var(--couleur-bouton-action);
     border-radius: 10px;
-    padding: 0;
+    padding: 0 30px;
+    width: fit-content;
 }
 
 /* <------------------------------ Page Mentions et Confidentialité ------------------------------>*/ */
@@ -680,24 +670,51 @@ p#caloriePerdre {
             justify-content: space-evenly;
         }
 
-        .burger-toggle {
-            display: none;
-        }
-
-        .burger {
-            display: none;
-        }
-
-        nav.menu {
+        label span {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 200px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        span.org a {
+            display: flex;
+        }
+
+        label span a {
+            opacity: 1;
+            display: flex;
+            padding: 5px 70px;
+            text-decoration: none;
+        }
+        
+        label span:hover {
+            background-color: var(--couleur-text-noir);
+        }
+
+        label span a:hover {
+            color: var(--couleur-principale);
+            border-color: var(--couleur-text-noir);
+        }
+
+
+        label span.org:hover {
+            background-color: var(--couleur-bouton-action);
+        }
+
+        label span.org a:hover {
+            color: var(--couleur-principale);
+            border-color: var(--couleur-text-noir);
         }
 
             
         main section ul {
             flex-direction: row;
             justify-content: space-evenly;
+            
         }
 
         button#homme, button#femme {
@@ -765,7 +782,7 @@ p#caloriePerdre {
         }
 
         .form p {
-            font-size: 16px;
+            font-size: 12px;
         }
 
         .alert {

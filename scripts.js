@@ -1,5 +1,21 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //<----------------------Learn More----------------------------------->
 const btns = document.querySelectorAll(".learn-more");
 
