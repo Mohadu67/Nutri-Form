@@ -271,9 +271,29 @@ function updateContent(category) {
 
 
 
-async function fetchBibleVerse() {
+// async function fetchBibleVerse() {
+//             try {
+//                 const response = await fetch('https://quotes.rest/bible/vod.json', {
+//                     headers: {
+//                         'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
+//                     }
+//                 });
+//                 const data = await response.json();
+//                 document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
+//             } catch (error) {
+//                 console.error('Erreur lors de la récupération de la citation:', error);
+//                 document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération de la citation du jour.';
+//             }
+//         }
+
+//         window.onload = function() {
+//             fetchBibleVerse();
+//         };
+    
+
+        async function fetchBibleVerse() {
             try {
-                const response = await fetch('https://quotes.rest/bible/vod.json', {
+                const response = await fetch('https://cors-anywhere.herokuapp.com/https://quotes.rest/bible/vod.json', {
                     headers: {
                         'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
                     }
@@ -281,29 +301,9 @@ async function fetchBibleVerse() {
                 const data = await response.json();
                 document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
             } catch (error) {
-                console.error('Erreur lors de la récupération de la citation:', error);
-                document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération de la citation du jour.';
+                console.error('Erreur lors de la récupération du verset:', error);
+                document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération du verset du jour.';
             }
         }
-
-        window.onload = function() {
-            fetchBibleVerse();
-        };
-    
-
-        // async function fetchBibleVerse() {
-        //     try {
-        //         const response = await fetch('https://cors-anywhere.herokuapp.com/https://quotes.rest/bible/vod.json', {
-        //             headers: {
-        //                 'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
-        //             }
-        //         });
-        //         const data = await response.json();
-        //         document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
-        //     } catch (error) {
-        //         console.error('Erreur lors de la récupération du verset:', error);
-        //         document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération du verset du jour.';
-        //     }
-        // }
         
     
