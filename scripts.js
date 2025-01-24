@@ -1,53 +1,50 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //<----------------------Learn More----------------------------------->
-const btns = document.querySelectorAll(".learn-more");
+    const btns = document.querySelectorAll(".learn-more");
 
-btns.forEach(function(btn) {
-    btn.addEventListener("click", function() {
-        const moreContent = this.previousElementSibling;
+    btns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            const moreContent = this.previousElementSibling;
 
-        if (moreContent.classList.contains("open")) {
-            moreContent.classList.remove("open");
-            this.textContent = "Lire plus";
-        } else {
-            moreContent.classList.add("open");
-            this.textContent = "Lire moins";
-        }
+            if (moreContent.classList.contains("open")) {
+                moreContent.classList.remove("open");
+                this.textContent = "Lire plus";
+            } else {
+                moreContent.classList.add("open");
+                this.textContent = "Lire moins";
+            }
+        });
     });
-});
 
 
 //<---------------------------Affiche d'un msg---------------------->
 
-function showCustomAlert(message) {
-    const alertDiv = document.getElementById('customAlert');
-    const alertMessage = document.getElementById('alertMessage');
-    
-    alertMessage.textContent = message;
-    alertDiv.style.display = 'block';
-}
+    function showCustomAlert(message) {
+        const alertDiv = document.getElementById('customAlert');
+        const alertMessage = document.getElementById('alertMessage');
+        
+        alertMessage.textContent = message;
+        alertDiv.style.display = 'block';
+    }
 
-function closeAlert() {
-    const alertDiv = document.getElementById('customAlert');
-    alertDiv.style.display = 'none';
-  }
+    function closeAlert() {
+        const alertDiv = document.getElementById('customAlert');
+        alertDiv.style.display = 'none';
+    }
+
+
+    document.getElementById('acceptCookies').addEventListener('click', function() {
+        // Cache le message des cookies lorsque l'utilisateur clique sur "Accepter"
+        document.getElementById('cookieMessage').style.display = 'none';
+        
+        // Sauvegarde l'acceptation des cookies dans le localStorage
+        localStorage.setItem('cookiesAccepted', 'true');
+    });
+
+    // Vérifie si l'utilisateur a déjà accepté les cookies
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        document.getElementById('cookieMessage').style.display = 'none';
+    }
+
   
 
 
@@ -59,6 +56,12 @@ function closeAlert() {
     const tailleInput = document.getElementById('taille').value;
     const poidsInput = document.getElementById('poids').value;
     const tailleEnMetres = tailleInput / 100;
+
+    const targetImc = document.querySelector('.target');
+    targetImc.scrollIntoView({
+        behavior: 'smooth', 
+        block: 'center'
+    });
 
     if (tailleInput && poidsInput) {
         const imc = (poidsInput / (tailleEnMetres * tailleEnMetres)).toFixed(2);
@@ -80,7 +83,6 @@ const imcForm = document.getElementById('imcForm')
 if(imcForm){
     imcForm.addEventListener('submit', calculerIMC);
 }
-
 
 
 
@@ -200,6 +202,14 @@ function updateContent(category) {
                 const age = parseInt(document.getElementById('age').value);
                 const activité = document.querySelector('input[name="activité"]:checked').value;
                 const formule = document.getElementById('liste-deroulante').value;
+                document.querySelector('.graph').style.display = 'flex';
+
+                const targetCalorie = document.querySelector('.graph');
+                targetCalorie.scrollIntoView({
+                    behavior: 'smooth', 
+                    block: 'center'
+                });
+
             
                 let tmb = 0; 
                 
@@ -259,3 +269,41 @@ function updateContent(category) {
     });
 
 
+
+
+async function fetchBibleVerse() {
+            try {
+                const response = await fetch('https://quotes.rest/bible/vod.json', {
+                    headers: {
+                        'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
+                    }
+                });
+                const data = await response.json();
+                document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
+            } catch (error) {
+                console.error('Erreur lors de la récupération de la citation:', error);
+                document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération de la citation du jour.';
+            }
+        }
+
+        window.onload = function() {
+            fetchBibleVerse();
+        };
+    
+
+        // async function fetchBibleVerse() {
+        //     try {
+        //         const response = await fetch('https://cors-anywhere.herokuapp.com/https://quotes.rest/bible/vod.json', {
+        //             headers: {
+        //                 'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
+        //             }
+        //         });
+        //         const data = await response.json();
+        //         document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
+        //     } catch (error) {
+        //         console.error('Erreur lors de la récupération du verset:', error);
+        //         document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération du verset du jour.';
+        //     }
+        // }
+        
+    

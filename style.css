@@ -209,6 +209,10 @@ main {
     padding: 5%;
 }
 
+main section {
+    margin: 200px auto;
+}
+
 main section ul {
     padding-top: 40px;
     display: flex;
@@ -300,6 +304,7 @@ select#liste-deroulante {
     border-radius: 8px;
     padding: 10px;
     width: 90%;
+    cursor: pointer;
 }
 
 form label {
@@ -314,21 +319,13 @@ form fieldset {
 
 }
 
-form fieldset button {
+/* form fieldset button {
     background-color: var(--couleur-principale);
     border: 3px solid var(--couleur-bouton-selection);
     padding: 2%;
     cursor: pointer;
-}
+} */
 
-form fieldset button:hover {
-    background-color: #B5EAD7;
-}
-
-form fieldset button:focus {
-    background-color: #B5EAD7;
-    
-}
 
 form input, form textarea {
     width: 100%;
@@ -346,6 +343,11 @@ form button {
     width: 80%;
     margin: 5%;
     cursor: pointer;
+}
+
+form button:hover {
+    color: var(--couleur-principale);
+    font-weight: bold;
 }
 
 
@@ -367,14 +369,29 @@ fieldset label {
 
 input[type="radio"]:checked + label {
     background-color: var(--couleur-bouton-selection);
-    font-weight: bold;
   }
   
 fieldset label:hover {
-    background-color: var(--couleur-bouton-selection);
+    font-weight: bold;
   }
   
 
+  #bible-verse {
+    margin: 20px auto;
+    padding: 20px;
+    border: 6px solid var(--couleur-bouton-action);
+    max-width: 600px;
+    text-align: center;
+}
+.attribution {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 10px;
+}
+
+p#verse-text {
+    font-family: var(--font-titre);
+}
 
 
 
@@ -417,6 +434,7 @@ input[type="checkbox"] {
 .resultat {
     display: flex;
     flex-direction: column;
+    margin: 50px auto;
     gap: 20px;
 }
 
@@ -448,7 +466,7 @@ input[type="checkbox"] {
 .more-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 1s ease;
+    transition: max-height 1.5s ease;
 }
 
 .more-content.open {
@@ -506,7 +524,7 @@ input[type="checkbox"] {
     width: 1px;
     height: 30px;
      margin-left: 0; 
-    transition: margin-left 0.5s ease, opacity 0.5s ease; 
+    transition: margin-left 0.8s ease, opacity 0.5s ease; 
     transform: translate3d(9px, 10px, 10px);
 }
 
@@ -561,8 +579,9 @@ input[type="checkbox"] {
 
 .graph {
     list-style: none;
-    margin: 40px auto;
-
+    margin: 100px auto;
+    display: none;
+    flex-direction: column;
 
 }
 
@@ -572,14 +591,7 @@ input[type="checkbox"] {
     width: 80%;
     margin: 20px auto;
     padding: 10px;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transform-style: preserve-3d;
-}
-
-.graph ul:hover {
-    transform: rotateY(0deg) rotateX(12deg);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .graph p {
@@ -628,12 +640,12 @@ p#caloriePerdre {
 }
 
 .mentions h1 {
-    font-size: 1.8rem;
+    font-size: 16px;
     text-align: center;
 }
 
 .mentions h2 {
-    font-size: 1.4rem;
+    font-size: 14px;
     margin-top: 30px;
 }
 
@@ -658,9 +670,67 @@ p#caloriePerdre {
     transition: color 0.3s ease;
 }
 
-.mentions a:hover {
-    color: var(--couleur-bouton-selection);
+
+.politique h1 {
+    text-align: center
 }
+
+.politique {
+    text-align: start ;
+}
+
+.politique ul {
+    display: contents;
+}
+
+
+
+
+/* <----------------------Message cookies---------------------------> */
+
+
+.cookie-message {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    z-index: 1000;
+}
+
+.cookie-message p {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.cookie-message a {
+    color: var(--couleur-bouton-action);
+    text-decoration: none;
+}
+
+.cookie-message button {
+    margin-left: 20px;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: var(--couleur-bouton-action);
+    color: var(--couleur-text-noir);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cookie-message button:hover {
+    color: var(--couleur-principale);
+}
+
+
+
+
+
 
 
 /*<---------------------------------------------------------- Media Queries ------------------------------------->*/
@@ -714,8 +784,8 @@ p#caloriePerdre {
         main section ul {
             flex-direction: row;
             justify-content: space-evenly;
-            
         }
+
 
         button#homme, button#femme {
                 max-width: 20%;
@@ -745,7 +815,8 @@ p#caloriePerdre {
             display: flex;
             flex-direction: row;
             gap: 40px;
-            margin: 0px auto;
+            margin: 100px auto;
+            display: none;
         }
 
         .graph ul {
@@ -779,6 +850,7 @@ p#caloriePerdre {
 
         .bloc {
             padding: 10px;
+            height: 150px;
         }
 
         .form p {
@@ -789,15 +861,8 @@ p#caloriePerdre {
             width: 60%;
           }
 
-
-          form button:hover {
-            background-color: var(--couleur-bouton-action);
-            border: none;
-        }
-
-        form button {
-            background-color: #f7f6f2;
-            border: 3px solid var(--couleur-bouton-action);
+        form button a:hover {
+            color: var(--couleur-principale);
         }
 
 }
