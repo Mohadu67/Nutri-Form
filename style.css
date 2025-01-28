@@ -307,10 +307,6 @@ select#liste-deroulante {
     cursor: pointer;
 }
 
-form label {
-    display: flex;
-    margin: 10px;
-}
 
 form fieldset {
     display: flex;
@@ -318,13 +314,6 @@ form fieldset {
     border: none;
 
 }
-
-/* form fieldset button {
-    background-color: var(--couleur-principale);
-    border: 3px solid var(--couleur-bouton-selection);
-    padding: 2%;
-    cursor: pointer;
-} */
 
 
 form input, form textarea {
@@ -419,10 +408,6 @@ form label {
 
 .form p {
     font-size: 10px;
-}
-
-input[type="checkbox"] {
-    margin-right: 10px;
 }
 
 .checkbox-group input[type="checkbox"] {
