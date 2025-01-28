@@ -412,6 +412,7 @@ form label {
 
 .checkbox-group input[type="checkbox"] {
     margin-right: 15px;
+    padding: 0;
 }
 
 
