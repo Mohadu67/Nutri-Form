@@ -34,54 +34,50 @@
     <main>
 
 
-        <section class="form">
-        
+        <section>    
 
+            <h1>Nous sommes là pour vous</h1>
             
+            <form>
 
-                <h1>Nous sommes là pour vous</h1>
+                <p>Veuillez remplir le formulaire ci-dessous :</p>
+                <div>
+
+                    <label for="firstname">Nom :</label>
+                    <input type="text" id="firstname" name="name" placeholder="Entrez votre nom" required>
+                            
+                    <label for="name">Prénom :</label>
+                    <input type="text" id="name" name="name" placeholder="Entrez votre prénom" required>
+
+                    <label for="email">E-mail :</label>
+                    <input type="email" id="email" name="email" placeholder="Entrez votre e-mail" required>
                 
-                <form class="form">
-
-                    <p>Veuillez remplir le formulaire ci-dessous :</p>
-                    <div>
-
-                        <label for="name">Nom :</label>
-                        <input type="text" id="name" name="name" placeholder="Entrez votre nom" required>
-                                
-                        <label for="name">Prénom :</label>
-                        <input type="text" id="name" name="name" placeholder="Entrez votre prénom" required>
-
-                        <label for="email">E-mail :</label>
-                        <input type="email" id="email" name="email" placeholder="Entrez votre e-mail" required>
+                    <label for="phone">Téléphone :</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone" required pattern="[0-9]{10}">
                     
-                        <label for="phone">Téléphone :</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone" required>
-                        
-                        <label for="message">Message :</label>
-                        <textarea id="message" name="message" placeholder="Écrivez votre message ici" required></textarea>
-                  
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message" placeholder="Écrivez votre message ici" required></textarea>
+                
+                </div>
+
+                <div class="checkbox-group">
+
+                    <label>
+                        <input type="checkbox" name="confidentiality" required>J'accepte la politique de confidentialité.
+                    </label>
+
+                    <label>
+                    <input type="checkbox" name="newsletter">Je souhaite m'abonner à la newsletter.
+                    </label>
+
                     </div>
+        
+                <button type="submit">Envoyer</button>
 
-                    <div class="checkbox-group">
-
-                        <label>
-                        <input type="checkbox" name="confidentiality" required>
-                        J'accepte la politique de confidentialité.
-                        </label>
-                        <label>
-                        <input type="checkbox" name="newsletter">
-                        Je souhaite m'abonner à la newsletter.
-                        </label>
-
-                     </div>
-            
-                    <button type="submit">Envoyer</button>
-
-                </form>
-            
-                <p>Nutri Form traite les données recueillies pour pouvoir vous répondre.</p>
-            
+            </form>
+        
+            <p>Nutri Form traite les données recueillies pour pouvoir vous répondre.</p>
+        
             
         </section>
 
@@ -91,6 +87,7 @@
 
 
     <footer>
+        
         <div>
             <a href="index.html">
                 <img src="domaine-logo.svg" alt="logo du site" class="logo">

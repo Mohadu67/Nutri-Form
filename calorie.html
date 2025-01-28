@@ -1,264 +1,277 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="logo/Logo.svg"/>
-    <link rel="stylesheet" href="style.css">
-    <title>Calorie | NutriForm</title>
-    <meta name="description" content="C'est un site de calcule de l'imc et calorie pour perdre le bide">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="logo/Logo.svg"/>
+<link rel="stylesheet" href="style.css">
+<title>Calorie | NutriForm</title>
+<meta name="description" content="C'est un site de calcule de l'imc et calorie pour perdre le bide">
 </head>
 
 <body>   
-    
-    <header>
 
-        <div>
-            <a href="index.html">
-                <img src="domaine-logo.svg" alt="logo du site" class="logo">
-            </a>
+<header>
 
-            <input type="checkbox" id="burger-toggle" class="burger-toggle">
-            <label for="burger-toggle" class="burger">
-                <span ><a href="index.html">Accueil</a></span>
-                <span class="org"><a class="orange" href="IMC.html">IMC</a></span>
-                <span><a href="contact.html">Contact</a></span>
-            </label>
+    <div>
+        <a href="index.html">
+            <img src="domaine-logo.svg" alt="logo du site" class="logo">
+        </a>
 
-        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger">
+            <span ><a href="index.html">Accueil</a></span>
+            <span class="org"><a class="orange" href="IMC.html">IMC</a></span>
+            <span><a href="contact.html">Contact</a></span>
+        </label>
 
-    </header>
-
-    <main>
-        
-        
-        <section class="form">
-            
-            <h1>Calculateur d'Apport Calorique</h1>
-            
-            
-
-            <form id="calorieForm">
-                <fieldset>
-                    <select id="liste-deroulante" name="liste-deroulante" required>
-                        <option value="standard">Formule Standard</option>
-                        <option value="mifflin">Formule de Mifflin-St Jeor</option>
-                        <option value="harris">Formule de Harris-Benedict</option>
-                        <option value="katch">Formule de Katch-McArdle</option>
-                    </select>
-                </fieldset>
-            
-                <fieldset class="sexe">
-
-                    <input type="radio" id="huey-homme" name="sexe" value="huey" checked />
-                    <label for="huey-homme">Homme</label>
-                    
-                    <input type="radio" id="dewey-femme" name="sexe" value="dewey" />
-                    <label for="dewey-femme">Femme</label>
-                </fieldset>
-            
-                <label for="taille">Taille (cm) :</label>
-                <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
-            
-                <label for="poids">Poids (kg) :</label>
-                <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
-            
-                <label for="age">Âge (ans) :</label>
-                <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
-            
-                <fieldset class="activité">
-
-                    <input type="radio" id="peuactif" name="activité" value="peuactif" checked />
-                    <label for="peuactif">Peu actif</label>
-                    
-                    <input type="radio" id="moyen" name="activité" value="moyen" />
-                    <label for="moyen">Moyen</label>
-            
-                    <input type="radio" id="actif" name="activité" value="actif" />
-                    <label for="actif">Actif</label>
-            
-                    <input type="radio" id="tresactif" name="activité" value="trésactif" />
-                    <label for="tresactif">Très actif</label>
-
-                </fieldset>
-            
-                <button>Calculer</button>
-            </form>
-            
-            
-
-            
-                
-                <!----------------------------------------------------Retour resultat----------------------------------->
-                <div class="graph">
-                    <ul>
-                        <li>
-                            <p>Perdre du poids</p>
-                        </li>
-                        <li> 
-                            <img src="graphdown.svg" alt="">
-                        </li>
-                        <li><p>consommation calorie par jour</p></li>
-                        <li><p id="caloriePerdre"></p></li>
-                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <p>Stabiliser</p>
-                        </li>
-                        <li> 
-                            <img src="graph.svg" alt="">
-                        </li>
-                        <li><p>consommation calorie par jour</p></li>
-                        <li><p id="calorieStabiliser"></p></li>
-                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <p>Prendre du poids</p>
-                        </li>
-                        <li> 
-                            <img src="graphup.svg" alt="">
-                        </li>
-                        <li><p>consommation calorie par jour</p></li>
-                        <li><p id="caloriePrendre"></p></li>
-                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
-                    </ul>
-                </div>
-                
-        </section>
-
-        <section>
-
-            <article>
-                <h2>Comment vos besoins caloriques sont-ils calculés ?</h2>
-                <div>
-
-                    <p>
-                        Votre besoin calorique quotidien repose sur deux éléments principaux :
-                        le métabolisme de base (MB) et les calories brûlées par vos activités physiques.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            Le MB correspond à l'énergie minimale dont votre corps a besoin pour fonctionner au repos
-                            (respiration, circulation sanguine, digestion, etc.). Les activités, quant à elles,
-                            incluent tout ce que vous faites au cours de la journée : marcher, travailler,
-                            cuisiner ou même faire du sport. En combinant ces facteurs,
-                            on obtient une estimation précise pour vous aider à adapter votre alimentation selon vos objectifs.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>
-                </div>   
-                <img src="formule.jpg" alt="photo d'une grenouille avec une valise qui marche avec un titre à côté time for change">
-            </article>
-            
-            <article>
-                <div>
-                    <h2>Pourquoi les besoins caloriques varient-ils ?</h2>
-                    <p>
-                        Les besoins caloriques diffèrent d'une personne à l'autre en fonction de plusieurs critères.
-                        Par exemple, une personne plus grande ou plus lourde aura un métabolisme de base plus élevé qu'une personne plus petite.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            L'âge joue aussi un rôle : à mesure qu'on vieillit, le métabolisme ralentit légèrement. Enfin,
-                            l'activité physique a un impact majeur : une personne active brûle beaucoup plus d'énergie qu'une personne sédentaire.
-                            Comprendre ces variations vous aide à mieux ajuster votre alimentation et vos habitudes.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>
-                </div>
-                <img src="diversity-5582454_1280.jpg" alt="photo d'une femme qui tient un mètre ruban pour montrer des unités de mesures">
-            </article>
-            
-            <article>
-                <div>
-
-                    <h2>Ajuster son alimentation en fonction de ses objectifs</h2>
-                    <p>
-                        Pour atteindre vos objectifs (perte de poids, prise de masse ou maintien),
-                        il est important de faire de petits ajustements sur votre consommation calorique.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            Par exemple, une réduction modérée de 500 kcal par jour entraîne une perte de poids progressive et saine,
-                            sans affecter votre énergie. À l'inverse, si vous cherchez à prendre du poids,
-                            misez sur des aliments riches en calories mais nutritifs, comme les fruits secs, l'avocat ou les protéines.
-                            Ces ajustements permettent de progresser sans frustration, tout en maintenant un équilibre dans votre alimentation.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>
-                </div>
-                <img src="selon-objectif.jpg" alt="Image d'une personne qui monte un escalier">
-            </article>
-        
-            <article>
-                <div>
-
-                    <h2>La qualité des calories compte autant que leur quantité ?</h2>
-                    <p>
-                        Toutes les calories ne se valent pas :
-                        consommer 2000 kcal à base d'aliments ultra-transformés n'a pas le même effet sur votre santé que 2000 kcal provenant
-                        d'aliments complets et équilibrés.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            Une alimentation riche en légumes, fruits, protéines maigres et graisses saines
-                            améliore votre niveau d'énergie, renforce votre système immunitaire et prévient les maladies chroniques.
-                            Privilégier la qualité des aliments, plutôt que de simplement compter les calories,
-                            vous aide à atteindre vos objectifs tout en prenant soin de votre santé sur le long terme.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>
-                </div>
-                <img src="food-3226311_1280.png" alt="Image d'une personne s'étirant les bras afin d'exprimer une attitude positive">
-            </article>
-        
-        </section>
-        
-    </main>
-    
-    
-    
-    <footer>
-        <div>
-            <a href="index.html">
-                <img src="domaine-logo.svg" alt="logo du site" class="logo">
-            </a>
-    
-            <div class="menu-nav">
-                
-                <nav>
-                    <a href="index.html">Accueil</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                
-                <nav>
-                    <a class="orange" href="IMC.html">IMC</a>
-                    <a class="orange" href="calorie.html">Calorie</a>
-                </nav>
-            </div>
-    
-            <div class="reseau">
-                <a target="_blank" href="#"><img src="facebook.svg" alt="icone facebook" class="icone"></a>
-                <a target="_blank" href="#"><img src="instagram.svg" alt="icone Instagram" class="icone"></a>
-                <a target="_blank" href="#"><img src="linkedin.svg" alt="icone LinkedIn" class="icone"></a>
-                <a target="_blank" href="#"><img src="twitter-x.svg" alt="icone Twitter" class="icone"></a>
-            </div>
-        </div>
-        
-        <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
-    </footer>
-    
-    <div id="cookieMessage" class="cookie-message">
-        <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
-        <button id="acceptCookies">Accepter</button>
     </div>
 
+</header>
+
+<main>
+    
+    
+    <section>
+        
+        <h1>Calculateur d'Apport Calorique</h1>
+        
+        
+
+        <form id="calorieForm">
+            <fieldset>
+                <select id="liste-deroulante" name="liste-deroulante" required>
+                    <option value="standard">Formule Standard</option>
+                    <option value="mifflin">Formule de Mifflin-St Jeor</option>
+                    <option value="harris">Formule de Harris-Benedict</option>
+                    <option value="katch">Formule de Katch-McArdle</option>
+                </select>
+            </fieldset>
+        
+            <fieldset class="sexe">
+                <input type="radio" id="huey-homme" name="sexe" value="huey" checked />
+                <label for="huey-homme">Homme</label>
+                
+                <input type="radio" id="dewey-femme" name="sexe" value="dewey" />
+                <label for="dewey-femme">Femme</label>
+            </fieldset>
+        
+            <label for="taille">Taille (cm) :</label>
+            <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
+        
+            <label for="poids">Poids (kg) :</label>
+            <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
+        
+            <label for="age">Âge (ans) :</label>
+            <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
+        
+            <fieldset class="activité">
+
+                <input type="radio" id="peuactif" name="activité" value="peuactif" checked />
+                <label for="peuactif">Peu actif</label>
+                
+                <input type="radio" id="moyen" name="activité" value="moyen" />
+                <label for="moyen">Moyen</label>
+        
+                <input type="radio" id="actif" name="activité" value="actif" />
+                <label for="actif">Actif</label>
+        
+                <input type="radio" id="tresactif" name="activité" value="trésactif" />
+                <label for="tresactif">Très actif</label>
+
+            </fieldset>
+        
+            <button>Calculer</button>
+        </form>
+        
+        
+
+        
+        
+        <!----------------------------------------------------Retour resultat----------------------------------->
+        <div class="graph">
+            <ul>
+                <li>
+                    <p>Perdre du poids</p>
+                </li>
+                <li> 
+                    <img src="graphdown.svg" alt="">
+                </li>
+                <li><p>consommation calorie par jour</p></li>
+                <li><p id="caloriePerdre"></p></li>
+                <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
+                <button id="perdre">Je veux perdre du poids</button>
+            </ul>
+            <ul>
+                <li>
+                    <p>Stabiliser</p>
+                </li>
+                <li> 
+                    <img src="graph.svg" alt="">
+                </li>
+                <li><p>consommation calorie par jour</p></li>
+                <li><p id="calorieStabiliser"></p></li>
+                <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
+                <button id="stabiliser">Je veux stabiliser mon poids</button>
+            </ul>
+            <ul>
+                <li>
+                    <p>Prendre du poids</p>
+                </li>
+                <li> 
+                    <img src="graphup.svg" alt="">
+                </li>
+                <li><p>consommation calorie par jour</p></li>
+                <li><p id="caloriePrendre"></p></li>
+                <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
+                <button id="prendre" >Je veux prendre du poids</button>
+            </ul>
+        </div>
+
+    
+
+        <article id="article-recette" style="display:none;">
+            <h2>Pour atteindre ton objectif voici des recettes :</h2>
+            <div id="recettes"></div>
+        </article>
+            
 
 
 
-    <script src="scripts.js"></script>
+            
+    </section>
+
+    <section>
+
+        <article>
+            <h2>Comment vos besoins caloriques sont-ils calculés ?</h2>
+            <div>
+
+                <p>
+                    Votre besoin calorique quotidien repose sur deux éléments principaux :
+                    le métabolisme de base (MB) et les calories brûlées par vos activités physiques.
+                </p>
+                <div class="more-content">
+                    <p>
+                        Le MB correspond à l'énergie minimale dont votre corps a besoin pour fonctionner au repos
+                        (respiration, circulation sanguine, digestion, etc.). Les activités, quant à elles,
+                        incluent tout ce que vous faites au cours de la journée : marcher, travailler,
+                        cuisiner ou même faire du sport. En combinant ces facteurs,
+                        on obtient une estimation précise pour vous aider à adapter votre alimentation selon vos objectifs.
+                    </p>
+                </div>
+                <button class="learn-more">Lire plus</button>
+            </div>   
+            <img src="formule.jpg" alt="photo d'une grenouille avec une valise qui marche avec un titre à côté time for change">
+        </article>
+        
+        <article>
+            <div>
+                <h2>Pourquoi les besoins caloriques varient-ils ?</h2>
+                <p>
+                    Les besoins caloriques diffèrent d'une personne à l'autre en fonction de plusieurs critères.
+                    Par exemple, une personne plus grande ou plus lourde aura un métabolisme de base plus élevé qu'une personne plus petite.
+                </p>
+                <div class="more-content">
+                    <p>
+                        L'âge joue aussi un rôle : à mesure qu'on vieillit, le métabolisme ralentit légèrement. Enfin,
+                        l'activité physique a un impact majeur : une personne active brûle beaucoup plus d'énergie qu'une personne sédentaire.
+                        Comprendre ces variations vous aide à mieux ajuster votre alimentation et vos habitudes.
+                    </p>
+                </div>
+                <button class="learn-more">Lire plus</button>
+            </div>
+            <img src="diversity-5582454_1280.jpg" alt="photo d'une femme qui tient un mètre ruban pour montrer des unités de mesures">
+        </article>
+        
+        <article>
+            <div>
+
+                <h2>Ajuster son alimentation en fonction de ses objectifs</h2>
+                <p>
+                    Pour atteindre vos objectifs (perte de poids, prise de masse ou maintien),
+                    il est important de faire de petits ajustements sur votre consommation calorique.
+                </p>
+                <div class="more-content">
+                    <p>
+                        Par exemple, une réduction modérée de 500 kcal par jour entraîne une perte de poids progressive et saine,
+                        sans affecter votre énergie. À l'inverse, si vous cherchez à prendre du poids,
+                        misez sur des aliments riches en calories mais nutritifs, comme les fruits secs, l'avocat ou les protéines.
+                        Ces ajustements permettent de progresser sans frustration, tout en maintenant un équilibre dans votre alimentation.
+                    </p>
+                </div>
+                <button class="learn-more">Lire plus</button>
+            </div>
+            <img src="selon-objectif.jpg" alt="Image d'une personne qui monte un escalier">
+        </article>
+    
+        <article>
+            <div>
+
+                <h2>La qualité des calories compte autant que leur quantité ?</h2>
+                <p>
+                    Toutes les calories ne se valent pas :
+                    consommer 2000 kcal à base d'aliments ultra-transformés n'a pas le même effet sur votre santé que 2000 kcal provenant
+                    d'aliments complets et équilibrés.
+                </p>
+                <div class="more-content">
+                    <p>
+                        Une alimentation riche en légumes, fruits, protéines maigres et graisses saines
+                        améliore votre niveau d'énergie, renforce votre système immunitaire et prévient les maladies chroniques.
+                        Privilégier la qualité des aliments, plutôt que de simplement compter les calories,
+                        vous aide à atteindre vos objectifs tout en prenant soin de votre santé sur le long terme.
+                    </p>
+                </div>
+                <button class="learn-more">Lire plus</button>
+            </div>
+            <img src="food-3226311_1280.png" alt="Image d'une personne s'étirant les bras afin d'exprimer une attitude positive">
+        </article>
+    
+    </section>
+    
+</main>
+
+
+
+<footer>
+    <div>
+        <a href="index.html">
+            <img src="domaine-logo.svg" alt="logo du site" class="logo">
+        </a>
+
+        <div class="menu-nav">
+            
+            <nav>
+                <a href="index.html">Accueil</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <nav>
+                <a class="orange" href="IMC.html">IMC</a>
+                <a class="orange" href="calorie.html">Calorie</a>
+            </nav>
+        </div>
+
+        <div class="reseau">
+            <a target="_blank" href="#"><img src="facebook.svg" alt="icone facebook" class="icone"></a>
+            <a target="_blank" href="#"><img src="instagram.svg" alt="icone Instagram" class="icone"></a>
+            <a target="_blank" href="#"><img src="linkedin.svg" alt="icone LinkedIn" class="icone"></a>
+            <a target="_blank" href="#"><img src="twitter-x.svg" alt="icone Twitter" class="icone"></a>
+        </div>
+    </div>
+    
+    <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
+</footer>
+
+<div id="cookieMessage" class="cookie-message">
+    <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
+    <button id="acceptCookies">Accepter</button>
+</div>
+
+
+
+
+<script src="scripts.js"></script>
 
 
 

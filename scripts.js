@@ -32,21 +32,18 @@
     }
 
 
+
+//<---------------------------Gestionnaire de  la barre des cookie---------------------->
+
+
     document.getElementById('acceptCookies').addEventListener('click', function() {
-        // Cache le message des cookies lorsque l'utilisateur clique sur "Accepter"
-        document.getElementById('cookieMessage').style.display = 'none';
-        
-        // Sauvegarde l'acceptation des cookies dans le localStorage
+     document.getElementById('cookieMessage').style.display = 'none';
         localStorage.setItem('cookiesAccepted', 'true');
     });
 
-    // Vérifie si l'utilisateur a déjà accepté les cookies
     if (localStorage.getItem('cookiesAccepted') === 'true') {
         document.getElementById('cookieMessage').style.display = 'none';
     }
-
-  
-
 
   //<----------------------Calcule IMC----------------------------------->
 
@@ -57,11 +54,13 @@
     const poidsInput = document.getElementById('poids').value;
     const tailleEnMetres = tailleInput / 100;
 
-    const targetImc = document.querySelector('.target');
-    targetImc.scrollIntoView({
-        behavior: 'smooth', 
-        block: 'center'
-    });
+    const targetchoix = document.querySelector('.imc-graph');
+    if (targetchoix) {
+        targetchoix.scrollIntoView({
+            behavior: 'smooth', 
+            block: 'start'
+        });
+    }
 
     if (tailleInput && poidsInput) {
         const imc = (poidsInput / (tailleEnMetres * tailleEnMetres)).toFixed(2);
@@ -126,7 +125,7 @@ function updateIMCGraph(imc) {
     }
 }
 
-// <-------------------------contenu personnalisée selon resultat-------------------------------------->
+// <-------------------------contenu personnalisée selon resultat IMC-------------------------------------->
 
 function updateContent(category) {
 
@@ -188,6 +187,7 @@ function updateContent(category) {
 }
 
 
+// <-------------------------Resultat calorie-------------------------------------->
 
     document.addEventListener('DOMContentLoaded', function () {
         const calorieForm = document.getElementById('calorieForm');
@@ -204,11 +204,13 @@ function updateContent(category) {
                 const formule = document.getElementById('liste-deroulante').value;
                 document.querySelector('.graph').style.display = 'flex';
 
-                const targetCalorie = document.querySelector('.graph');
-                targetCalorie.scrollIntoView({
-                    behavior: 'smooth', 
-                    block: 'center'
-                });
+                const targetchoix = document.querySelector('.graph');
+                if (targetchoix) {
+                    targetchoix.scrollIntoView({
+                        behavior: 'smooth', 
+                        block: 'start'
+                    });
+                }
 
             
                 let tmb = 0; 
@@ -271,39 +273,190 @@ function updateContent(category) {
 
 
 
-// async function fetchBibleVerse() {
-//             try {
-//                 const response = await fetch('https://quotes.rest/bible/vod.json', {
-//                     headers: {
-//                         'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
-//                     }
-//                 });
-//                 const data = await response.json();
-//                 document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
-//             } catch (error) {
-//                 console.error('Erreur lors de la récupération de la citation:', error);
-//                 document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération de la citation du jour.';
-//             }
-//         }
+        
+    // <-------------------------Intégration API pour afficher recettes selon objectif-------------------------------------->
 
-//         window.onload = function() {
-//             fetchBibleVerse();
-//         };
+
+
+
     
+   document.addEventListener('DOMContentLoaded', function() {
+    const btnPerte = document.getElementById('perdre');
+    const btnStabiliser = document.getElementById('stabiliser');
+    const btnPrendre = document.getElementById('prendre');
+    
+    if (btnPerte) {
+        btnPerte.addEventListener('click', function() {
+            afficherRecettes('perte');
+        });
+    }
 
-        async function fetchBibleVerse() {
-            try {
-                const response = await fetch('https://cors-anywhere.herokuapp.com/https://quotes.rest/bible/vod.json', {
-                    headers: {
-                        'Authorization': 'PXFa3MVPAzN9tUMXfctkhom0w0Wf9xlr1e3DRgrjf975e598'
+    if (btnStabiliser) {
+        btnStabiliser.addEventListener('click', function() {
+            afficherRecettes('stabiliser');
+        });
+    }
+
+    if (btnPrendre) {
+        btnPrendre.addEventListener('click', function() {
+            afficherRecettes('prise');
+        });
+    }
+});
+
+function afficherRecettes(type) {
+    const btnPerte = document.getElementById('perdre');
+    const btnStabiliser = document.getElementById('stabiliser');
+    const btnPrendre = document.getElementById('prendre');
+
+    
+    let calorieValue = 0;
+    
+    if (type === 'perte') {
+        calorieValue = parseInt(document.getElementById('caloriePerdre').textContent, 10);
+        
+    } else if (type === 'stabiliser') {
+        calorieValue = parseInt(document.getElementById('calorieStabiliser').textContent, 10);
+    } else if (type === 'prise') {
+        calorieValue = parseInt(document.getElementById('caloriePrendre').textContent, 10);
+    }
+    
+    const targetchoix = document.querySelector('article');
+    if (targetchoix) {
+        targetchoix.scrollIntoView({
+            behavior: 'smooth', 
+            block: 'start'
+        });
+    }
+    
+    document.getElementById('article-recette').style.display = 'block';
+
+
+    fetchRecettes(type, calorieValue);
+}
+
+
+function fetchRecettes(type, calorieValue) {
+    let minCalories, maxCalories, minCarbs, maxCarbs, minProtein, maxProtein, minFat, maxFat;
+
+    if (type === 'perte') {
+
+        minCalories = 50; 
+        maxCalories = calorieValue - 300; 
+        minCarbs = 10; 
+        maxCarbs = 50; 
+        minProtein = 10; 
+        maxProtein = 50; 
+        minFat = 1;
+        maxFat = 20;
+    } else if (type === 'stabiliser') {
+
+        maxCalories = calorieValue + 200; 
+        minCarbs = 10; 
+        maxCarbs = 100; 
+        minProtein = 10;
+        maxProtein = 100;
+        minFat = 1; 
+        maxFat = 50; 
+    } else if (type === 'prise') {
+
+        maxCalories = calorieValue; 
+        minCarbs = 50; 
+        maxCarbs = 150;
+        minProtein = 50; 
+        maxProtein = 150;
+        minFat = 10; 
+        maxFat = 100;
+    }
+
+
+    const url = `https://api.spoonacular.com/recipes/findByNutrients?maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=3&language=fr`;
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'x-api-key': '037fdfeae43d44dfa0c60c66aaedc65c'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur API');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const recipesDiv = document.getElementById('recettes');
+        recipesDiv.innerHTML = ''; 
+
+        if (data && data.length > 0) {
+            data.forEach(recipe => {
+                const recipeItem = document.createElement('div');
+                recipeItem.classList.add('recipe-item');
+                recipeItem.innerHTML = `
+                    <h3>${recipe.title}</h3>
+                    <h4>Calories : ${recipe.calories}</h4>
+                    <img src="${recipe.image}" alt="${recipe.title}" />
+                    <button class="details-button" data-recipe-id="${recipe.id}">J'ai faim 🍴</button>
+                    <div class="recipe-details" id="details-${recipe.id}" style="display: none;"></div>
+                `;
+                recipesDiv.appendChild(recipeItem);
+
+                const detailsButton = recipeItem.querySelector('.details-button');
+                const detailsDiv = recipeItem.querySelector(`#details-${recipe.id}`);
+
+                detailsButton.addEventListener('click', function() {
+                    if (detailsDiv.style.display === 'none') {
+                        fetchRecipeDetails(recipe.id, detailsDiv);
+                    } else {
+                        detailsDiv.style.display = 'none';
+                        detailsButton.textContent = 'J\'ai faim 🍴';
                     }
                 });
-                const data = await response.json();
-                document.querySelector('#verse-text').innerHTML = `"${data.contents.verse}" <br> - ${data.contents.book_name} ${data.contents.chapter}:${data.contents.verse_number}`;
-            } catch (error) {
-                console.error('Erreur lors de la récupération du verset:', error);
-                document.querySelector('#verse-text').textContent = 'Erreur lors de la récupération du verset du jour.';
-            }
+            });
+        } else {
+            recipesDiv.innerHTML = '<p>Aucune recette trouvée pour cet objectif.</p>';
         }
-        
-    
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des recettes :', error);
+        const recipesDiv = document.getElementById('recettes');
+        recipesDiv.innerHTML = '<p>Erreur lors de la récupération des recettes. Veuillez réessayer plus tard.</p>';
+    });
+}
+
+
+function fetchRecipeDetails(recipeId, detailsDiv) {
+    const url = `https://api.spoonacular.com/recipes/${recipeId}/information`;
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'x-api-key': '037fdfeae43d44dfa0c60c66aaedc65c'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur API lors de la récupération des détails de la recette');
+        }
+        return response.json();
+    })
+    .then(recipeDetails => {
+        detailsDiv.innerHTML = `
+            <p>Ingrédients : ${recipeDetails.extendedIngredients.map(ingredient => ingredient.original).join(', ')}</p>
+            <p>Instructions : ${recipeDetails.instructions}</p>
+        `;
+        detailsDiv.style.display = 'block';
+        detailsDiv.previousElementSibling.textContent = 'Cacher les détails'; 
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des détails de la recette :', error);
+    });
+}
+
+
+
+
+
+
+
+

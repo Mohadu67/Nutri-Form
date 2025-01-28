@@ -425,6 +425,10 @@ input[type="checkbox"] {
     margin-right: 10px;
 }
 
+.checkbox-group input[type="checkbox"] {
+    margin-right: 15px;
+}
+
 
 
 
@@ -475,7 +479,7 @@ input[type="checkbox"] {
 
 .learn-more {
     background-color: var(--couleur-bouton-action);
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     padding: 5px 20px;
     margin-bottom: 10px;
@@ -628,6 +632,69 @@ p#caloriePerdre {
     padding: 0 30px;
     width: fit-content;
 }
+
+.graph ul button {
+    border: 2px solid var(--couleur-text-noir);
+    background-color: var(--couleur-bouton-action);
+    font-family: var(--font-titre);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.graph ul button:hover {
+    color: white;
+}
+
+/* Intégration API pour afficher des recettes selon objectif choisi */
+
+article#article-recette {
+    text-align: center;
+    width: 80%;
+}
+
+#artictle-recette h2 {
+    font-family: 'Merriweather';
+    font-size: 20px;
+}
+
+.recipe-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article#article-recette img {
+    width: fit-content;
+    border-radius: 15px;
+}
+
+button.details-button {
+    border: 1px solid var(--couleur-text-noir);
+    background-color: var(--couleur-bouton-action);
+    font-family: 'Merriweather';
+    padding: 5px 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+    padding: 5px 50px;
+    cursor: pointer;
+}
+
+button.details-button:hover {
+    color: white;
+}
+
+article#article-recette li {
+    text-align: start;
+    margin: 5px 0;
+    list-style: outside;
+}
+
+article#article-recette p {
+    text-align: start;
+}
+
+
 
 /* <------------------------------ Page Mentions et Confidentialité ------------------------------>*/ */
 
@@ -837,11 +904,7 @@ p#caloriePerdre {
             flex-direction: column;
         }
 
-        
-        .form label {
-            font-size: 16px;
-        }
-
+    
         .resultat {
             max-width: 800px;
             margin: 10px auto;
@@ -850,19 +913,36 @@ p#caloriePerdre {
 
         .bloc {
             padding: 10px;
-            height: 150px;
         }
 
-        .form p {
-            font-size: 12px;
-        }
 
         .alert {
             width: 60%;
           }
 
-        form button a:hover {
-            color: var(--couleur-principale);
+
+          .recipe-details ul {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .recipe-item {
+            width: 80%;
+            margin: 0 auto;
         }
 
+        article#article-recette img {
+            width: 80%;
+            border-radius: 15px;
+        }
+
+        article#article-recette p {
+            width: 100%;
+
+        }
+
+        div#recettes {
+            display: flex;
+            flex-direction: row;
+        }
 }
