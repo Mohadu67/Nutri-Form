@@ -224,7 +224,8 @@ main section ul {
 }
 
 main section article img, section article p {
-    width: 80%;
+    width: 75%;
+    border-radius: 8px;
 }
 
 
@@ -297,6 +298,10 @@ form {
     width: 100%;
 }
 
+form strong {
+    font-size: 12px;
+}
+
 select#liste-deroulante {
     background-color: var(--couleur-principale);
     font-size: 16px;
@@ -310,8 +315,9 @@ select#liste-deroulante {
 
 form fieldset {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     border: none;
+    margin: 10px;
 
 }
 
@@ -373,26 +379,6 @@ input[type="radio"]:checked + label {
 fieldset label:hover {
     font-weight: bold;
   }
-  
-
-  #bible-verse {
-    margin: 20px auto;
-    padding: 20px;
-    border: 6px solid var(--couleur-bouton-action);
-    max-width: 600px;
-    text-align: center;
-}
-.attribution {
-    font-size: 0.8em;
-    color: #666;
-    margin-top: 10px;
-}
-
-p#verse-text {
-    font-family: var(--font-titre);
-}
-
-
 
 /*------------------------------- FORMULAIRE CONTACT -------------------------->*/
 
@@ -410,7 +396,7 @@ form textarea {
 
 form label {
     display: flex;
-    margin: 6px;
+    margin: 5px;
     font-size: 12px;
     white-space: nowrap;
     align-items: center;
@@ -577,8 +563,6 @@ form label {
 }
 
 
-
-
 /*<--------------------------------------------------------- Graph page calorie-------------------------------------------------------->*/
 
 
@@ -665,6 +649,12 @@ article#article-recette {
     align-items: center;
 }
 
+.recipe-details {
+    text-align: justify;
+    margin: 10px auto;
+    padding: 10px;
+}
+
 article#article-recette img {
     width: fit-content;
     border-radius: 15px;
@@ -690,12 +680,6 @@ article#article-recette li {
     margin: 5px 0;
     list-style: outside;
 }
-
-article#article-recette p {
-    text-align: start;
-}
-
-
 
 /* <------------------------------ Page Mentions et Confidentialité ------------------------------>*/ */
 
@@ -750,7 +734,6 @@ article#article-recette p {
 .politique ul {
     display: contents;
 }
-
 
 
 
@@ -870,7 +853,7 @@ article#article-recette p {
         }
 
         form {
-            width: 60%;
+            width: 70%;
         }
 
         .reseau {

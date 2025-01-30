@@ -261,177 +261,139 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-const btnPerte = document.getElementById('perdre');
-const btnStabiliser = document.getElementById('stabiliser');
-const btnPrendre = document.getElementById('prendre');
+    const btnPerte = document.getElementById('perdre');
+    const btnStabiliser = document.getElementById('stabiliser');
+    const btnPrendre = document.getElementById('prendre');
 
-if (btnPerte) {
-    btnPerte.addEventListener('click', function() {
-        afficherRecettes('perte');
-    });
-}
-
-if (btnStabiliser) {
-    btnStabiliser.addEventListener('click', function() {
-        afficherRecettes('stabiliser');
-    });
-}
-
-if (btnPrendre) {
-    btnPrendre.addEventListener('click', function() {
-        afficherRecettes('prise');
-    });
-}
+    if (btnPerte) {
+        btnPerte.addEventListener('click', () => afficherRecettes('perte'));
+    }
+    
+    if (btnStabiliser) {
+        btnStabiliser.addEventListener('click', () => afficherRecettes('stabiliser'));
+    }
+    
+    if (btnPrendre) {
+        btnPrendre.addEventListener('click', () => afficherRecettes('prise'));
+    }
 });
 
 function afficherRecettes(type) {
-
-let calorieValue = 0;
-
-if (type === 'perte') {
-    calorieValue = parseInt(document.getElementById('caloriePerdre').textContent, 10);
+    let calorieValue = 0;
     
-} else if (type === 'stabiliser') {
-    calorieValue = parseInt(document.getElementById('calorieStabiliser').textContent, 10);
-} else if (type === 'prise') {
-    calorieValue = parseInt(document.getElementById('caloriePrendre').textContent, 10);
+    if (type === 'perte') {
+        calorieValue = parseInt(document.getElementById('caloriePerdre').textContent, 10);
+    } else if (type === 'stabiliser') {
+        calorieValue = parseInt(document.getElementById('calorieStabiliser').textContent, 10);
+    } else if (type === 'prise') {
+        calorieValue = parseInt(document.getElementById('caloriePrendre').textContent, 10);
+    }
+
+    const targetchoix = document.getElementById('target');
+    if (targetchoix) {
+        targetchoix.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('article-recette').style.display = 'block';
+    fetchRecettes(type, calorieValue);
 }
 
-const targetchoix = document.getElementById('target');
-if (targetchoix) {
-    targetchoix.scrollIntoView({
-        behavior: 'smooth', 
-        block: 'start'
+function fetchRecettes(type, calorieValue) {
+    let maxCalories, minCarbs, maxCarbs, minProtein, maxProtein, minFat, maxFat;
+
+    if (type === 'perte') {
+        maxCalories = calorieValue - 300;
+        minCarbs = 10; maxCarbs = 50;
+        minProtein = 10; maxProtein = 50;
+        minFat = 1; maxFat = 20;
+    } else if (type === 'stabiliser') {
+        maxCalories = calorieValue + 200;
+        minCarbs = 10; maxCarbs = 100;
+        minProtein = 10; maxProtein = 100;
+        minFat = 1; maxFat = 50;
+    } else if (type === 'prise') {
+        maxCalories = calorieValue;
+        minCarbs = 50; maxCarbs = 150;
+        minProtein = 50; maxProtein = 150;
+        minFat = 10; maxFat = 100;
+    }
+
+    const url = `https://api.spoonacular.com/recipes/findByNutrients?maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=3&language=fr`;
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'x-api-key': '037fdfeae43d44dfa0c60c66aaedc65c'
+        }
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Erreur API');
+        return response.json();
+    })
+    .then(data => {
+        const recipesDiv = document.getElementById('recettes');
+        recipesDiv.innerHTML = '';
+
+        if (data && data.length > 0) {
+            data.forEach(recipe => {
+                const recipeItem = document.createElement('div');
+                recipeItem.classList.add('recipe-item');
+                recipeItem.innerHTML = `
+                    <h3>${recipe.title}</h3>
+                    <p><strong>Calories : ${recipe.calories}</strong><p>
+                    <img src="${recipe.image}" alt="${recipe.title}" />
+                    <button class="details-button" data-recipe-id="${recipe.id}">J'ai faim 🍴</button>
+                    <div class="recipe-details" id="details-${recipe.id}" style="display: none;"></div>
+                `;
+                recipesDiv.appendChild(recipeItem);
+
+                const detailsButton = recipeItem.querySelector('.details-button');
+                const detailsDiv = recipeItem.querySelector(`#details-${recipe.id}`);
+
+                detailsButton.addEventListener('click', function() {
+                    if (detailsDiv.style.display === 'none') {
+                        fetchRecipeDetails(recipe.id, detailsDiv);
+                    } else {
+                        detailsDiv.style.display = 'none';
+                        detailsButton.textContent = 'J\'ai faim 🍴';
+                    }
+                });
+            });
+        } else {
+            recipesDiv.innerHTML = '<p>Aucune recette trouvée pour cet objectif.</p>';
+        }
+    })
+    .catch(error => {
+        const recipesDiv = document.getElementById('recettes');
+        recipesDiv.innerHTML = '<p>Erreur lors de la récupération des recettes. Veuillez réessayer plus tard.</p>';
     });
 }
 
-document.getElementById('article-recette').style.display = 'block';
-
-
-fetchRecettes(type, calorieValue);
-}
-
-
-function fetchRecettes(type, calorieValue) {
-let minCalories, maxCalories, minCarbs, maxCarbs, minProtein, maxProtein, minFat, maxFat;
-
-if (type === 'perte') {
-
-    minCalories = 50; 
-    maxCalories = calorieValue - 300; 
-    minCarbs = 10; 
-    maxCarbs = 50; 
-    minProtein = 10; 
-    maxProtein = 50; 
-    minFat = 1;
-    maxFat = 20;
-} else if (type === 'stabiliser') {
-
-    maxCalories = calorieValue + 200; 
-    minCarbs = 10; 
-    maxCarbs = 100; 
-    minProtein = 10;
-    maxProtein = 100;
-    minFat = 1; 
-    maxFat = 50; 
-} else if (type === 'prise') {
-
-    maxCalories = calorieValue; 
-    minCarbs = 50; 
-    maxCarbs = 150;
-    minProtein = 50; 
-    maxProtein = 150;
-    minFat = 10; 
-    maxFat = 100;
-}
-
-
-const url = `https://api.spoonacular.com/recipes/findByNutrients?maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=3&language=fr`;
-
-fetch(url, {
-    method: 'GET',
-    headers: {
-        'x-api-key': '037fdfeae43d44dfa0c60c66aaedc65c'
-    }
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Erreur API');
-    }
-    return response.json();
-})
-.then(data => {
-    const recipesDiv = document.getElementById('recettes');
-    recipesDiv.innerHTML = ''; 
-
-    console.log(data);
-
-    if (data && data.length > 0) {
-        data.forEach(recipe => {
-            const recipeItem = document.createElement('div');
-            recipeItem.classList.add('recipe-item');
-            recipeItem.innerHTML = `
-                <h3>${recipe.title}</h3>
-                <p><strong>Calories : ${recipe.calories}</strong><p>
-                <img src="${recipe.image}" alt="${recipe.title}" />
-                <button class="details-button" data-recipe-id="${recipe.id}">J'ai faim 🍴</button>
-                <div class="recipe-details" id="details-${recipe.id}" style="display: none;"></div>
-            `;
-            recipesDiv.appendChild(recipeItem);
-
-            const detailsButton = recipeItem.querySelector('.details-button');
-            const detailsDiv = recipeItem.querySelector(`#details-${recipe.id}`);
-
-            detailsButton.addEventListener('click', function() {
-                if (detailsDiv.style.display === 'none') {
-                    fetchRecipeDetails(recipe.id, detailsDiv);
-                } else {
-                    detailsDiv.style.display = 'none';
-                    detailsButton.textContent = 'J\'ai faim 🍴';
-                }
-            });
-        });
-    } else {
-        recipesDiv.innerHTML = '<p>Aucune recette trouvée pour cet objectif.</p>';
-    }
-})
-.catch(error => {
-    console.error('Erreur lors de la récupération des recettes :', error);
-    const recipesDiv = document.getElementById('recettes');
-    recipesDiv.innerHTML = '<p>Erreur lors de la récupération des recettes. Veuillez réessayer plus tard.</p>';
-});
-}
-
-
 function fetchRecipeDetails(recipeId, detailsDiv) {
-const url = `https://api.spoonacular.com/recipes/${recipeId}/information`;
+    const url = `https://api.spoonacular.com/recipes/${recipeId}/information`;
 
-fetch(url, {
-    method: 'GET',
-    headers: {
-        'x-api-key': '037fdfeae43d44dfa0c60c66aaedc65c'
-    }
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Erreur API lors de la récupération des détails de la recette');
-    }
-    return response.json();
-})
-.then(recipeDetails => {
-    detailsDiv.innerHTML =
-
-     `
-        <p>Ingrédients : ${recipeDetails.extendedIngredients.map(ingredient => ingredient.original).join(', ')}</p>
-        <p>Instructions : ${recipeDetails.instructions}</p>
-    `;
-    detailsDiv.style.display = 'block';
-    detailsDiv.previousElementSibling.textContent = 'Cacher les détails'; 
-})
-.catch(error => {
-    console.error('Erreur lors de la récupération des détails de la recette :', error);
-});
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'x-api-key': '037fdfeae43d44dfa0c60c66aaedc65c'
+        }
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Erreur API lors de la récupération des détails de la recette');
+        return response.json();
+    })
+    .then(recipeDetails => {
+        detailsDiv.innerHTML = `
+            <p>Ingrédients : ${recipeDetails.extendedIngredients.map(ingredient => ingredient.original).join(', ')}</p>
+            <p>Instructions : ${recipeDetails.instructions}</p>
+        `;
+        detailsDiv.style.display = 'block';
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des détails de la recette :', error);
+    });
 }
+
 
 
 // <-------------------------Intégration API Json pour afficher recettes selon objectif-------------------------------------->
@@ -439,15 +401,16 @@ fetch(url, {
 const contenueIMC = document.querySelector(".articlesIMC");
 const contenueCalorie = document.querySelector(".articlesCalorie");
 
-fetch('http://127.0.0.1:5502/db.json')
+fetch('../../data/db.json')
 .then(function(response) {
     return response.json();
 })
 .then(function(data) {
 
     // *<---------------Articles page IMC------------------>*//
+
     let htmlIMC = "";
-    if (contenueIMC) {  // Vérifie si l'élément .articlesIMC existe
+    if (contenueIMC) { 
         if (data.contenueArticlesIMC) {
             data.contenueArticlesIMC.forEach(function(articleIMC) {
                 htmlIMC += `
@@ -470,7 +433,7 @@ fetch('http://127.0.0.1:5502/db.json')
 
     // *<---------------Articles page Calorie------------------>*//
     let htmlCalorie = "";
-    if (contenueCalorie) {  // Vérifie si l'élément .articlesCalorie existe
+    if (contenueCalorie) { 
         if (data.contenueArticlesCalorie) {
             data.contenueArticlesCalorie.forEach(function(articleCalorie) {
                 htmlCalorie += `
@@ -511,6 +474,3 @@ fetch('http://127.0.0.1:5502/db.json')
 .catch(function(error) {
     console.error("Erreur lors du fetch :", error);
 });
-
-
-
