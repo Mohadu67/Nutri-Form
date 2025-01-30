@@ -456,7 +456,7 @@ fetch('http://127.0.0.1:5502/db.json')
                         </div>
                         <button class="learn-more">Lire plus</button>
                     </div> 
-                    <img src="/assets/img/${articleIMC.image}" alt="${articleIMC.alt}">
+                    <img src="assets/img/${articleIMC.image}" alt="${articleIMC.alt}">
                 `;
             });
             contenueIMC.innerHTML = htmlIMC;
@@ -479,7 +479,7 @@ fetch('http://127.0.0.1:5502/db.json')
                         </div>
                         <button class="learn-more">Lire plus</button>
                     </div> 
-                    <img src="/assets/img/${articleCalorie.image}" alt="${articleCalorie.alt}">
+                    <img src="assets/img/${articleCalorie.image}" alt="${articleCalorie.alt}">
                 `;
             });
             contenueCalorie.innerHTML = htmlCalorie;
