@@ -401,7 +401,7 @@ function fetchRecipeDetails(recipeId, detailsDiv) {
 const contenueIMC = document.querySelector(".articlesIMC");
 const contenueCalorie = document.querySelector(".articlesCalorie");
 
-fetch('../../data/db.json')
+fetch('data/db.json')
 .then(function(response) {
     return response.json();
 })
