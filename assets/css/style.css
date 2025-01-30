@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: 'Merriweather';
-    src: url('Merriweather-Black.ttf') format('truetype');
+    src: url('/assets/fonts/Merriweather-Black.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('Montserrat-Regular.ttf') format('truetype');
+    src: url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');
 
 
 }
@@ -142,8 +142,9 @@ footer div {
 }
 
 .logo {
-    content: url('domaine-logo.svg');
-    height: 55px;
+    content: url(domaine-logo.svg);
+    height: 150px;
+    width: 150px;
 }
 
 
@@ -356,6 +357,16 @@ fieldset label {
   }
   
 
+  form fieldset:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form fieldset:first-child label {
+    border: none;
+}
+
+
 input[type="radio"]:checked + label {
     background-color: var(--couleur-bouton-selection);
   }
@@ -422,7 +433,7 @@ form label {
 
 
 .resultat {
-    display: flex;
+    display: none;
     flex-direction: column;
     margin: 50px auto;
     gap: 20px;
@@ -845,7 +856,7 @@ article#article-recette p {
             }
 
         .logo {
-            content: url('Logo-complet.svg');
+            content: url('/assets/img/logo/Logo-complet.svg');
             height: 150px;
             margin-right: 100px;
         }

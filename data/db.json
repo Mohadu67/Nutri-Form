@@ -1,0 +1,63 @@
+{
+    "contenueArticlesIMC": [
+      {
+        "titre": "L'IMC, un point de départ pour mieux vous connaître",
+        "description": "L'IMC est un indicateur global, utile pour donner une première estimation de votre corpulence, mais il ne reflète pas toute la complexité de votre corps. Pour mieux comprendre votre état de santé, il est intéressant d'utiliser d'autres outils complémentaires.",
+        "excedent": "Par exemple, une analyse de la composition corporelle peut mesurer précisément la proportion de masse musculaire, de graisse et d'eau dans votre corps...",
+        "image": "time-for-a-change-897441_1280.jpg",
+        "alt": "photo d'une grenouille avec une valise qui marche avec un titre à côté time for change"
+      },
+      {
+        "titre": "Pourquoi un suivi à long terme est essentiel",
+        "description": "Adopter de nouvelles habitudes pour améliorer votre santé est une excellente première étape, mais le véritable impact se mesure dans le temps...",
+        "excedent": "Par exemple, surveiller régulièrement votre poids, votre IMC ou vos mensurations peut aider à identifier rapidement des changements...",
+        "image": "mesure.jpg",
+        "alt": "photo d'une femme qui tient un mètre ruban pour montrer des unités de mesures"
+      },
+      {
+        "titre": "La motivation passe par de petits changements",
+        "description": "Changer ses habitudes peut sembler intimidant, mais il n'est pas nécessaire de tout transformer d'un coup pour obtenir des résultats durables...",
+        "excedent": "Ces petites victoires sont accessibles et renforcent votre motivation. Progressivement, elles deviennent des habitudes naturelles, faciles à maintenir sur le long terme...",
+        "image": "Monter.jpg",
+        "alt": "Image d'une personne qui monte un escalier"
+      },
+      {
+        "titre": "Adopter une vision positive de votre parcours santé",
+        "description": "Lorsque vous vous engagez à améliorer votre santé, il est important de garder une vision positive et réaliste de votre parcours...",
+        "excedent": "L'idée est de célébrer les petites réussites quotidiennes, de vous concentrer sur ce que vous pouvez améliorer, et de ne jamais vous décourager face aux obstacles...",
+        "image": "Positif.jpg",
+        "alt": "Image d'une personne s'étirant les bras afin d'exprimer une attitude positive"
+      }
+    ],
+    "contenueArticlesCalorie": [
+      {
+        "titre": "Comment vos besoins caloriques sont-ils calculés ?",
+        "description": "Votre besoin calorique quotidien repose sur deux éléments principaux : le métabolisme de base (MB) et les calories brûlées par vos activités physiques.",
+        "excedent": "Le MB correspond à l'énergie minimale dont votre corps a besoin pour fonctionner au repos (respiration, circulation sanguine, digestion, etc.). Les activités, quant à elles, incluent tout ce que vous faites au cours de la journée...",
+        "image": "formule.jpg",
+        "alt": "photo d'une grenouille avec une valise qui marche avec un titre à côté time for change"
+      },
+      {
+        "titre": "Pourquoi les besoins caloriques varient-ils ?",
+        "description": "Les besoins caloriques diffèrent d'une personne à l'autre en fonction de plusieurs critères. Par exemple, une personne plus grande ou plus lourde aura un métabolisme de base plus élevé qu'une personne plus petite.",
+        "excedent": "L'âge joue aussi un rôle : à mesure qu'on vieillit, le métabolisme ralentit légèrement. Enfin, l'activité physique a un impact majeur : une personne active brûle beaucoup plus d'énergie qu'une personne sédentaire...",
+        "image": "diversity-5582454_1280.jpg",
+        "alt": "photo d'une femme qui tient un mètre ruban pour montrer des unités de mesures"
+      },
+      {
+        "titre": "Ajuster son alimentation en fonction de ses objectifs",
+        "description": "Pour atteindre vos objectifs (perte de poids, prise de masse ou maintien), il est important de faire de petits ajustements sur votre consommation calorique.",
+        "excedent": "Par exemple, une réduction modérée de 500 kcal par jour entraîne une perte de poids progressive et saine, sans affecter votre énergie. À l'inverse, si vous cherchez à prendre du poids, misez sur des aliments riches en calories...",
+        "image": "selon-objectif.jpg",
+        "alt": "Image d'une personne qui monte un escalier"
+      },
+      {
+        "titre": "La qualité des calories compte autant que leur quantité ?",
+        "description": "Toutes les calories ne se valent pas : consommer 2000 kcal à base d'aliments ultra-transformés n'a pas le même effet sur votre santé que 2000 kcal provenant d'aliments complets et équilibrés.",
+        "excedent": "Une alimentation riche en légumes, fruits, protéines maigres et graisses saines améliore votre niveau d'énergie, renforce votre système immunitaire et prévient les maladies chroniques...",
+        "image": "food-3226311_1280.png",
+        "alt": "Image d'une personne s'étirant les bras afin d'exprimer une attitude positive"
+      }
+    ]
+  }
+  

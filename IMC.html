@@ -1,292 +1,208 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image.svg" href="Logo.svg"/>
-    <link rel="stylesheet" href="style.css">
-    <title>IMC | NutriForm</title>
-    <meta name="description" content="C'est un site de calcule de l'imc et calorie pour perdre le bide">
-</head>
-
-<body>   
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image.svg" href="/assets/img/Logo.svg"/>
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <script src="/assets/scripts/scripts.js" defer></script>
+        <title>IMC | NutriForm</title>
+        <meta name="description" content="Calculez votre IMC et trouver des conseils personnalisée">
+    </head>
     
-    <header>
-
-        <div>
-            <a href="index.html">
-                <img src="domaine-logo.svg" alt="logo du site" class="logo">
-            </a>
-
-            <input type="checkbox" id="burger-toggle" class="burger-toggle">
-            <label for="burger-toggle" class="burger">
-                <span ><a href="index.html">Accueil</a></span>
-                <span class="org"><a class="orange" href="calorie.html">Calorie</a></span>
-                <span><a href="contact.html">Contact</a></span>
-            </label>
-
-        </div>
-
-    </header>
-
-
-    
-    <main>
-
-        <section>
-
-            <h1>L'indice de Masse Corporelle </h1>
+    <body>   
+        
+        <header>
             
-            <form id="imcForm">
-                
-                <label for="taille">Taille (cm) :</label>
-                <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" />
-                
-                <label for="poids">Poids (kg) :</label>
-                <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" />
+            <div>
+                <a href="index.html">
+                    <img src="/assets/img/logo/domaine-logo.svg" alt="logo du site" class="logo">
+                </a>
 
-                <button type="submit">Calculer Mon IMC</button>
+                <input type="checkbox" id="burger-toggle" class="burger-toggle">
+                <label for="burger-toggle" class="burger">
+                    <span ><a href="index.html">Accueil</a></span>
+                    <span class="org"><a class="orange" href="calorie.html">Calorie</a></span>
+                    <span><a href="contact.html">Contact</a></span>
+                </label>
 
-                <div class="imc-graph">
-    
-                    <div class="limite">
-                        <div class="limit start-limit"></div>
-                        <p>18</p>
-                    </div>
-                    
-                    <div class="main-bar">
-
-                        <div class="resu-imc">
-                            <div class="dynamic-bar"></div>
-                            <p id="imcResult"></p>
-
-                        </div>
-
-                    </div>
-
-    
-                    <div class="limite">
-                        <div class="limit end-limit"></div>
-                        <p>40</p>
-                    </div>
-                </div>
-
-            </form>
-
-
-            <div id="customAlert" class="alert" style="display: none;">
-                <span id="alertMessage"></span>
-                <button onclick="closeAlert()">OK</button>
             </div>
- 
-            
-            <div class="resultat">
 
-                <div class="column">
-            
-                       <h2>Que signifie cela</h2>
-            
-                        <div class="bloc one">
-                            <p>
-                                L'Indice de Masse Corporelle (IMC) est un indicateur utilisé pour évaluer la corpulence d'une personne en fonction de son poids et de sa taille. Il permet de savoir si une personne se trouve dans une fourchette de poids normale, en surpoids, en sous-poids, ou obèse. 
-                            </p>
+        </header>
 
-                            <div class="more-content">
-                                <p>
-                                    L'IMC est une méthode simple et rapide pour évaluer les risques liés à la santé, mais elle ne tient pas compte de la composition corporelle, comme la masse musculaire ou la répartition des graisses.
-                                </p>
-                            </div>
-                            <button class="learn-more">Lire plus</button>
+
+        
+        <main>
+
+            <section>
+
+                <h1>L'indice de Masse Corporelle </h1>
+                
+                <form id="imcForm">
+                    
+                    <label for="taille">Taille (cm) :</label>
+                    <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" />
+                    
+                    <label for="poids">Poids (kg) :</label>
+                    <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" />
+
+                    <button type="submit">Calculer Mon IMC</button>
+
+                    <div class="imc-graph">
+        
+                        <div class="limite">
+                            <div class="limit start-limit"></div>
+                            <p>18</p>
                         </div>
-            
-                        <div class="bloc two">
-                            <div>
+                        
+                        <div class="main-bar">
+
+                            <div class="resu-imc">
+                                <div class="dynamic-bar"></div>
+                                <p id="imcResult"></p>
+
+                            </div>
+
+                        </div>
+
+        
+                        <div class="limite">
+                            <div class="limit end-limit"></div>
+                            <p>40</p>
+                        </div>
+                    </div>
+
+                </form>
+
+                <p>Pour un imc idéal vous devez etre entre 18.5 et 24.9</p>
+
+                <div id="customAlert" class="alert" style="display: none;">
+                    <span id="alertMessage"></span>
+                    <button onclick="closeAlert()">OK</button>
+                </div>
+    
+                
+                <div class="resultat">
+
+                    <div class="column">
+                
+                        <h2>Que Cela Signifie ?</h2>
+                
+                            <div class="bloc one">
                                 <p>
-                                    Connaître son IMC permet d'obtenir une indication générale de sa santé en fonction de son poids. Il peut vous aider à prendre conscience des risques liés à un poids trop faible ou trop élevé et à prendre des décisions éclairées pour améliorer votre bien-être.
+                                    L'Indice de Masse Corporelle (IMC) est un indicateur utilisé pour évaluer la corpulence d'une personne en fonction de son poids et de sa taille. Il permet de savoir si une personne se trouve dans une fourchette de poids normale, en surpoids, en sous-poids, ou obèse. 
                                 </p>
+
                                 <div class="more-content">
                                     <p>
-                                        Bien que l'IMC ne soit pas un diagnostic, il est souvent utilisé par les professionnels de santé pour identifier les personnes à risque et leur proposer des conseils adaptés.
+                                        L'IMC est une méthode simple et rapide pour évaluer les risques liés à la santé, mais elle ne tient pas compte de la composition corporelle, comme la masse musculaire ou la répartition des graisses.
                                     </p>
                                 </div>
                                 <button class="learn-more">Lire plus</button>
                             </div>
-                        </div>
-            
-                </div>
-            
-                <div class="column">
-                    
-                    <h2>Et ensuite ?</h2>
-            
-                    <div class="bloc tree">
-                        <p>
-                            En fonction du résultat de votre IMC, il est important d'adopter des mesures adaptées à votre situation. Si vous êtes dans une fourchette normale, il est conseillé de maintenir un mode de vie sain, avec une alimentation équilibrée et de l'exercice régulier. 
-                        </p>
-                        <div class="more-content">
+                
+                            <div class="bloc two">
+                                <div>
+                                    <p>
+                                        Connaître son IMC permet d'obtenir une indication générale de sa santé en fonction de son poids. Il peut vous aider à prendre conscience des risques liés à un poids trop faible ou trop élevé et à prendre des décisions éclairées pour améliorer votre bien-être.
+                                    </p>
+                                    <div class="more-content">
+                                        <p>
+                                            Bien que l'IMC ne soit pas un diagnostic, il est souvent utilisé par les professionnels de santé pour identifier les personnes à risque et leur proposer des conseils adaptés.
+                                        </p>
+                                    </div>
+                                    <button class="learn-more">Lire plus</button>
+                                </div>
+                            </div>
+                
+                    </div>
+                
+                    <div class="column">
+                        
+                        <h2>Et ensuite ?</h2>
+                
+                        <div class="bloc tree">
                             <p>
-                                Si vous êtes en surpoids ou en maigreur, des ajustements alimentaires et un programme d'activité physique pourraient être nécessaires. Dans les cas d'obésité, un suivi médical est recommandé.
+                                En fonction du résultat de votre IMC, il est important d'adopter des mesures adaptées à votre situation. Si vous êtes dans une fourchette normale, il est conseillé de maintenir un mode de vie sain, avec une alimentation équilibrée et de l'exercice régulier. 
                             </p>
+                            <div class="more-content">
+                                <p>
+                                    Si vous êtes en surpoids ou en maigreur, des ajustements alimentaires et un programme d'activité physique pourraient être nécessaires. Dans les cas d'obésité, un suivi médical est recommandé.
+                                </p>
+                            </div>
+                            <button class="learn-more">Lire plus</button>
                         </div>
-                        <button class="learn-more">Lire plus</button>
-                    </div>
-            
-                    <div class="bloc for">
-            
-                        <p>
-                            Surveiller régulièrement son poids et son IMC peut aider à prévenir des problèmes de santé à long terme. Un poids trop faible ou trop élevé peut entraîner des risques tels que des maladies cardiovasculaires, du diabète, ou encore des problèmes articulaires.
-                        </p>
-            
-                        <div class="more-content">
+                
+                        <div class="bloc for">
+                
                             <p>
-                                Garder un poids sain contribue à améliorer la qualité de vie, l'énergie quotidienne, et la longévité. Il est donc essentiel de faire attention à sa corpulence tout en adoptant un mode de vie équilibré et durable.
+                                Surveiller régulièrement son poids et son IMC peut aider à prévenir des problèmes de santé à long terme. Un poids trop faible ou trop élevé peut entraîner des risques tels que des maladies cardiovasculaires, du diabète, ou encore des problèmes articulaires.
                             </p>
+                
+                            <div class="more-content">
+                                <p>
+                                    Garder un poids sain contribue à améliorer la qualité de vie, l'énergie quotidienne, et la longévité. Il est donc essentiel de faire attention à sa corpulence tout en adoptant un mode de vie équilibré et durable.
+                                </p>
+                            </div>
+                            <button class="learn-more">Lire plus</button>
+                
                         </div>
-                        <button class="learn-more">Lire plus</button>
-            
+                
                     </div>
-            
+                
                 </div>
-            
-            </div>
-            
                 
-                
-        </section>
-
-        <section>
-
-            <article>
-                
-                <h2>L'IMC, un point de départ pour mieux vous connaître</h2>
-                <div>
                     
-                    <p>
-                        L'IMC est un indicateur global, utile pour donner une première estimation de votre corpulence,
-                        mais il ne reflète pas toute la complexité de votre corps.
-                        Pour mieux comprendre votre état de santé, il est intéressant d'utiliser d'autres outils complémentaires.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            Par exemple, une analyse de la composition corporelle peut mesurer précisément la proportion de masse musculaire,
-                            de graisse et d'eau dans votre corps. Le tour de taille est également un indicateur clé pour évaluer les risques
-                            associés à la graisse abdominale, souvent liés aux maladies cardiovasculaires. Enfin, des tests métaboliques
-                            peuvent déterminer vos besoins caloriques spécifiques en fonction de votre activité quotidienne et de vos objectifs.
-                            En combinant ces données, vous obtenez une vision plus complète de votre santé, ce qui permet de définir des actions
-                            vraiment adaptées.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>
-                </div> 
-                <img src="time-for-a-change-897441_1280.jpg" alt="photo d'une grenouille avec une valise qui marche avec un titre a coté time for change">
-            </article>
+                    
+            </section>
 
-            <article>
-                <div>
+            <section>
 
-                    <h2>Pourquoi un suivi à long terme est essentiel</h2>
-                    <p>
-                        Adopter de nouvelles habitudes pour améliorer votre santé est une excellente première étape, mais le véritable impact se mesure dans le temps. Un suivi à long terme
-                        permet de rester conscient des progrès réalisés, tout en ajustant vos objectifs en fonction de vos besoins et de votre mode de vie.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            Par exemple, surveiller régulièrement votre poids, votre IMC ou vos mensurations peut aider à identifier rapidement des changements, 
-                            positifs ou négatifs. Utiliser des outils comme des applications de suivi alimentaire, des journaux d'activité physique ou même des consultations régulières avec un professionnel
-                            de santé garantit une progression constante et adaptée. Ce suivi permet non seulement de maintenir les résultats obtenus, 
-                            mais aussi de prévenir les chutes, tout en renforçant votre motivation et votre confiance.
-                         </p>
-                        </div>
-                    <button class="learn-more">Lire plus</button>
+                <article class="articlesIMC"></article>
+
+            </section>
+
+        </main>
+        
+
+
+        <footer>
+            <div>
+                <a href="index.html">
+                    <img src="/assets/img/logo/domaine-logo.svg" alt="logo du site" class="logo">
+                </a>
+        
+                <div class="menu-nav">
+
+                    <nav>
+                        <a href="index.html">Accueil</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+        
+                    <nav>
+                        <a class="orange" href="IMC.html">IMC</a>
+                        <a class="orange" href="calorie.html">Calorie</a>
+                    </nav>
                 </div>
-                <img src="mesure.jpg" alt="photo d'une femme qui tient un métre ruban pour montrer des unités de mesures">
-            </article>
-
-            <article>
-                <div>
-                    <h2>La motivation passe par de petits changements</h2>
-                    <p>
-                        Changer ses habitudes peut sembler intimidant, mais il n'est pas nécessaire de tout transformer d'un coup pour obtenir des résultats durables.
-                        Ce sont souvent les petits ajustements du quotidien qui font la différence. Par exemple, remplacez une collation sucrée par un fruit,
-                            prenez les escaliers au lieu de l'ascenseur ou ajoutez encore 5 à 10 minutes de marche chaque jour.
-                        </p>
-                    <div class="more-content">
-                        <p>
-                            Ces petites victoires sont accessibles et renforcent votre motivation. Progressivement, elles deviennent des habitudes naturelles, faciles à maintenir sur le long terme.
-                            Le secret, c'est de se fixer des objectifs simples, atteignables et de célébrer chaque progrès. Chaque pas compte,
-                            et c'est en accumulant ces petites réussites que vous construisez un changement profond et durable.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>  
+        
+                <div class="reseau">
+                    <a target="_blank" href="#"><img src="/assets/icons/facebook.svg" alt="icone facebook" class="icone"></a>
+                    <a target="_blank" href="#"><img src="/assets/icons/instagram.svg" alt="icone Instagram" class="icone"></a>
+                    <a target="_blank" href="#"><img src="/assets/icons/linkedin.svg" alt="icone LinkedIn" class="icone"></a>
+                    <a target="_blank" href="#"><img src="/assets/icons/twitter-x.svg" alt="icone Twitter" class="icone"></a>
                 </div>
-                <img src="Monter.jpg" alt="Image d'une personne qui monte un escalier">
-            </article>
+            </div>
             
-            <article>
-                <div>
+            <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
+        </footer>
 
-                    <h2>Adopter une vision positive de votre parcours santé</h2>
-                    <p>
-                        Lorsque vous vous engagez à améliorer votre santé, il est important de garder une vision positive et réaliste de votre parcours.
-                        Plutôt que de vous concentrer uniquement sur le "perdre du poids", pensez à ce que vous gagnez en chemin : plus d'énergie, une meilleure humeur,
-                        un sommeil réparateur, et une confiance retrouvée. Chaque effort que vous faites, qu'il soit petit ou grand, contribue à votre bien-être global.
-                    </p>
-                    <div class="more-content">
-                        <p>
-                            L'idée est de célébrer les petites réussites quotidiennes, de vous concentrer sur ce que vous pouvez améliorer, et de ne jamais vous décourager face aux obstacles.
-                            Chaque jour est une nouvelle opportunité pour prendre soin de vous. Avec le temps, vous verrez que ces petites actions mènent à des transformations durables.
-                            En adoptant une approche positive et en restant bienveillant envers vous-même, vous pourrez atteindre vos objectifs tout en profitant du chemin et en appréciant chaque étape de votre évolution.
-                        </p>
-                    </div>
-                    <button class="learn-more">Lire plus</button>
-                </div>
-                <img src="Positif.jpg" alt="Image d'une personne s'etirant les bras afin d'exprimer une attitude positive">
-            </article>
-
-        </section>
-
-    </main>
-    
-
-
-    <footer>
-        <div>
-            <a href="index.html">
-                <img src="domaine-logo.svg" alt="logo du site" class="logo">
-            </a>
-    
-            <div class="menu-nav">
-
-                <nav>
-                    <a href="index.html">Accueil</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-    
-                <nav>
-                    <a class="orange" href="IMC.html">IMC</a>
-                    <a class="orange" href="calorie.html">Calorie</a>
-                </nav>
-            </div>
-    
-            <div class="reseau">
-                <a target="_blank" href="#"><img src="facebook.svg" alt="icone facebook" class="icone"></a>
-                <a target="_blank" href="#"><img src="instagram.svg" alt="icone Instagram" class="icone"></a>
-                <a target="_blank" href="#"><img src="linkedin.svg" alt="icone LinkedIn" class="icone"></a>
-                <a target="_blank" href="#"><img src="twitter-x.svg" alt="icone Twitter" class="icone"></a>
-            </div>
+        
+        <div id="cookieMessage" class="cookie-message">
+            <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
+            <button id="acceptCookies">Accepter</button>
         </div>
         
-        <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
-    </footer>
-
-    
-    <div id="cookieMessage" class="cookie-message">
-        <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
-        <button id="acceptCookies">Accepter</button>
-    </div>
-    
-    <script src="scripts.js"></script>
-</body>
+    </body>
 
 
 </html>
