@@ -12,183 +12,183 @@
 
     <body>   
 
-    <header>
+        <header>
 
-        <div>
-            <a href="index.html">
-                <img src="assets/img/logo/domaine-logo.svg" alt="logo du site" class="logo">
-            </a>
+            <div>
+                <a href="index.html">
+                    <img src="assets/img/logo/domaine-logo.svg" alt="logo du site" class="logo">
+                </a>
 
-            <input type="checkbox" id="burger-toggle" class="burger-toggle">
-            <label for="burger-toggle" class="burger">
-                <span ><a href="index.html">Accueil</a></span>
-                <span class="org"><a class="orange" href="IMC.html">IMC</a></span>
-                <span><a href="contact.html">Contact</a></span>
-            </label>
+                <input type="checkbox" id="burger-toggle" class="burger-toggle">
+                <label for="burger-toggle" class="burger">
+                    <span ><a href="index.html">Accueil</a></span>
+                    <span class="org"><a class="orange" href="IMC.html">IMC</a></span>
+                    <span><a href="contact.html">Contact</a></span>
+                </label>
 
-        </div>
+            </div>
 
-    </header>
+        </header>
 
-    <main>
-        
-        
-        <section>
-            
-            <h1>Calculateur d'Apport Calorique</h1>
+        <main>
             
             
+            <section>
+                
+                <h1>Calculateur d'Apport Calorique</h1>
+                
+                
 
-            <form id="calorieForm">
-                <fieldset>
-                    <label for="liste-deroulante">Choisissez une formule :</label>
-                    <select id="liste-deroulante" name="liste-deroulante" required>
-                        <option value="standard">Formule Standard</option>
-                        <option value="mifflin">Formule de Mifflin-St Jeor</option>
-                        <option value="harris">Formule de Harris-Benedict</option>
-                        <option value="katch">Formule de Katch-McArdle</option>
-                    </select>
-                </fieldset>
+                <form id="calorieForm">
+                    <fieldset>
+                        <label for="liste-deroulante">Choisissez une formule :</label>
+                        <select id="liste-deroulante" name="liste-deroulante" required>
+                            <option value="standard">Formule Standard</option>
+                            <option value="mifflin">Formule de Mifflin-St Jeor</option>
+                            <option value="harris">Formule de Harris-Benedict</option>
+                            <option value="katch">Formule de Katch-McArdle</option>
+                        </select>
+                    </fieldset>
+                
+                    <fieldset class="sexe">
+                        <input type="radio" id="huey-homme" name="sexe" value="huey" checked />
+                        <label for="huey-homme">Homme</label>
+                        
+                        <input type="radio" id="dewey-femme" name="sexe" value="dewey" />
+                        <label for="dewey-femme">Femme</label>
+                    </fieldset>
+                
+                    <label for="taille">Taille (cm) :</label>
+                    <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
+                
+                    <label for="poids">Poids (kg) :</label>
+                    <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
+                
+                    <label for="age">Âge (ans) :</label>
+                    <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
+                
+                    <fieldset class="activité">
+
+                        <input type="radio" id="peuactif" name="activité" value="peuactif" checked />
+                        <label for="peuactif">Peu actif</label>
+                        
+                        <input type="radio" id="moyen" name="activité" value="moyen" />
+                        <label for="moyen">Moyen</label>
+                
+                        <input type="radio" id="actif" name="activité" value="actif" />
+                        <label for="actif">Actif</label>
+                
+                        <input type="radio" id="tresactif" name="activité" value="trésactif" />
+                        <label for="tresactif">Très actif</label>
+
+                    </fieldset>
+                
+                    <button>Calculer</button>
+                </form>
+                
+                
+
+                
+                
+                <!----------------------------------------------------Retour resultat----------------------------------->
+                <div class="graph">
+                    <ul>
+                        <li>
+                            <p>Perdre du poids</p>
+                        </li>
+                        <li> 
+                            <img src="assets/icons/graphdown.svg" alt="">
+                        </li>
+                        <li><p>consommation calorie par jour</p></li>
+                        <li><p id="caloriePerdre"></p></li>
+                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
+                        <button id="perdre">Je veux perdre du poids</button>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>Stabiliser</p>
+                        </li>
+                        <li> 
+                            <img src="assets/icons/graph.svg" alt="">
+                        </li>
+                        <li><p>consommation calorie par jour</p></li>
+                        <li><p id="calorieStabiliser"></p></li>
+                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
+                        <button id="stabiliser">Je veux stabiliser mon poids</button>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>Prendre du poids</p>
+                        </li>
+                        <li> 
+                            <img src="assets/icons/graphup.svg" alt="">
+                        </li>
+                        <li><p>consommation calorie par jour</p></li>
+                        <li><p id="caloriePrendre"></p></li>
+                        <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
+                        <button id="prendre" >Je veux prendre du poids</button>
+                    </ul>
+                </div>
+
             
-                <fieldset class="sexe">
-                    <input type="radio" id="huey-homme" name="sexe" value="huey" checked />
-                    <label for="huey-homme">Homme</label>
+
+                <div id="target"></div>
+                <article id="article-recette" style="display:none;">
+                    <h2>Pour atteindre ton objectif voici des recettes :</h2>
+                    <div id="recettes"></div>
+                </article>
+
                     
-                    <input type="radio" id="dewey-femme" name="sexe" value="dewey" />
-                    <label for="dewey-femme">Femme</label>
-                </fieldset>
-            
-                <label for="taille">Taille (cm) :</label>
-                <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
-            
-                <label for="poids">Poids (kg) :</label>
-                <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
-            
-                <label for="age">Âge (ans) :</label>
-                <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
-            
-                <fieldset class="activité">
 
-                    <input type="radio" id="peuactif" name="activité" value="peuactif" checked />
-                    <label for="peuactif">Peu actif</label>
+
+
                     
-                    <input type="radio" id="moyen" name="activité" value="moyen" />
-                    <label for="moyen">Moyen</label>
-            
-                    <input type="radio" id="actif" name="activité" value="actif" />
-                    <label for="actif">Actif</label>
-            
-                    <input type="radio" id="tresactif" name="activité" value="trésactif" />
-                    <label for="tresactif">Très actif</label>
+            </section>
 
-                </fieldset>
-            
-                <button>Calculer</button>
-            </form>
-            
-            
+            <section>
 
+                <article class="articlesCalorie"></article>
             
+            </section>
             
-            <!----------------------------------------------------Retour resultat----------------------------------->
-            <div class="graph">
-                <ul>
-                    <li>
-                        <p>Perdre du poids</p>
-                    </li>
-                    <li> 
-                        <img src="assets/icons/graphdown.svg" alt="">
-                    </li>
-                    <li><p>consommation calorie par jour</p></li>
-                    <li><p id="caloriePerdre"></p></li>
-                    <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
-                    <button id="perdre">Je veux perdre du poids</button>
-                </ul>
-                <ul>
-                    <li>
-                        <p>Stabiliser</p>
-                    </li>
-                    <li> 
-                        <img src="assets/icons/graph.svg" alt="">
-                    </li>
-                    <li><p>consommation calorie par jour</p></li>
-                    <li><p id="calorieStabiliser"></p></li>
-                    <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
-                    <button id="stabiliser">Je veux stabiliser mon poids</button>
-                </ul>
-                <ul>
-                    <li>
-                        <p>Prendre du poids</p>
-                    </li>
-                    <li> 
-                        <img src="assets/icons/graphup.svg" alt="">
-                    </li>
-                    <li><p>consommation calorie par jour</p></li>
-                    <li><p id="caloriePrendre"></p></li>
-                    <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
-                    <button id="prendre" >Je veux prendre du poids</button>
-                </ul>
+        </main>
+
+
+
+        <footer>
+            <div>
+                <a href="index.html">
+                    <img src="assets/img/logo/domaine-logo.svg" alt="logo du site" class="logo">
+                </a>
+
+                <div class="menu-nav">
+                    
+                    <nav>
+                        <a href="index.html">Accueil</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                    
+                    <nav>
+                        <a class="orange" href="IMC.html">IMC</a>
+                        <a class="orange" href="calorie.html">Calorie</a>
+                    </nav>
+                </div>
+
+                <div class="reseau">
+                    <a target="_blank" href="#"><img src="assets/icons/facebook.svg" alt="icone facebook" class="icone"></a>
+                    <a target="_blank" href="#"><img src="assets/icons/instagram.svg" alt="icone Instagram" class="icone"></a>
+                    <a target="_blank" href="#"><img src="assets/icons/linkedin.svg" alt="icone LinkedIn" class="icone"></a>
+                    <a target="_blank" href="#"><img src="assets/icons/twitter-x.svg" alt="icone Twitter" class="icone"></a>
+                </div>
             </div>
+            
+            <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
+        </footer>
 
-        
-
-            <div id="target"></div>
-            <article id="article-recette" style="display:none;">
-                <h2>Pour atteindre ton objectif voici des recettes :</h2>
-                <div id="recettes"></div>
-            </article>
-
-                
-
-
-
-                
-        </section>
-
-        <section>
-
-            <article class="articlesCalorie"></article>
-        
-        </section>
-        
-    </main>
-
-
-
-    <footer>
-        <div>
-            <a href="index.html">
-                <img src="assets/img/logo/domaine-logo.svg" alt="logo du site" class="logo">
-            </a>
-
-            <div class="menu-nav">
-                
-                <nav>
-                    <a href="index.html">Accueil</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                
-                <nav>
-                    <a class="orange" href="IMC.html">IMC</a>
-                    <a class="orange" href="calorie.html">Calorie</a>
-                </nav>
-            </div>
-
-            <div class="reseau">
-                <a target="_blank" href="#"><img src="assets/icons/facebook.svg" alt="icone facebook" class="icone"></a>
-                <a target="_blank" href="#"><img src="assets/icons/instagram.svg" alt="icone Instagram" class="icone"></a>
-                <a target="_blank" href="#"><img src="assets/icons/linkedin.svg" alt="icone LinkedIn" class="icone"></a>
-                <a target="_blank" href="#"><img src="assets/icons/twitter-x.svg" alt="icone Twitter" class="icone"></a>
-            </div>
+        <div id="cookieMessage" class="cookie-message">
+            <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
+            <button id="acceptCookies">Accepter</button>
         </div>
-        
-        <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
-    </footer>
-
-    <div id="cookieMessage" class="cookie-message">
-        <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
-        <button id="acceptCookies">Accepter</button>
-    </div>
 
 
 

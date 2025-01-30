@@ -1,14 +1,13 @@
-
 /*<---------------------------- LES FONTS ----------------------------->*/
 
 @font-face {
     font-family: 'Merriweather';
-    src: url('/assets/fonts/Merriweather-Black.ttf') format('truetype');
+    src: url('../fonts/Merriweather-Black.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');
+    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
 
 
 }
@@ -142,7 +141,7 @@ footer div {
 }
 
 .logo {
-    content: url(domaine-logo.svg);
+    content: url(../img/logo/domaine-logo.svg);
     height: 150px;
     width: 150px;
 }
@@ -429,7 +428,7 @@ form label {
 
 
 
-/*------------------------------- RESULTAT CALCULE ---------------------------->*/
+/*------------------------------- RESULTAT CALCULE IMC ---------------------------->*/
 
 
 .resultat {
@@ -453,6 +452,11 @@ form label {
     padding: 3px;
     width: 80%;
 
+}
+
+.bloc.for a {
+    font-family: 'Merriweather';
+    color: var(--couleur-bouton-action);
 }
 
 .resultat h2 {
@@ -856,7 +860,7 @@ article#article-recette p {
             }
 
         .logo {
-            content: url('/assets/img/logo/Logo-complet.svg');
+            content: url('../img/logo/logo-complet.svg');
             height: 150px;
             margin-right: 100px;
         }
