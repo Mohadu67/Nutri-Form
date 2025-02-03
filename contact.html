@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <script src="tarteaucitron.js/tarteaucitron.min.js"></script>
+        <script>
+            // Google Analytics (GA4) via Tarteaucitron
+        tarteaucitron.user.gtagUa = 'G-5SPZ9PK4Y2';
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+                tarteaucitron.init({
+            "privacyUrl": "", /* Privacy policy url */
+            "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+
+            "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+            "cookieName": "tarteaucitron", /* Cookie name */
+
+            "orientation": "middle", /* Banner position (top - bottom - middle - popup) */
+
+            "groupServices": false, /* Group services by category */
+            "showDetailsOnClick": true, /* Click to expand the description */
+            "serviceDefaultState": "wait", /* Default state (true - wait - false) */
+
+            "showAlertSmall": false, /* Show the small banner on bottom right */
+            "cookieslist": false, /* Show the cookie list */
+            
+            "showIcon": true, /* Show cookie icon to manage cookies */
+            // "iconSrc": "", /* Optional: URL or base64 encoded image */
+            "iconPosition": "BottomRight", /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */
+
+            "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+            "DenyAllCta" : true, /* Show the deny all button */
+            "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+            "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+            "alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
+            
+            "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+            "removeCredit": false, /* Remove credit link */
+            "moreInfoLink": true, /* Show more info link */
+            "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+            "useExternalJs": false, /* If false, the tarteaucitron.services.js file will be loaded */
+
+            // "cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
+
+            "readmoreLink": "", /* Change the default readmore link pointing to tarteaucitron.io */
+            
+            "mandatory": true, /* Show a message about mandatory cookies */
+            "mandatoryCta": true, /* Show the disabled accept button when mandatory on */
+            
+            // "customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
+
+            "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
+            
+            "partnersList": false /* Details the number of partners on the popup and middle banner */
+        });
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="assets/img/logo/Logo.svg"/>
+        <link rel="icon" type="image/png" href="assets/img/logo/logo.svg"/>
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/scripts/scripts.js" defer></script>
         <title>Nous contactez | NutriForm</title>
-        <meta name="description" content="Pour nous contactez, rien de plus simple, un formulaire a remplir">
+        <meta name="description" content="Pour nous contacter, rien de plus simple : il vous suffit de remplir le formulaire.">
     </head>
 
     <body>   
@@ -15,7 +68,7 @@
         <header>
 
             <div>
-                <a class="logo" href="index.html"></a>
+                <a class="logo" href="index.html" aria-label="Accueil NutriForm - Retour à la page d'accueil">NutriForm</a>
 
                 <input type="checkbox" id="burger-toggle" class="burger-toggle">
                 <label for="burger-toggle" class="burger">
@@ -37,23 +90,23 @@
                 
                 <form>
 
-                    <p>Veuillez remplir le formulaire ci-dessous :</p>
+                    <p>Veuillez remplir le formulaire ci-dessous:</p>
                     <div>
 
                         <label for="firstname">Nom :</label>
-                        <input type="text" id="firstname" name="name" placeholder="Entrez votre nom" required>
+                        <input type="text" id="firstname" name="name" autocomplete="firstname" placeholder="Entrez votre nom" required>
                                 
                         <label for="name">Prénom :</label>
-                        <input type="text" id="name" name="name" placeholder="Entrez votre prénom" required>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="Entrez votre prénom" required>
 
                         <label for="email">E-mail :</label>
-                        <input type="email" id="email" name="email" placeholder="Entrez votre e-mail" required>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="Entrez votre e-mail" required>
                     
                         <label for="phone">Téléphone :</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Entrez votre numéro de téléphone" required pattern="[0-9]{10}">
+                        <input type="tel" id="phone" name="phone" autocomplete="phone" placeholder="Entrez votre numéro de téléphone" required pattern="[0-9]{10}">
                         
                         <label for="message">Message :</label>
-                        <textarea id="message" name="message" placeholder="Écrivez votre message ici" required></textarea>
+                        <textarea id="message" name="message" autocomplete="message" placeholder="Écrivez votre message ici" required></textarea>
                     
                     </div>
 
@@ -64,7 +117,7 @@
                         </label>
 
                         <label>
-                        <input type="checkbox" name="newsletter">Je souhaite m'abonner à la newsletter.
+                            <input type="checkbox" name="newsletter">Je souhaite m'abonner à la newsletter.
                         </label>
 
                         </div>
@@ -86,7 +139,7 @@
         <footer>
             
             <div>
-                <a class="logo" href="index.html"></a>
+                <a class="logo" href="index.html" aria-label="Accueil NutriForm - Retour à la page d'accueil">NutriForm</a>
         
                 <div class="menu-nav">
 
@@ -112,13 +165,6 @@
             <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
 
         </footer>
-
-
-        <div id="cookieMessage" class="cookie-message">
-            <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
-            <button id="acceptCookies">Accepter</button>
-        </div>
-
 
     </body>
 

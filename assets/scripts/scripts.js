@@ -1,5 +1,6 @@
 //<---------------------------Affiche d'un msg---------------------->
 
+
 function showCustomAlert(message) {
     const alertDiv = document.getElementById('customAlert');
     const alertMessage = document.getElementById('alertMessage');
@@ -11,20 +12,6 @@ function showCustomAlert(message) {
 function closeAlert() {
     const alertDiv = document.getElementById('customAlert');
     alertDiv.style.display = 'none';
-}
-
-
-
-//<---------------------------Gestionnaire de  la barre des cookie---------------------->
-
-
-document.getElementById('acceptCookies').addEventListener('click', function() {
- document.getElementById('cookieMessage').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'true');
-});
-
-if (localStorage.getItem('cookiesAccepted') === 'true') {
-    document.getElementById('cookieMessage').style.display = 'none';
 }
 
 //<----------------------Calcule IMC----------------------------------->
@@ -48,9 +35,9 @@ if (tailleInput && poidsInput) {
     const imc = (poidsInput / (tailleEnMetres * tailleEnMetres)).toFixed(2);
 
     if (imc < 18) {
-        showCustomAlert("Votre IMC est inférieur à 15, c'est dangereux, consultez un spécialiste !");
+        showCustomAlert("Votre IMC est inférieur à 18, cela peut être dangereux, consultez un spécialiste !");
     } else if (imc > 40) {
-        showCustomAlert("Votre IMC est supérieur à 40, c'est dangereux, consultez un spécialiste !");
+        showCustomAlert("Votre IMC est supérieur à 40, cela peut être dangereux, consultez un spécialiste !");
     } else {
         updateIMCGraph(imc);
     }
@@ -187,9 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const age = parseInt(document.getElementById('age').value);
             const activité = document.querySelector('input[name="activité"]:checked').value;
             const formule = document.getElementById('liste-deroulante').value;
-            document.querySelector('.graph').style.display = 'flex';
+            document.querySelector('.graph-calorie').style.display = 'flex';
 
-            const targetchoix = document.querySelector('.graph');
+            const targetchoix = document.querySelector('.graph-calorie');
             if (targetchoix) {
                 targetchoix.scrollIntoView({
                     behavior: 'smooth', 
@@ -317,6 +304,8 @@ function fetchRecettes(type, calorieValue) {
         minProtein = 50; maxProtein = 150;
         minFat = 10; maxFat = 100;
     }
+
+
 
     const url = `https://api.spoonacular.com/recipes/findByNutrients?maxCalories=${maxCalories}&minCarbs=${minCarbs}&maxCarbs=${maxCarbs}&minProtein=${minProtein}&maxProtein=${maxProtein}&minFat=${minFat}&maxFat=${maxFat}&number=3&language=fr`;
 

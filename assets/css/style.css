@@ -141,11 +141,11 @@ footer div {
 }
 
 .logo {
-    content: url(../img/logo/domaine-logo.svg);
-    height: 150px;
-    width: 150px;
+    content: url(../img/logo/domaine-logo.png);
 }
 
+
+/* Menu Nav  */
 
 footer .menu-nav {
     display: flex;
@@ -183,6 +183,8 @@ footer nav a:hover {
 footer nav a.orange:hover {
     background-color: var(--couleur-bouton-action);
 }
+
+/* Icone reseau  */
 
 .reseau {
     margin: 10px;
@@ -249,6 +251,7 @@ article summary {
 
 
 
+
 .introutils {
     max-width: 800px;
     margin: 0 auto;
@@ -295,7 +298,7 @@ form {
     border-radius: 10px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-    width: 100%;
+    width: 90%;
 }
 
 form strong {
@@ -317,10 +320,10 @@ form fieldset {
     display: flex;
     justify-content: space-evenly;
     border: none;
-    margin: 10px;
-
+    margin: 10px auto;
+    padding: 10px 0px;
+    max-width: 450px;
 }
-
 
 form input, form textarea {
     width: 100%;
@@ -335,7 +338,7 @@ form button {
     padding: 12px 30px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    width: 80%;
+    width: 40%;
     margin: 5%;
     cursor: pointer;
 }
@@ -380,6 +383,40 @@ fieldset label:hover {
     font-weight: bold;
   }
 
+
+  .alert {
+    background-color: var(--couleur-bouton-action);
+    color: var(--couleur-text-noir);
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px; 
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid var(--couleur-text-noir);
+    z-index: 10;
+    top: 50%;
+    font-family: var(--font-titre);
+}
+
+.alert button {
+    background-color: var(--couleur-principale);
+    color: var(--couleur-text-noir);
+    border: none;
+    padding: 5px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.alert button:hover {
+    background-color: #f1f1f1;
+}
+
 /*------------------------------- FORMULAIRE CONTACT -------------------------->*/
 
 form textarea {
@@ -387,19 +424,15 @@ form textarea {
     min-height: 150px;
 }
 
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 8px;
-}
+
 
 form label {
     display: flex;
     margin: 5px;
     font-size: 12px;
-    white-space: nowrap;
+    display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .form p {
@@ -408,7 +441,7 @@ form label {
 
 .checkbox-group input[type="checkbox"] {
     margin-right: 15px;
-    padding: 0;
+    width: fit-content;
 }
 
 
@@ -449,11 +482,13 @@ form label {
     background-color: var(--couleur-bouton-selection);
     border-radius: 8px;
     font-size: 16px;
-    padding: 5px 10px;
-    width: fit-content;
+    padding: 10px 10px;
     margin: 20px auto;
+    width: 80%;
 }
 
+
+/* learn more   */
 .more-content {
     max-height: 0;
     overflow: hidden;
@@ -469,10 +504,12 @@ form label {
     border-radius: 5px;
     border: none;
     padding: 5px 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     cursor: pointer;
 }
 
+
+/* Bare imc dynamic  */
 .imc-graph {
     border: 1px solid var(--couleur-text-noir);
     height: 80px;
@@ -519,6 +556,8 @@ form label {
     transform: translate3d(9px, 10px, 10px);
 }
 
+
+
 .resu-imc {
     display: flex;
     flex-direction: column;
@@ -530,43 +569,11 @@ form label {
     font-family: var(--font-titre);
 }
 
-.alert {
-    background-color: var(--couleur-bouton-action);
-    color: var(--couleur-text-noir);
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%; 
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid var(--couleur-text-noir);
-    z-index: 10;
-    top: 50%;
-    font-family: var(--font-titre);
-}
-
-.alert button {
-    background-color: var(--couleur-principale);
-    color: var(--couleur-text-noir);
-    border: none;
-    padding: 5px 30px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    display: block;
-    margin: 10px auto;
-    cursor: pointer;
-}
-
-.alert button:hover {
-    background-color: #f1f1f1;
-}
-
 
 /*<--------------------------------------------------------- Graph page calorie-------------------------------------------------------->*/
 
 
-.graph {
+.graph-calorie {
     list-style: none;
     margin: 100px auto;
     display: none;
@@ -574,23 +581,22 @@ form label {
 
 }
 
-.graph ul {
+.graph-calorie ul {
     border: 1px solid #333;
     border-radius: 8px;
-    width: 80%;
+    width: 75%;
     margin: 20px auto;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.graph p {
+.graph-calorie p {
     font-family: 'Merriweather';
     font-size: medium;
     padding: 10px;
     margin: 0 auto;
 }
 
-.graph img {
+.graph-calorie img {
     height: 30px;
 }
 
@@ -618,7 +624,7 @@ p#caloriePerdre {
     width: fit-content;
 }
 
-.graph ul button {
+.graph-calorie ul button {
     border: 2px solid var(--couleur-text-noir);
     background-color: var(--couleur-bouton-action);
     font-family: var(--font-titre);
@@ -627,11 +633,11 @@ p#caloriePerdre {
     cursor: pointer;
 }
 
-.graph ul button:hover {
+.graph-calorie ul button:hover {
     color: white;
 }
 
-/* Intégration API pour afficher des recettes selon objectif choisi */
+/* <--------------------------Intégration API pour afficher des recettes selon objectif choisi---------------------------------> */
 
 article#article-recette {
     text-align: center;
@@ -647,6 +653,20 @@ article#article-recette {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.recipe-item h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    transition: max-width 0.3s ease;
+}
+
+.recipe-item h3:hover {
+    max-width: 1000px;
+    white-space: normal;
+    cursor: pointer;
 }
 
 .recipe-details {
@@ -672,7 +692,7 @@ button.details-button {
 }
 
 button.details-button:hover {
-    color: white;
+    color: var(--couleur-principale);
 }
 
 article#article-recette li {
@@ -778,12 +798,6 @@ article#article-recette li {
     color: var(--couleur-principale);
 }
 
-
-
-
-
-
-
 /*<---------------------------------------------------------- Media Queries ------------------------------------->*/
 @media (min-width: 768px) {
 
@@ -853,14 +867,14 @@ article#article-recette li {
         }
 
         form {
-            width: 70%;
+            width: 55%;
         }
 
         .reseau {
             grid-template-columns: repeat(2, 1fr);
         }
 
-        .graph {
+        .graph-calorie {
             list-style: none;
             margin: 20px;
             display: flex;
@@ -868,9 +882,10 @@ article#article-recette li {
             gap: 40px;
             margin: 100px auto;
             display: none;
+            max-width: 950px;
         }
 
-        .graph ul {
+        .graph-calorie ul {
             border: 1px solid #333;
             border-radius: 8px;
             flex-direction: column;
@@ -897,12 +912,8 @@ article#article-recette li {
 
         .bloc {
             padding: 10px;
+            min-height: 250px;
         }
-
-
-        .alert {
-            width: 60%;
-          }
 
 
           .recipe-details ul {

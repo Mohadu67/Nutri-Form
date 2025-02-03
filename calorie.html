@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <script src="tarteaucitron.js/tarteaucitron.min.js"></script>
+        <script>
+            // Google Analytics (GA4) via Tarteaucitron
+        tarteaucitron.user.gtagUa = 'G-5SPZ9PK4Y2';
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+                tarteaucitron.init({
+            "privacyUrl": "", /* Privacy policy url */
+            "bodyPosition": "bottom", /* or top to bring it as first element for accessibility */
+
+            "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+            "cookieName": "tarteaucitron", /* Cookie name */
+
+            "orientation": "middle", /* Banner position (top - bottom - middle - popup) */
+
+            "groupServices": false, /* Group services by category */
+            "showDetailsOnClick": true, /* Click to expand the description */
+            "serviceDefaultState": "wait", /* Default state (true - wait - false) */
+
+            "showAlertSmall": false, /* Show the small banner on bottom right */
+            "cookieslist": false, /* Show the cookie list */
+            
+            "showIcon": true, /* Show cookie icon to manage cookies */
+            // "iconSrc": "", /* Optional: URL or base64 encoded image */
+            "iconPosition": "BottomRight", /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */
+
+            "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+            "DenyAllCta" : true, /* Show the deny all button */
+            "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+            "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+            "alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
+            
+            "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+            "removeCredit": false, /* Remove credit link */
+            "moreInfoLink": true, /* Show more info link */
+            "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+            "useExternalJs": false, /* If false, the tarteaucitron.services.js file will be loaded */
+
+            // "cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
+
+            "readmoreLink": "", /* Change the default readmore link pointing to tarteaucitron.io */
+            
+            "mandatory": true, /* Show a message about mandatory cookies */
+            "mandatoryCta": true, /* Show the disabled accept button when mandatory on */
+            
+            // "customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
+
+            "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
+            
+            "partnersList": false /* Details the number of partners on the popup and middle banner */
+        });
+        </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" href="assets/img/logo/Logo.svg"/>
+        <link rel="icon" type="image/png" href="assets/img/logo/logo.svg"/>
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/scripts/scripts.js" defer></script>
         <title>Calorie | NutriForm</title>
-        <meta name="description" content="Calculez vos calorie afin de trouver des recettes sur mesure afin d'atteindre votre objectif">
+        <meta name="description" content="Calculez vos calories et découvrez des recettes sur mesure pour atteindre votre objectif !">
     </head>
 
     <body>   
@@ -15,7 +68,7 @@
         <header>
 
             <div>
-                <a class="logo" href="index.html"></a>
+                <a class="logo" href="index.html" aria-label="Accueil NutriForm - Retour à la page d'accueil">NutriForm</a>
 
                 <input type="checkbox" id="burger-toggle" class="burger-toggle">
                 <label for="burger-toggle" class="burger">
@@ -89,7 +142,7 @@
                 
                 
                 <!----------------------------------------------------Retour resultat----------------------------------->
-                <div class="graph">
+                <div class="graph-calorie">
                     <ul>
                         <li>
                             <p>Perdre du poids</p>
@@ -100,7 +153,7 @@
                         <li><p>consommation calorie par jour</p></li>
                         <li><p id="caloriePerdre"></p></li>
                         <li><p>Ce niveau de consommation de calories quotidien vous permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
-                        <button id="perdre">Je veux perdre du poids</button>
+                        <button id="perdre">Je veux perdre !</button>
                     </ul>
                     <ul>
                         <li>
@@ -112,7 +165,7 @@
                         <li><p>consommation calorie par jour</p></li>
                         <li><p id="calorieStabiliser"></p></li>
                         <li><p>Ce niveau de consommation de calories quotidien vous permettra de stabiliser votre poids actuel.</p></li>
-                        <button id="stabiliser">Je veux stabiliser mon poids</button>
+                        <button id="stabiliser">Je veux stabiliser !</button>
                     </ul>
                     <ul>
                         <li>
@@ -124,7 +177,7 @@
                         <li><p>consommation calorie par jour</p></li>
                         <li><p id="caloriePrendre"></p></li>
                         <li><p>Ce niveau de consommation de calories quotidien vous permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
-                        <button id="prendre" >Je veux prendre du poids</button>
+                        <button id="prendre" >Je veux prendre !</button>
                     </ul>
                 </div>
 
@@ -155,7 +208,7 @@
 
         <footer>
             <div>
-                <a class="logo" href="index.html"></a>
+                <a class="logo" href="index.html" aria-label="Accueil NutriForm - Retour à la page d'accueil">NutriForm</a>
 
                 <div class="menu-nav">
                     
@@ -180,17 +233,6 @@
             
             <a target="_blank" href="Mention.html">MENTION LEGALE | © 2024 Mohammed HAMIANI Copyright - Tous droits réservés - Hamiani.Mohammed@hotmail.com</a>
         </footer>
-
-        <div id="cookieMessage" class="cookie-message">
-            <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant, vous acceptez notre <a target="_blank" href="politique.html">politique de confidentialité</a>.</p>
-            <button id="acceptCookies">Accepter</button>
-        </div>
-
-
-
-
-
-
 
     </body>
 
