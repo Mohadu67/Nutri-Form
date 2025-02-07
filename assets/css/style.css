@@ -70,7 +70,6 @@ header div {
 
 /* Menu burger  */
 
-
 label.burger {
     display: flex;
     flex-direction: column;
@@ -858,7 +857,7 @@ article#article-recette li {
             }
 
         .logo {
-            content: url('../img/logo/logo-complet.svg');
+            content: url('assets/img/logo/Logo-complet.svg');
             height: 150px;
             margin-right: 100px;
         }
