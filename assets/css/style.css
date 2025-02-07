@@ -857,7 +857,7 @@ article#article-recette li {
             }
 
         .logo {
-            content: url('assets/img/logo/Logo-complet.svg');
+            content: url('../img/logo/Logo-complet.svg');
             height: 150px;
             margin-right: 100px;
         }
