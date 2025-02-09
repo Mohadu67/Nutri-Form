@@ -463,3 +463,26 @@ fetch('data/db.json')
 .catch(function(error) {
     console.error("Erreur lors du fetch :", error);
 });
+
+
+
+// <----------------Fonction pour sauvegarder la taille et le pods dans le localStorage------------------->
+
+document.getElementById('taille').addEventListener('input', function() {
+    localStorage.setItem('taille', this.value);
+});
+
+document.getElementById('poids').addEventListener('input', function() {
+    localStorage.setItem('poids', this.value);
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+
+    if (localStorage.getItem('taille')) {
+        document.getElementById('taille').value = localStorage.getItem('taille');
+    }
+    
+    if (localStorage.getItem('poids')) {
+        document.getElementById('poids').value = localStorage.getItem('poids');
+    }
+});
