@@ -444,6 +444,39 @@ form label {
     width: fit-content;
 }
 
+/* État initial (caché) */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; /* Pour éviter toute interaction avec le message caché */
+}
+
+/* État visible (affiché) */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Permet l'interaction si nécessaire */
+}
+
+/* Style général du message */
+#successMessage {
+    background-color: #B5EAD7;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 300px;
+    height: 150px;
+    font-size: xxx-large;
+    transform: translate(-50%, -50%);
+}
+
 
 
 
@@ -805,6 +838,12 @@ article#article-recette li {
             justify-content: space-evenly;
         }
 
+        .logo {
+            content: url('../img/logo/Logo-complet.svg');
+            height: 150px;
+            margin-right: 100px;
+        }
+
         label span {
             display: flex;
             align-items: center;
@@ -856,11 +895,6 @@ article#article-recette li {
                 max-width: 20%;
             }
 
-        .logo {
-            content: url('../img/logo/Logo-complet.svg');
-            height: 150px;
-            margin-right: 100px;
-        }
 
         footer {
             font-size: 12px;
@@ -868,6 +902,7 @@ article#article-recette li {
 
         form {
             width: 55%;
+            max-width: 700px;
         }
 
         .reseau {
