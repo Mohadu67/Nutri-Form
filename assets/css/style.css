@@ -212,7 +212,7 @@ main {
 }
 
 main section {
-    margin: 200px auto;
+    margin: 0 auto;
 }
 
 main section ul {
@@ -234,7 +234,7 @@ main section article img, section article p {
   main section article {
     text-align: start;
     width: 80%;
-    margin: 40px auto;
+    margin: 200px auto;
 }
 
 article summary {
@@ -841,7 +841,6 @@ article#article-recette li {
         .logo {
             content: url('../img/logo/Logo-complet.svg');
             height: 150px;
-            margin-right: 100px;
         }
 
         label span {
@@ -975,4 +974,12 @@ article#article-recette li {
             display: flex;
             flex-direction: row;
         }
+}
+
+
+@media (min-width: 1024px) {
+    main section article {
+        width: 60%;
+    }
+
 }

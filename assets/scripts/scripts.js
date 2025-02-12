@@ -35,14 +35,14 @@ if (tailleInput && poidsInput) {
     const imc = (poidsInput / (tailleEnMetres * tailleEnMetres)).toFixed(2);
 
     if (imc < 18) {
-        showCustomAlert("Votre IMC est inférieur à 18, cela peut être dangereux, consultez un spécialiste !");
+        showCustomAlert("Ton IMC est inférieur à 18, cela peut être dangereux, consulte un spécialiste !");
     } else if (imc > 40) {
-        showCustomAlert("Votre IMC est supérieur à 40, cela peut être dangereux, consultez un spécialiste !");
+        showCustomAlert("Ton IMC est supérieur à 40, cela peut être dangereux, consulte un spécialiste !");
     } else {
         updateIMCGraph(imc);
     }
 } else {
-    showCustomAlert('Veuillez remplir tous les champs pour calculer votre IMC !');
+    showCustomAlert('Rempli tous les champs pour calculer ton IMC !');
 }
 }
 
@@ -114,46 +114,46 @@ const blocLearn4 = document.querySelector('.bloc.for .more-content p');
 if (category === 'maigreur') {
     bloc1.textContent = "L'IMC (Indice de Masse Corporelle) est une mesure utilisée pour évaluer la corpulence d'une personne en fonction de son poids et de sa taille.";
     bloc2.textContent = "L'IMC est basé uniquement sur la taille et le poids, et il ne tient pas compte de la composition corporelle tel que la proportion de muscle, de graisse, d'eau etc...";
-    bloc3.textContent = "Prendre du poids de manière équilibrée vous aidera à renforcer votre système immunitaire, à améliorer votre énergie et à prévenir les carences nutritionnelles.";
-    bloc4.textContent = "Pour prendre du poids de manière saine, concentrez-vous sur des aliments riches en nutriments mais caloriques, comme les avocats, les noix, les graines, les produits laitiers entiers et les protéines maigres";
+    bloc3.textContent = "Prendre du poids de manière équilibrée t'aidera à renforcer ton système immunitaire, à améliorer ton énergie et à prévenir les carences nutritionnelles.";
+    bloc4.textContent = "Pour prendre du poids de manière saine, concentre toi sur des aliments riches en nutriments mais caloriques, comme les avocats, les noix, les graines, les produits laitiers entiers et les protéines maigres";
 } else if (category === 'normal') {
     bloc1.textContent = "L'IMC (Indice de Masse Corporelle) est une mesure utilisée pour évaluer la corpulence d'une personne en fonction de son poids et de sa taille.";
     bloc2.textContent = "L'IMC est basé uniquement sur la taille et le poids, et il ne tient pas compte de la composition corporelle tel que la proportion de muscle, de graisse, d'eau etc...";
-    bloc3.textContent = "Maintenir un poids santé est essentiel pour prévenir les maladies chroniques et améliorer votre qualité de vie.";
-    bloc4.textContent = "Pour maintenir votre poids santé, continuez à adopter une alimentation variée et équilibrée, en privilégiant les fruits, les légumes, les protéines maigres et les céréales complètes. ";
+    bloc3.textContent = "Maintenir un poids santé est essentiel pour prévenir les maladies chroniques et améliorer ta qualité de vie.";
+    bloc4.textContent = "Pour maintenir ton poids santé, continue à adopter une alimentation variée et équilibrée, en privilégiant les fruits, les légumes, les protéines maigres et les céréales complètes. ";
 } else if (category === 'surpoids') {
     bloc1.textContent = "L'IMC (Indice de Masse Corporelle) est une mesure utilisée pour évaluer la corpulence d'une personne en fonction de son poids et de sa taille.";
     bloc2.textContent = "L'IMC est basé uniquement sur la taille et le poids, et il ne tient pas compte de la composition corporelle tel que la proportion de muscle, de graisse, d'eau etc...";
-    bloc3.textContent = "Perdre du poids progressivement vous aidera à réduire les risques de maladies cardiovasculaires, de diabète et d'autres problèmes de santé.";
-    bloc4.textContent = "Pour perdre du poids de manière saine, commencez par réduire votre apport calorique tout en maintenant une alimentation riche en nutriments.";
+    bloc3.textContent = "Perdre du poids progressivement t'aidera à réduire les risques de maladies cardiovasculaires, de diabète et d'autres problèmes de santé.";
+    bloc4.textContent = "Pour perdre du poids de manière saine, commence par réduire ton apport calorique tout en maintenant une alimentation riche en nutriments.";
 } else if (category === 'obésité') {
     bloc1.textContent = "L'IMC (Indice de Masse Corporelle) est une mesure utilisée pour évaluer la corpulence d'une personne en fonction de son poids et de sa taille.";
     bloc2.textContent = "L'IMC est basé uniquement sur la taille et le poids, et il ne tient pas compte de la composition corporelle tel que la proportion de muscle, de graisse, d'eau etc...";
-    bloc3.textContent = "Travailler sur votre poids peut considérablement améliorer votre qualité de vie, réduire les risques de maladies chroniques et renforcer votre confiance en vous.";
-    bloc4.textContent = "Pour gérer votre poids de manière saine, il est essentiel de consulter un professionnel de santé pour élaborer un plan personnalisé.";
+    bloc3.textContent = "Travailler sur ton poids peut considérablement améliorer ta qualité de vie, réduire les risques de maladies chroniques et renforcer ta confiance en toi.";
+    bloc4.textContent = "Pour gérer ton poids de manière saine, il est essentiel de consulter un professionnel de santé pour élaborer un plan personnalisé.";
 }
 
 
 if (category === 'maigreur') {
-    blocLearn1.innerHTML = "Votre IMC indique que vous êtes en situation de <strong>Maigreur</strong>, ce qui correspond à un IMC <strong>inférieur à 18,5</strong>.";
+    blocLearn1.innerHTML = "ton IMC indique que tu es en situation de <strong>Maigreur</strong>, ce qui correspond à un IMC <strong>inférieur à 18,5</strong>.";
     blocLearn2.textContent = "Par exemple, une personne très musclée peut avoir un IMC élevé et être classée dans la catégorie surpoids sans avoir un excès de graisse. C'est pour ça qu'il est important de considérer d'autres facteurs, comme ton pourcentage de masse grasse ou ta forme physique globale, plutôt que de se fier uniquement à l'IMC.";
-    blocLearn3.textContent = "N'oubliez pas que la santé passe aussi par une activité physique adaptée, comme la musculation légère, pour développer votre masse musculaire tout en prenant du poids.";
-    blocLearn4.innerHTML = "Essayez de fractionner vos repas en plusieurs petites portions tout au long de la journée pour faciliter l'absorption des calories. Utilisez notre <a href='calorie.html'>Outil de calcul de Calories</a> pour déterminer vos besoins journaliers et ajuster votre alimentation en conséquence.";
+    blocLearn3.textContent = "N'oublie pas que la santé passe aussi par une activité physique adaptée, comme la musculation légère, pour développer ta masse musculaire tout en prenant du poids.";
+    blocLearn4.innerHTML = "Essaye de fractionner tes repas en plusieurs petites portions tout au long de la journée pour faciliter l'absorption des calories. Utilise notre <a href='calorie.html'>Outil de calcul de Calories</a> pour déterminer tes besoins journaliers et ajuster ton alimentation en conséquence.";
 } else if (category === 'normal') {
-    blocLearn1.innerHTML = "Votre IMC indique que vous êtes en situation <strong>Normal</strong>, qui correspond a un IMC entre <strong>18,5 et 24,9</strong>.";
+    blocLearn1.innerHTML = "ton IMC indique que tu es en situation <strong>Normal</strong>, qui correspond a un IMC entre <strong>18,5 et 24,9</strong>.";
     blocLearn2.textContent = "Par exemple, une personne très musclée peut avoir un IMC élevé et être classée dans la catégorie surpoids sans avoir un excès de graisse. C'est pour ça qu'il est important de considérer d'autres facteurs, comme ton pourcentage de masse grasse ou ta forme physique globale, plutôt que de se fier uniquement à l'IMC.";
-    blocLearn3.textContent = "Restez actif en intégrant des activités physiques que vous aimez, comme la marche, le yoga ou le vélo, et surveillez régulièrement votre poids pour rester sur la bonne voie.";
-    blocLearn4.innerHTML = " Utilisez notre <a href='calorie.html'>Calculateur de Calories</a> pour suivre vos apports journaliers et vous assurer que vous restez dans la fourchette recommandée pour votre profil.";
+    blocLearn3.textContent = "Reste actif en intégrant des activités physiques que tu aime, comme la marche, le yoga ou le vélo, et surveille régulièrement ton poids pour rester sur la bonne voie.";
+    blocLearn4.innerHTML = " Utilise notre <a href='calorie.html'>Calculateur de Calories</a> pour suivre tes apports journaliers et t'assurer que tu reste dans la fourchette recommandée pour ton profil.";
 } else if (category === 'surpoids') {
-    blocLearn1.innerHTML = "Votre IMC indique que vous êtes en situation de <strong>Surpoids</strong>, qui correspond a un IMC entre <strong>25 et 29,9</strong>.";
+    blocLearn1.innerHTML = "ton IMC indique que tu es en situation de <strong>Surpoids</strong>, qui correspond a un IMC entre <strong>25 et 29,9</strong>.";
     blocLearn2.textContent = "Par exemple, une personne très musclée peut avoir un IMC élevé et être classée dans la catégorie surpoids sans avoir un excès de graisse. C'est pour ça qu'il est important de considérer d'autres facteurs, comme ton pourcentage de masse grasse ou ta forme physique globale, plutôt que de se fier uniquement à l'IMC.";
-    blocLearn3.textContent = "Intégrez des activités physiques régulières, comme la marche rapide ou la natation, pour soutenir votre perte de poids et améliorer votre bien-être général.";
-    blocLearn4.innerHTML = "Privilégiez les légumes, les fruits, les protéines maigres et les fibres. Utilisez notre <a href='calorie.html'>Outil de calcul de Calories</a> pour déterminer vos besoins journaliers et fixer des objectifs réalistes. Évitez les régimes restrictifs et optez pour des changements durables.";
+    blocLearn3.textContent = "Intégre des activités physiques régulières, comme la marche rapide ou la natation, pour soutenir ta perte de poids et améliorer ton bien-être général.";
+    blocLearn4.innerHTML = "Privilégie les légumes, les fruits, les protéines maigres et les fibres. Utilise notre <a href='calorie.html'>Outil de calcul de Calories</a> pour déterminer tes besoins journaliers et fixer des objectifs réalistes. Évite les régimes restrictifs et opte pour des changements durables.";
 } else if (category === 'obésité') {
-    blocLearn1.innerHTML = "Votre IMC indique que vous êtes en situation <strong>d'Obésité</strong>, qui correspond a un IMC <strong>supérieur à 30</strong>.";
+    blocLearn1.innerHTML = "ton IMC indique que tu es en situation <strong>d'Obésité</strong>, qui correspond a un IMC <strong>supérieur à 30</strong>.";
     blocLearn2.textContent = "Par exemple, une personne très musclée peut avoir un IMC élevé et être classée dans la catégorie surpoids sans avoir un excès de graisse. C'est pour ça qu'il est important de considérer d'autres facteurs, comme ton pourcentage de masse grasse ou ta forme physique globale, plutôt que de se fier uniquement à l'IMC.";
-    blocLearn3.textContent = "Commencez par des activités physiques adaptées à votre condition, comme la marche ou des exercices à faible impact, et augmentez progressivement l'intensité.";
-    blocLearn4.innerHTML = "Adoptez une alimentation équilibrée, riche en légumes, fruits, protéines maigres et fibres, tout en réduisant les aliments transformés et riches en calories. Utilisez notre <a href='calorie.html'>Calculateur de Calories</a> pour mieux comprendre vos besoins énergétiques et suivre vos progrès.";
+    blocLearn3.textContent = "Commence par des activités physiques adaptées à ta condition physique, comme la marche ou des exercices à faible impact, et augmente progressivement l'intensité.";
+    blocLearn4.innerHTML = "Adopte une alimentation équilibrée, riche en légumes, fruits, protéines maigres et fibres, tout en réduisant les aliments transformés et riches en calories. Utilise notre <a href='calorie.html'>Calculateur de Calories</a> pour mieux comprendre tes besoins énergétiques et suivre tes progrès.";
 }
 
 }
@@ -354,7 +354,7 @@ function fetchRecettes(type, calorieValue) {
     })
     .catch(error => {
         const recipesDiv = document.getElementById('recettes');
-        recipesDiv.innerHTML = '<p>Erreur lors de la récupération des recettes. Veuillez réessayer plus tard.</p>';
+        recipesDiv.innerHTML = '<p>Erreur lors de la récupération des recettes. Réessaye plus tard.</p>';
     });
 }
 
