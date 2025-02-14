@@ -444,21 +444,21 @@ form label {
     width: fit-content;
 }
 
-/* État initial (caché) */
+/*---Message formulaire -->*/
 .hidden {
     opacity: 0;
     transform: translateY(20px);
-    pointer-events: none; /* Pour éviter toute interaction avec le message caché */
+    pointer-events: none; 
 }
 
-/* État visible (affiché) */
+
 .show {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto; /* Permet l'interaction si nécessaire */
+    pointer-events: auto; 
 }
 
-/* Style général du message */
+
 #successMessage {
     background-color: #B5EAD7;
     color: #fff;
@@ -670,7 +670,7 @@ p#caloriePerdre {
     color: white;
 }
 
-/* <--------------------------Intégration API pour afficher des recettes selon objectif choisi---------------------------------> */
+/* <--------------------------API recettes---------------------------------> */
 
 article#article-recette {
     text-align: center;
@@ -788,49 +788,6 @@ article#article-recette li {
     display: contents;
 }
 
-
-
-/* <----------------------Message cookies---------------------------> */
-
-
-.cookie-message {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    text-align: center;
-    padding: 15px;
-    z-index: 1000;
-}
-
-.cookie-message p {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-}
-
-.cookie-message a {
-    color: var(--couleur-bouton-action);
-    text-decoration: none;
-}
-
-.cookie-message button {
-    margin-left: 20px;
-    padding: 10px 20px;
-    margin: 20px;
-    background-color: var(--couleur-bouton-action);
-    color: var(--couleur-text-noir);
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.cookie-message button:hover {
-    color: var(--couleur-principale);
-}
-
 /*<---------------------------------------------------------- Media Queries ------------------------------------->*/
 @media (min-width: 768px) {
 
@@ -848,7 +805,7 @@ article#article-recette li {
             align-items: center;
             justify-content: center;
             height: 40px;
-            width: 200px;
+            width: 150px;
             border-radius: 8px;
             text-align: center;
         }
