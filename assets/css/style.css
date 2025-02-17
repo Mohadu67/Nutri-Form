@@ -417,6 +417,10 @@ fieldset label:hover {
     background-color: #f1f1f1;
 }
 
+fieldset legend {
+    font-size: 14px;
+}
+
 /*------------------------------- FORMULAIRE CONTACT -------------------------->*/
 
 form textarea {
