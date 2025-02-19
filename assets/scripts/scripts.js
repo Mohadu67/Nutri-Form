@@ -14,6 +14,16 @@ function closeAlert() {
     alertDiv.style.display = 'none';
 }
 
+
+
+document.querySelectorAll('.faq h3').forEach((question) => {
+    question.addEventListener('click', () => {
+        const parent = question.parentElement;
+        parent.classList.toggle('open');
+    });
+});
+
+
 //<----------------------Calcule IMC----------------------------------->
 
 function calculerIMC(event) {

@@ -584,6 +584,75 @@ form label {
     width: fit-content;
 }
 
+#faq-section {
+    background-color: var(--couleur-principale);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    margin: 60px auto;
+    width: 90%;
+    max-width: 500px;
+}
+
+#faq-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.faq {
+    margin-bottom: 20px;
+    border: 2px solid var(--couleur-bouton-action);
+    border-radius: 8px;
+}
+
+.faq {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.faq h3 {
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--couleur-text-noir);
+    margin: 5px;
+    padding: 10px;
+}
+
+.reponse {
+    font-size: 16px;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.faq h3:hover {
+    font-weight: bold;
+}
+
+.faq.open .reponse {
+    display: block;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    0% {
+        max-height: 0;
+        opacity: 0;
+    }
+    100% {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
 /*<--------------------------------------------------------- Graph page calorie-------------------------------------------------------->*/
 
 
@@ -838,6 +907,12 @@ article#article-recette li {
         }
 
         form {
+            width: 55%;
+            max-width: 700px;
+            min-width: 500px;
+        }
+
+        #faq-section {
             width: 55%;
             max-width: 700px;
             min-width: 500px;
