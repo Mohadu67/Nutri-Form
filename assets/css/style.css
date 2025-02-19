@@ -225,7 +225,6 @@ main section ul {
 }
 
 main section article img, section article p {
-    width: 75%;
     border-radius: 8px;
 }
 
@@ -263,7 +262,6 @@ main .introutils ul li {
     padding: 20px;
     margin: 20px;
     transition: all 0.3s ease;
-    width: 90%;
     max-width: 250px;
     margin: 10px auto;
 }
@@ -863,6 +861,10 @@ article#article-recette li {
             text-align: center;
         }
 
+        main section article img, section article p {
+            width: 75%;
+        }
+
         span.org a {
             display: flex;
         }
@@ -996,7 +998,7 @@ article#article-recette li {
 
 @media (min-width: 1024px) {
     main section article {
-        width: 60%;
+        width: 70%;
     }
 
 }
