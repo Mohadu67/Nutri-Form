@@ -279,7 +279,7 @@ a.button {
     border: 1px solid var(--couleur-text-noir);
     border-radius: 25px;
     background-color: var(--couleur-bouton-action);
-    padding: 10px 20px;
+    padding: 10px 15px;
     display: inline-block;
     white-space: nowrap;
     cursor: pointer;
