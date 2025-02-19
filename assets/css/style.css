@@ -12,7 +12,7 @@
 
 }
 
-/*<------------------------------ Reset global ---------------------------->*/
+/*<------------------------------ RESET GLOBAL ---------------------------->*/
 html, body, img, video, canvas, svg {
     margin: 0;
     padding: 0;
@@ -29,7 +29,7 @@ img, picture, video, canvas, svg {
     height: auto;
 }
 
-/*<--------------------------------- Variables------------------------------>*/
+/*<--------------------------------- VARIABLES ------------------------------>*/
 :root {
     --couleur-principale: #F7F6F2;
     --couleur-bouton-action: #F7B186;
@@ -40,7 +40,7 @@ img, picture, video, canvas, svg {
 
 }
 
-/*<-------------------------------- Styles globaux--------------------------->*/
+/*<-------------------------------- STYLE GLOBAUX--------------------------->*/
 body {
     background-color: var(--couleur-principale);
     font-family: var(--font-p);
@@ -52,7 +52,7 @@ h1, h2, h3, nav, a {
 }
 
 
-/*<---------------------------------Header----------------------------------> */
+/*<---------------------------------HEADER----------------------------------> */
 
 header div > a:first-child {
     border: none;
@@ -123,7 +123,7 @@ a.orange {
     display: none;
 }
 
-/*<------------------------------------------- Footer--------------------------------------------> */
+/*<------------------------------------------- FOOTER--------------------------------------------> */
 
 footer {
     border-top: 2px solid var(--couleur-text-noir);
@@ -250,8 +250,6 @@ article summary {
 /*<--------------------- MAIN PAGE ACCUEIL--------------------------------->*/
 
 
-
-
 .introutils {
     max-width: 800px;
     margin: 0 auto;
@@ -291,7 +289,7 @@ a.button:hover {
 }
 
 
-/*<--------------------------------------- LES FORMULAIRES DE CALCULE --------------------------------->*/ 
+/*------------------------------------ STYLES GÉNÉRAUX DES FORMULAIRES ------------------------------------*/
 
 form {
     padding: 15px;
@@ -299,39 +297,30 @@ form {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     width: 90%;
+    max-width: 500px;
 }
 
 form strong {
     font-size: 12px;
 }
 
-select#liste-deroulante {
-    background-color: var(--couleur-principale);
-    font-size: 16px;
-    border: 2px solid var(--couleur-bouton-selection);
-    border-radius: 8px;
-    padding: 10px;
-    width: 90%;
-    cursor: pointer;
-}
+/*---------------------- STYLES DES LABELS ----------------------*/
 
-
-form fieldset {
-    display: flex;
-    justify-content: space-evenly;
-    border: none;
-    margin: 10px auto;
-    padding: 10px 0px;
-    max-width: 450px;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid var(--couleur-text-noir);
+fieldset label {
+    display: inline-block;
+    padding: 6px;
+    margin: 5px;
     border-radius: 5px;
-    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 2px solid var(--couleur-bouton-selection);
 }
+
+fieldset label:hover {
+    font-weight: bold;
+}
+
+/*---------------------- BOUTONS DE SOUMISSION ----------------------*/
 
 form button {
     background-color: var(--couleur-bouton-action);
@@ -348,43 +337,30 @@ form button:hover {
     font-weight: bold;
 }
 
+/*---------------------- CHAMPS DE TEXTE, TEXTAREA ET INPUTS ----------------------*/
 
-input[type="radio"] {
-    display: none;
-  }
-  
-
-fieldset label {
-    display: inline-block;
-    padding: 6px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 2px solid var(--couleur-bouton-selection);
-  }
-  
-
-  form fieldset:first-child {
+form fieldset {
     display: flex;
-    flex-direction: column;
-  }
-
-  form fieldset:first-child label {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     border: none;
+    margin: 20px auto;
+    padding: 10px 0;
+    max-width: 450px;
 }
 
+form input, form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--couleur-text-noir);
+    border-radius: 5px;
+    font-size: 12px;
+    margin: 5px;
+}
 
-input[type="radio"]:checked + label {
-    background-color: var(--couleur-bouton-selection);
-  }
-  
-fieldset label:hover {
-    font-weight: bold;
-  }
+/*------------------------------------ STYLES DU MESSAGE D'ALERTE ------------------------------------*/
 
-
-  .alert {
+.alert {
     background-color: var(--couleur-bouton-action);
     color: var(--couleur-text-noir);
     padding: 20px;
@@ -417,75 +393,7 @@ fieldset label:hover {
     background-color: #f1f1f1;
 }
 
-fieldset legend {
-    font-size: 14px;
-}
-
-/*------------------------------- FORMULAIRE CONTACT -------------------------->*/
-
-form textarea {
-    font-size: 12px;
-    min-height: 150px;
-}
-
-
-
-form label {
-    display: flex;
-    margin: 5px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.form p {
-    font-size: 10px;
-}
-
-.checkbox-group input[type="checkbox"] {
-    margin-right: 15px;
-    width: fit-content;
-}
-
-/*---Message formulaire -->*/
-.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none; 
-}
-
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto; 
-}
-
-
-#successMessage {
-    background-color: #B5EAD7;
-    color: #fff;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 5px;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    width: 300px;
-    height: 150px;
-    font-size: xxx-large;
-    transform: translate(-50%, -50%);
-}
-
-
-
-
-/*------------------------------- RESULTAT CALCULE IMC ---------------------------->*/
-
+/*------------------------------------ SECTION IMC ------------------------------------*/
 
 .resultat {
     display: none;
@@ -500,19 +408,21 @@ form label {
     flex: 1; 
 }
 
-
 .bloc {
     border: 2px solid var(--couleur-bouton-selection);
     margin: 20px auto;
     border-radius: 8px;
     padding: 3px;
     width: 80%;
-
 }
 
 .bloc.for a {
     font-family: 'Merriweather';
     color: var(--couleur-bouton-action);
+}
+
+.bloc strong {
+    font-family: 'Merriweather';
 }
 
 .resultat h2 {
@@ -524,8 +434,8 @@ form label {
     width: 80%;
 }
 
+/*---------------------- SECTION LEARN MORE ----------------------*/
 
-/* learn more   */
 .more-content {
     max-height: 0;
     overflow: hidden;
@@ -545,8 +455,8 @@ form label {
     cursor: pointer;
 }
 
+/*------------------------------------ IMC MAIN BAR ------------------------------------*/
 
-/* Bare imc dynamic  */
 .imc-graph {
     border: 1px solid var(--couleur-text-noir);
     height: 80px;
@@ -580,7 +490,6 @@ form label {
     margin: -10px;
     font-family: var(--font-titre);
     font-size: 14px;
-
 }
 
 .dynamic-bar {
@@ -588,12 +497,10 @@ form label {
     border-radius: 10px;
     width: 1px;
     height: 30px;
-     margin-left: 0; 
+    margin-left: 0;
     transition: margin-left 0.8s ease, opacity 0.5s ease; 
     transform: translate3d(9px, 10px, 10px);
 }
-
-
 
 .resu-imc {
     display: flex;
@@ -606,6 +513,76 @@ form label {
     font-family: var(--font-titre);
 }
 
+/*------------------------------------ FORMULAIRE DE CALORIE ------------------------------------*/
+
+
+.activité label {
+    width: 100px;
+    justify-content: center;
+}
+
+fieldset.sexe label {
+    width: 100px;
+    justify-content: center;
+}
+
+fieldset legend {
+    font-size: 14px;
+    margin: 10px auto;
+}
+
+form fieldset:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+form fieldset:first-child label {
+    border: none;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + label {
+    background-color: var(--couleur-bouton-selection);
+}
+
+select#liste-deroulante {
+    background-color: var(--couleur-principale);
+    font-size: 16px;
+    border: 2px solid var(--couleur-bouton-selection);
+    border-radius: 8px;
+    padding: 10px;
+    width: 90%;
+    cursor: pointer;
+}
+
+/*------------------------------------ FORMULAIRE DE CONTACT ------------------------------------*/
+
+form textarea {
+    font-size: 12px;
+    min-height: 150px;
+}
+
+form label {
+    display: flex;
+    margin: 5px;
+    font-size: 12px;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.form p {
+    font-size: 10px;
+}
+
+/*---------------------- CHECKBOXES ----------------------*/
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 15px;
+    width: fit-content;
+}
 
 /*<--------------------------------------------------------- Graph page calorie-------------------------------------------------------->*/
 
@@ -863,6 +840,7 @@ article#article-recette li {
         form {
             width: 55%;
             max-width: 700px;
+            min-width: 500px;
         }
 
         .reseau {
