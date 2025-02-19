@@ -262,7 +262,7 @@ main .introutils ul li {
     padding: 20px;
     margin: 20px;
     transition: all 0.3s ease;
-    max-width: 250px;
+    max-width: 270px;
     margin: 10px auto;
 }
 
@@ -328,7 +328,7 @@ form button {
     padding: 12px 30px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    width: 40%;
+    width: 50%;
     margin: 5%;
     cursor: pointer;
 }
