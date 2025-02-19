@@ -14,7 +14,7 @@ function closeAlert() {
     alertDiv.style.display = 'none';
 }
 
-
+//<---------------------------Learn more FAQ---------------------->
 
 document.querySelectorAll('.faq h3').forEach((question) => {
     question.addEventListener('click', () => {
