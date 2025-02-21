@@ -1,5 +1,13 @@
-//<---------------------------Affiche d'un msg---------------------->
+//<---------------------------Learn more FAQ---------------------->
 
+document.querySelectorAll('.faq h3').forEach((question) => {
+    question.addEventListener('click', () => {
+        const parent = question.parentElement;
+        parent.classList.toggle('open');
+    });
+});
+
+//<---------------------------Affiche d'un msg---------------------->
 
 function showCustomAlert(message) {
     const alertDiv = document.getElementById('customAlert');
@@ -13,15 +21,6 @@ function closeAlert() {
     const alertDiv = document.getElementById('customAlert');
     alertDiv.style.display = 'none';
 }
-
-//<---------------------------Learn more FAQ---------------------->
-
-document.querySelectorAll('.faq h3').forEach((question) => {
-    question.addEventListener('click', () => {
-        const parent = question.parentElement;
-        parent.classList.toggle('open');
-    });
-});
 
 
 //<----------------------Calcule IMC----------------------------------->
@@ -51,9 +50,8 @@ if (tailleInput && poidsInput) {
     } else {
         updateIMCGraph(imc);
     }
-} else {
-    showCustomAlert('Rempli tous les champs pour calculer ton IMC !');
 }
+
 }
 
 const imcForm = document.getElementById('imcForm')
