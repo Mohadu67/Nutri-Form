@@ -59,7 +59,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image.svg" href="assets/img/logo/logo.svg"/>
         <link rel="stylesheet" href="assets/css/style.css">
-        <script src="assets/scripts/scripts.js" defer></script>
+        <!-- <script src="assets/scripts/scripts.js" defer></script> -->
+        <script src="assets/scripts/imc/mainImc.js" type="module"></script>
+        <!-- <script src="/assets/scripts/auth.js"></script> -->
         <title>IMC | NutriForm</title>
         <meta name="description" content="Calcule ton IMC et obtene des conseils personnalisés !">
     </head>
@@ -76,13 +78,14 @@
                     <span ><a href="index.html">Accueil</a></span>
                     <span class="org"><a class="orange" href="calorie.html">Calorie</a></span>
                     <span><a href="contact.html">Contact</a></span>
+                    <button id="openLogin">Se connecter</button>
                 </label>
 
             </div>
 
         </header>
 
-
+        <div id="login-container"></div>
         
         <main>
 

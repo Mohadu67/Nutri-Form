@@ -26,38 +26,46 @@ function closeAlert() {
 //<----------------------Calcule IMC----------------------------------->
 
 function calculerIMC(event) {
-event.preventDefault();
+  event.preventDefault();
 
-const tailleInput = document.getElementById('taille').value;
-const poidsInput = document.getElementById('poids').value;
-const tailleEnMetres = tailleInput / 100;
+  const tailleInput = document.getElementById('taille').value;
+  const poidsInput = document.getElementById('poids').value;
+  const tailleEnMetres = tailleInput / 100;
 
-const targetchoix = document.querySelector('.imc-graph');
-if (targetchoix) {
+  const targetchoix = document.querySelector('.imc-graph');
+  if (targetchoix) {
     targetchoix.scrollIntoView({
-        behavior: 'smooth', 
-        block: 'start'
+      behavior: 'smooth', 
+      block: 'start'
     });
-}
+  }
 
-if (tailleInput && poidsInput) {
-    const imc = (poidsInput / (tailleEnMetres * tailleEnMetres)).toFixed(2);
+  let imc;
+
+  if (tailleInput && poidsInput) {
+    imc = (poidsInput / (tailleEnMetres * tailleEnMetres)).toFixed(2);
 
     if (imc < 18) {
-        showCustomAlert("Ton IMC est inférieur à 18, cela peut être dangereux, consulte un spécialiste !");
+      showCustomAlert("Ton IMC est inférieur à 18, cela peut être dangereux, consulte un spécialiste !");
     } else if (imc > 40) {
-        showCustomAlert("Ton IMC est supérieur à 40, cela peut être dangereux, consulte un spécialiste !");
+      showCustomAlert("Ton IMC est supérieur à 40, cela peut être dangereux, consulte un spécialiste !");
     } else {
-        updateIMCGraph(imc);
+      updateIMCGraph(imc);
     }
+  }
+
+  const userId = localStorage.getItem('userId');
+
+  if (userId && imc && !isNaN(imc)) {
+    sauvegarderDonnees(userId, imc, null); 
+  }
 }
 
-}
 
 const imcForm = document.getElementById('imcForm')
 
-if(imcForm){
-imcForm.addEventListener('submit', calculerIMC);
+    if(imcForm){
+    imcForm.addEventListener('submit', calculerIMC);
 }
 
 
@@ -175,80 +183,58 @@ document.addEventListener('DOMContentLoaded', function () {
     if (calorieForm) {
         calorieForm.addEventListener('submit', function (event) {
             event.preventDefault();
-            
+
             const sexe = document.querySelector('input[name="sexe"]:checked').value;
             const taille = parseFloat(document.getElementById('taille').value);
             const poids = parseFloat(document.getElementById('poids').value);
             const age = parseInt(document.getElementById('age').value);
             const activité = document.querySelector('input[name="activité"]:checked').value;
             const formule = document.getElementById('liste-deroulante').value;
-            document.querySelector('.graph-calorie').style.display = 'flex';
 
+            document.querySelector('.graph-calorie').style.display = 'flex';
             const targetchoix = document.querySelector('.graph-calorie');
             if (targetchoix) {
-                targetchoix.scrollIntoView({
-                    behavior: 'smooth', 
-                    block: 'start'
-                });
+                targetchoix.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
 
-        
-            let tmb = 0; 
-            
-            
-            if (formule === 'standard') {
-                if (sexe === 'huey') {
-                   
-                    tmb = 10 * poids + 6.25 * taille - 5 * age + 5;
-                } else {
-                    
-                    tmb = 10 * poids + 6.25 * taille - 5 * age - 161;
-                }
-            } else if (formule === 'mifflin') {
-                if (sexe === 'huey') {
-                   
-                    tmb = 10 * poids + 6.25 * taille - 5 * age + 5;
-                } else {
-                    
-                    tmb = 10 * poids + 6.25 * taille - 5 * age - 161;
-                }
+            let tmb = 0;
+
+            if (formule === 'standard' || formule === 'mifflin') {
+                tmb = (sexe === 'huey')
+                    ? 10 * poids + 6.25 * taille - 5 * age + 5
+                    : 10 * poids + 6.25 * taille - 5 * age - 161;
             } else if (formule === 'harris') {
-                if (sexe === 'huey') {
-                    
-                    tmb = 66.5 + (13.75 * poids) + (5.003 * taille) - (6.75 * age);
-                } else {
-                   
-                    tmb = 655 + (9.563 * poids) + (1.850 * taille) - (4.676 * age);
-                }
+                tmb = (sexe === 'huey')
+                    ? 66.5 + (13.75 * poids) + (5.003 * taille) - (6.75 * age)
+                    : 655 + (9.563 * poids) + (1.850 * taille) - (4.676 * age);
             } else if (formule === 'katch') {
-                
-                const masseGrasse = 1 - 0.24; 
-                const masseMagre = poids * masseGrasse; 
-                tmb = 370 + (21.6 * masseMagre); 
+                const masseGrasse = 1 - 0.24;
+                const masseMagre = poids * masseGrasse;
+                tmb = 370 + (21.6 * masseMagre);
             }
-        
-            
-            let facteurActivité = 1.2; 
-            if (activité === 'moyen') {
-                facteurActivité = 1.55;
-            } else if (activité === 'actif') {
-                facteurActivité = 1.75;
-            } else if (activité === 'trésactif') {
-                facteurActivité = 1.9;
-            }
-        
-        
+
+            let facteurActivité = 1.2;
+            if (activité === 'moyen') facteurActivité = 1.55;
+            else if (activité === 'actif') facteurActivité = 1.75;
+            else if (activité === 'trésactif') facteurActivité = 1.9;
+
             const calories = tmb * facteurActivité;
-        
-        
-            document.getElementById('caloriePerdre').textContent = (calories - 500).toFixed(0); 
-            document.getElementById('calorieStabiliser').textContent = calories.toFixed(0); 
+
+            document.getElementById('caloriePerdre').textContent = (calories - 500).toFixed(0);
+            document.getElementById('calorieStabiliser').textContent = calories.toFixed(0);
             document.getElementById('caloriePrendre').textContent = (calories + 500).toFixed(0);
 
-           
+            // 🔄 Enregistrement dans la base de données
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                sauvegarderDonnees(userId, null, Math.round(calories)); // on envoie uniquement "stabiliser"
+            }
         });
     }
 });
+
+
+
 
 
     
@@ -393,7 +379,7 @@ function fetchRecipeDetails(recipeId, detailsDiv) {
 
 
 
-// <-------------------------Intégration API Json pour afficher recettes selon objectif-------------------------------------->
+// <-------------------------Intégration API Json pour afficher articles-------------------------------------->
 
 const contenueIMC = document.querySelector(".articlesIMC");
 const contenueCalorie = document.querySelector(".articlesCalorie");
@@ -498,3 +484,26 @@ if (document.getElementById('taille') && document.getElementById('poids')) {
         }
     });
 }
+
+
+function sauvegarderDonnees(userId, imc = null, calories = null) {
+  fetch('http://localhost:3000/save-data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ userId, imc, calories })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log('✅ Données sauvegardées :', data);
+    })
+    .catch(err => {
+      console.error('❌ Erreur de sauvegarde :', err);
+    });
+}
+
+
+
+
+

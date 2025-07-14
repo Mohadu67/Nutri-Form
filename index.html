@@ -57,13 +57,14 @@
         </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" type="image/png" href="assets/img/logo/logo.svg"/>
-        <script defer src="assets/scripts/scripts.js"></script>
+        <script src="assets/scripts/main.js" type="module"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
         <title>NutriForm | Accueil</title>
         <meta name="description" content="Bienvenu sur NutriForm, où l'IMC et les calories n'auront plus aucun secret pour vous !">
     </head>
 
     <body>   
+
 
         <header>
 
@@ -75,15 +76,17 @@
                     <span class="org"><a class="orange" href="IMC.html">IMC</a></span>
                     <span class="org"><a class="orange" href="calorie.html">Calorie</a></span>
                     <span><a href="contact.html">Contact</a></span>
+                    <button id="openLogin">Se connecter</button>
                 </label>
 
+                
             </div>
 
         </header>
 
-        <main>
+        <div id="login-container"></div>
 
-            
+        <main>
             
             
             <section class="introutils">
