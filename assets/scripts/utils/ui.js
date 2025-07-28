@@ -50,3 +50,4 @@ export function afficherResultats(calories) {
     document.getElementById('calorieStabiliser').textContent = calories.toFixed(0);
     document.getElementById('caloriePrendre').textContent = (calories + 500).toFixed(0);
 }
+

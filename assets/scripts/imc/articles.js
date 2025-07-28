@@ -1,3 +1,5 @@
+import { activerLearnMore } from '../utils/ui.js';
+
 export async function afficherArticlesIMC() {
   const contenueIMC = document.querySelector(".articlesIMC");
   if (!contenueIMC) return;
@@ -26,6 +28,8 @@ export async function afficherArticlesIMC() {
     });
 
     contenueIMC.innerHTML = htmlIMC;
+
+    activerLearnMore();
 
   } catch (err) {
     console.error("Erreur de chargement des articles IMC :", err);

@@ -1,5 +1,8 @@
 export function calculerIMC(poids, taille) {
-  const imc = (poids / ((taille / 100) ** 2)).toFixed(1);
+  const imcValue = poids / ((taille / 100) ** 2);
+  const imc = Math.round(imcValue * 10) / 10;
+
+  
   let categorie = '';
 
   if (imc < 18.5) {

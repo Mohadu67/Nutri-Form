@@ -1,3 +1,5 @@
+import { activerLearnMore } from '../utils/ui.js';
+
 export async function afficherArticlesCalorie() {
   const contenueCalorie = document.querySelector(".articlesCalorie");
   if (!contenueCalorie) return;
@@ -26,6 +28,8 @@ export async function afficherArticlesCalorie() {
     });
 
     contenueCalorie.innerHTML = htmlCalorie;
+
+    activerLearnMore();
 
   } catch (err) {
     console.error("Erreur de chargement des articles Calorie :", err);

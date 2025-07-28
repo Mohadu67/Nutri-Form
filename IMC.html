@@ -59,14 +59,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image.svg" href="assets/img/logo/logo.svg"/>
         <link rel="stylesheet" href="assets/css/style.css">
-        <!-- <script src="assets/scripts/scripts.js" defer></script> -->
-        <script src="assets/scripts/imc/mainImc.js" type="module"></script>
-        <!-- <script src="/assets/scripts/auth.js"></script> -->
+        <script src="assets/scripts/main.js" type="module"></script>
         <title>IMC | NutriForm</title>
         <meta name="description" content="Calcule ton IMC et obtene des conseils personnalisés !">
+        
     </head>
     
-    <body>   
+    <body data-page="imc">   
         
         <header>
             
@@ -130,6 +129,10 @@
                     <p><strong>Pour un IMC considéré comme idéal, ton indice doit se situer entre 18,5 et 24,9. </p></strong>
                     
                 </form>
+
+                <div id="connectReminder" style="display: none; color: #aa0000; font-weight: bold; margin-top: 10px;">
+                     Connectez-vous pour sauvegarder vos données et accéder à votre historique !
+                </div>
                 
 
                 <div id="customAlert" class="alert" style="display: none;">
@@ -220,8 +223,6 @@
 
         </main>
         
-
-
         <footer>
             <div>
                 <a class="logo" href="index.html" aria-label="Accueil NutriForm - Retour à la page d'accueil">NutriForm</a>

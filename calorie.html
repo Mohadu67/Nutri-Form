@@ -58,12 +58,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="assets/img/logo/logo.svg"/>
         <link rel="stylesheet" href="assets/css/style.css">
-        <script src="assets/scripts/calorie/mainCalorie.js" type="module"></script>
+        <script src="assets/scripts/main.js" type="module"></script>
         <title>Calorie | NutriForm</title>
         <meta name="description" content="Calcule tes calories et découvre des recettes sur mesure pour atteindre ton objectif !">
     </head>
 
-    <body>   
+    <body data-page="calorie">   
 
         <header>
 
@@ -84,66 +84,79 @@
 
         <main>
             
-            
             <section>
                 
                 <h1>Calculateur d'Apport Calorique</h1>
-                
-                
 
                 <form id="calorieForm">
                     <fieldset>
                         <label for="liste-deroulante">Choisis une formule :</label>
                         <select id="liste-deroulante" name="liste-deroulante" required>
                             <option value="standard">Formule Standard</option>
-                            <option value="mifflin">Formule de Mifflin-St Jeor</option>
-                            <option value="harris">Formule de Harris-Benedict</option>
-                            <option value="katch">Formule de Katch-McArdle</option>
+                            <option value="mifflin">Formule de Mifflin-St Jeor ( Précis )</option>
+                            <option value="katch">Formule de Katch-McArdle ( Pro)</option>
                         </select>
+                        <small id="message-katch" style="display: none; margin: 10px;">
+                            Cette formule nécessite la connaissance de votre masse grasse.
+                        </small>
                     </fieldset>
-                
+
                     <fieldset class="sexe">
                         <input type="radio" id="huey-homme" name="sexe" value="huey" checked />
                         <label for="huey-homme">Homme</label>
-                        
+
                         <input type="radio" id="dewey-femme" name="sexe" value="dewey" />
                         <label for="dewey-femme">Femme</label>
                     </fieldset>
-                
+
                     <label for="taille">Taille (cm) :</label>
                     <input type="number" id="taille" name="taille" placeholder="Ex : 183" min="50" max="300" required>
-                
+
                     <label for="poids">Poids (kg) :</label>
                     <input type="number" id="poids" name="poids" placeholder="Ex : 95" min="1" max="500" required>
-                
+
                     <label for="age">Âge (ans) :</label>
                     <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
-                
-                    
+
+                    <!-- Champ masse grasse pour formule Katch -->
+                    <div id="masse-grasse-wrapper" style="display: none;">
+                        <label for="masse-grasse">Masse grasse (%) :</label>
+                        <input type="number" id="masse-grasse" name="masse-grasse" placeholder="Ex : 20" min="1" max="70">
+                    </div>
+
                     <fieldset class="activité">
-                        <legend>Quel est ton niveau d'activité ?</legend>
-                        <input type="radio" id="peuactif" name="activité" value="peuactif" checked />
+                        <legend>
+                            Quel est ton niveau d'activité ? 
+                        </legend>
+                        
+                        <input type="radio" id="peuactif" name="activité" value="faible" checked />
                         <label for="peuactif">Peu actif</label>
                         
                         <input type="radio" id="moyen" name="activité" value="moyen" />
                         <label for="moyen">Moyen</label>
-                
+
                         <input type="radio" id="actif" name="activité" value="actif" />
                         <label for="actif">Actif</label>
-                
+                        
                         <input type="radio" id="tresactif" name="activité" value="trésactif" />
                         <label for="tresactif">Très actif</label>
-
+                        
+                        <div id="info-activite-text" style="display: none; font-size: 0.9em; margin-top: 5px; color: #555;">
+                            Peu actif : sédentaire, peu de sport<br>
+                            Moyen : activité modérée 1-3x/sem<br>
+                            Actif : sport régulier ou travail physique<br>
+                            Très actif : entraînement intensif ou quotidien
+                        </div>
+                        <span id="info-activite" style="cursor: pointer; color: rgb(0, 0, 173);" title="Clique pour plus d'infos">❔</span>
                     </fieldset>
-                
-                    <button>Calculer</button>
-                </form>
-                
-                
 
-                
-                
-                <!----------------------------------------------------Retour resultat----------------------------------->
+                    <button type="submit">Calculer</button>
+                </form>
+
+                <div id="connectReminder" style="display: none; color: #aa0000; font-weight: bold; margin-top: 10px;">
+                     Connectez-vous pour sauvegarder vos données et accéder à votre historique !
+                </div>
+                                
                 <div class="graph-calorie">
                     <ul>
                         <li>
@@ -155,7 +168,7 @@
                         <li><p>consommation calorie par jour</p></li>
                         <li><p id="caloriePerdre"></p></li>
                         <li><p>Ce niveau de consommation de calories quotidien te permettra de perdre entre 0,5 et 1 kg par semaine d'une manière saine et durable.</p></li>
-                        <!-- <button id="perdre">Je veux perdre !</button> -->
+                        
                     </ul>
                     <ul>
                         <li>
@@ -167,7 +180,7 @@
                         <li><p>consommation calorie par jour</p></li>
                         <li><p id="calorieStabiliser"></p></li>
                         <li><p>Ce niveau de consommation de calories quotidien te permettra de stabiliser ton poids actuel.</p></li>
-                        <!-- <button id="stabiliser">Je veux stabiliser !</button> -->
+                        
                     </ul>
                     <ul>
                         <li>
@@ -179,22 +192,9 @@
                         <li><p>consommation calorie par jour</p></li>
                         <li><p id="caloriePrendre"></p></li>
                         <li><p>Ce niveau de consommation de calories quotidien te permettra de prendre entre 0,5 et 1 kg par semaine.</p></li>
-                        <!-- <button id="prendre" >Je veux prendre !</button> -->
+                        
                     </ul>
                 </div>
-
-            
-
-                <!-- <div id="target"></div>
-                <article id="article-recette" style="display:none;">
-                    <h2>Pour atteindre ton objectif voici des recettes :</h2>
-                    <div id="recettes"></div>
-                </article> -->
-
-                    
-
-
-
                     
             </section>
 
@@ -205,8 +205,6 @@
             </section>
             
         </main>
-
-
 
         <footer>
             <div>

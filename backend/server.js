@@ -52,9 +52,10 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   const { email, motdepasse } = req.body;
-
+  
   try {
     const user = await User.findOne({ email });
+    console.log("✅ Utilisateur trouvé :", user);
 
     if (!user) {
       return res.status(404).json({ message: 'Utilisateur non trouvé.' });
@@ -80,6 +81,7 @@ app.listen(port, () => {
 });
 
 app.post('/save-data', async (req, res) => {
+  console.log('Requête /save-data reçue avec body:', req.body);
   const { userId, imc, calories } = req.body;
 
   try {

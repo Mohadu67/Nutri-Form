@@ -1,24 +1,31 @@
-export async function sauvegarderDonnees(userId, imc, calories) {
+export async function sauvegarderDonnees({ imc = null, calories = null }) {
+  const userId = localStorage.getItem('userId');
+  
+  if (!userId) {
+    console.warn("Aucun userId trouvé dans le localStorage, données non sauvegardées.");
+    return;
+  }
+
+  const payload = {
+    userId,
+    imc,
+    calories,
+    date: new Date().toISOString()
+  };
+
+
   try {
-    const reponse = await fetch('http://localhost:3000/api/saveData', {
+    const response = await fetch('http://localhost:3000/save-data', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userId,
-        imc,
-        calories,
-        date: new Date().toISOString()
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
 
-    const data = await reponse.json();
-    console.log('Données sauvegardées avec succès :', data);
   } catch (error) {
-    console.error('Erreur lors de la sauvegarde des données :', error);
+    console.error(' Erreur lors de la sauvegarde :', error);
   }
 }
+
 
 
 if (document.getElementById('taille') && document.getElementById('poids')) {

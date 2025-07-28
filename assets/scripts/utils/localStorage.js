@@ -1,3 +1,5 @@
+// localStorage.js
+
 // Sauvegarde auto dans localStorage
 export function initSauvegardeAuto() {
   const tailleInput = document.getElementById('taille');
@@ -22,19 +24,50 @@ export function initSauvegardeAuto() {
 }
 
 
-export function sauvegarderDonnees(userId, imc = null, calories = null) {
+export function sauvegarderDonnees(imc = null, calories = null) {
+  const userId = localStorage.getItem('userId');
+  if (!userId) return;
+
   fetch('http://localhost:3000/save-data', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId, imc, calories })
   })
     .then(res => res.json())
-    .then(data => {
-      console.log('✅ Données sauvegardées :', data);
-    })
-    .catch(err => {
-      console.error('❌ Erreur de sauvegarde :', err);
-    });
 }
+
+
+
+export function afficherHistorique(imcs = [], calories = []) {
+  const imcSpan = document.getElementById('imcData');
+  const caloSpan = document.getElementById('caloriesData');
+  const historiqueDiv = document.getElementById('historiqueData');
+
+  if(imcSpan) {
+    if (imcs.length > 0) {
+      const dernier = imcs.at(-1);
+      imcSpan.textContent = `${dernier.valeur} (le ${new Date(dernier.date).toLocaleDateString()})`;
+    } else {
+      imcSpan.textContent = "Aucune donnée";
+    }
+  }
+
+  if(caloSpan) {
+    if (calories.length > 0) {
+      const dernier = calories.at(-1);
+      caloSpan.textContent = `${dernier.valeur} kcal (le ${new Date(dernier.date).toLocaleDateString()})`;
+    } else {
+      caloSpan.textContent = "Aucune donnée";
+    }
+  }
+
+  if(historiqueDiv) {
+    historiqueDiv.innerHTML = `
+      <h3>Historique IMC</h3>
+      <ul>${imcs.map(i => `<li>${i.valeur} (le ${new Date(i.date).toLocaleDateString()})</li>`).join('')}</ul>
+      <h3>Historique Calories</h3>
+      <ul>${calories.map(c => `<li>${c.valeur} kcal (le ${new Date(c.date).toLocaleDateString()})</li>`).join('')}</ul>
+    `;
+  }
+}
+

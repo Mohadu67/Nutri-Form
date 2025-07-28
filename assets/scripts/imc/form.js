@@ -5,6 +5,7 @@ import { sauvegarderDonnees } from '../api/api.js';
 
 export function initIMCForm() {
   const imcForm = document.getElementById('imcForm');
+  const reminder = document.getElementById('connectReminder'); // le message d'alerte
 
   if (imcForm) {
     imcForm.addEventListener('submit', async (e) => {
@@ -18,14 +19,26 @@ export function initIMCForm() {
         return;
       }
 
+      // ✅ Vérifie la connexion
+      const userId = localStorage.getItem('userId');
+
+      if (!userId && reminder) {
+        reminder.style.display = 'block'; // Affiche le message
+      } else if (reminder) {
+        reminder.style.display = 'none'; // Cache le message s'il est visible
+      }
+
+      // Calcul IMC
       const { imc, categorie } = calculerIMC(poids, taille);
 
       // Mise à jour UI
       updateIMCGraph(imc);
       updateContent(categorie);
 
-      // Sauvegarde (si connecté)
-      sauvegarderDonnees({ poids, taille, imc, categorie });
+      // Sauvegarde uniquement si connecté
+      if (userId) {
+        sauvegarderDonnees({ imc });
+      }
     });
   }
 }
