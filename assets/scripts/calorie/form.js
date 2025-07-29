@@ -9,7 +9,7 @@ export function initialiserFormulaireCalorie() {
     const messageKatch = document.getElementById('message-katch');
     const infoActivite = document.getElementById('info-activite');
     const infoActiviteText = document.getElementById('info-activite-text');
-    const reminder = document.getElementById('connectReminder'); // ✅ message connexion
+    const reminder = document.getElementById('connectReminder'); 
 
     if (!form) return;
 

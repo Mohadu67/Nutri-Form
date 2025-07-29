@@ -48,7 +48,9 @@ body {
 }
 
 h1, h2, h3, nav, a {
-    font-family: var(--font-titre)
+    font-family: var(--font-titre);
+    font-weight: 100;
+    color:var(--couleur-text-noir)
 }
 
 
@@ -126,10 +128,11 @@ a.orange {
 /*<------------------------------------------- FOOTER--------------------------------------------> */
 
 footer {
-    border-top: 2px solid var(--couleur-text-noir);
+    /* border-top: 2px solid var(--couleur-text-noir);
     padding: 20px 10px;
-    text-align: center;
+    text-align: center; */
     font-size: 12px;
+    background-color: #efede8;
 }
 
 footer div {
@@ -167,7 +170,6 @@ footer nav a.orange {
 footer nav a {
     text-decoration: none;
     color: var(--couleur-text-noir);
-    font-weight: bold;
     font-size: 12px;
     border: 2px solid var(--couleur-text-noir);
     border-radius: 5px;
@@ -231,8 +233,8 @@ main section article img, section article p {
 
   main section article {
     text-align: start;
-    width: 80%;
-    margin: 200px auto;
+    width: 90%;
+    margin: 100px auto;
 }
 
 article summary {
@@ -905,6 +907,7 @@ article#article-recette li {
   margin-top: 10px;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  margin: auto;
 }
 
 .modal-content button:hover {

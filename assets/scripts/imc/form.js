@@ -5,7 +5,7 @@ import { sauvegarderDonnees } from '../api/api.js';
 
 export function initIMCForm() {
   const imcForm = document.getElementById('imcForm');
-  const reminder = document.getElementById('connectReminder'); // le message d'alerte
+  const reminder = document.getElementById('connectReminder');
 
   if (imcForm) {
     imcForm.addEventListener('submit', async (e) => {

@@ -26,6 +26,12 @@ export function initAuth() {
                 updateLoginButton(true);
             }
 
+            if (localStorage.getItem('userId')) {
+                btnLogout.style.display = 'block'; // ou 'inline-block' selon ton style
+            } else {
+                btnLogout.style.display = 'none';
+            }
+
             // Clic sur "Se connecter" ou "Voir mon historique"
             if (btnOpen) {
                 btnOpen.addEventListener('click', () => {
@@ -87,7 +93,7 @@ export function initAuth() {
 
             function updateLoginButton(isConnected) {
                 if (btnOpen) {
-                    btnOpen.textContent = isConnected ? 'Voir mon historique' : 'Se connecter';
+                    btnOpen.textContent = isConnected ? 'Mon historique' : 'Se connecter';
                 }
 
                 const reminder = document.getElementById('connectReminder');
