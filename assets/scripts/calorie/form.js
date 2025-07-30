@@ -26,11 +26,10 @@ export function initialiserFormulaireCalorie() {
         }
     });
 
-    // Gestion du bouton ❔ activité
     infoActivite?.addEventListener('click', () => {
-        const isVisible = infoActiviteText.style.display === 'block';
-        infoActiviteText.style.display = isVisible ? 'none' : 'block';
+        infoActiviteText.classList.toggle('visible');
     });
+
 
     // Soumission du formulaire
     form.addEventListener('submit', (event) => {

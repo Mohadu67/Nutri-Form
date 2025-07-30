@@ -19,23 +19,23 @@ export function initIMCForm() {
         return;
       }
 
-      // ✅ Vérifie la connexion
+      
       const userId = localStorage.getItem('userId');
 
       if (!userId && reminder) {
-        reminder.style.display = 'block'; // Affiche le message
+        reminder.style.display = 'block'; 
       } else if (reminder) {
-        reminder.style.display = 'none'; // Cache le message s'il est visible
+        reminder.style.display = 'none'; 
       }
 
-      // Calcul IMC
+    
       const { imc, categorie } = calculerIMC(poids, taille);
 
-      // Mise à jour UI
+      
       updateIMCGraph(imc);
       updateContent(categorie);
 
-      // Sauvegarde uniquement si connecté
+     
       if (userId) {
         sauvegarderDonnees({ imc });
       }

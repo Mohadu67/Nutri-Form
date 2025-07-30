@@ -4,7 +4,7 @@ import { initAuth } from './auth.js';
 import { closeAlert } from './utils/ui.js';
 import { afficherHistorique } from './utils/localStorage.js';
 
-// Import des fonctions spécifiques aux pages
+
 import { initIMCForm } from './imc/form.js';
 import { afficherArticlesIMC } from './imc/articles.js';
 

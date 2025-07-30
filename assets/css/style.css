@@ -426,6 +426,7 @@ form input, form textarea {
 
 .bloc strong {
     font-family: 'Merriweather';
+    font-weight: 100;
 }
 
 .resultat h2 {
@@ -569,6 +570,27 @@ select#liste-deroulante {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+#info-activite-text {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    font-size: 16px;
+    margin-top: 20px;
+    color: var(--couleur-text-noir);
+}
+
+/* Classe active pour afficher le texte */
+#info-activite-text.visible {
+    opacity: 1;
+    max-height: 200px;
+    display: block;
+}
+
+#info-activite {
+    display: block;
 }
 
 

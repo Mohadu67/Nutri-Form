@@ -118,10 +118,10 @@
                     <label for="age">Âge (ans) :</label>
                     <input type="number" id="age" name="age" placeholder="Ex : 25" min="1" max="100" required>
 
-                    <!-- Champ masse grasse pour formule Katch -->
+                    
                     <div id="masse-grasse-wrapper" style="display: none;">
                         <label for="masse-grasse">Masse grasse (%) :</label>
-                        <input type="number" id="masse-grasse" name="masse-grasse" placeholder="Ex : 20" min="1" max="70">
+                        <input type="number" id="masse-grasse" name="masse-grasse" placeholder="Ex : 24" min="8" max="70">
                     </div>
 
                     <fieldset class="activité">
@@ -141,15 +141,15 @@
                         <input type="radio" id="tresactif" name="activité" value="trésactif" />
                         <label for="tresactif">Très actif</label>
                         
-                        <div id="info-activite-text" style="display: none; font-size: 0.9em; margin-top: 5px; color: #555;">
+                        <div id="info-activite-text">
                             Peu actif : sédentaire, peu de sport<br>
                             Moyen : activité modérée 1-3x/sem<br>
                             Actif : sport régulier ou travail physique<br>
                             Très actif : entraînement intensif ou quotidien
                         </div>
-                        <span id="info-activite" style="cursor: pointer; color: rgb(0, 0, 173);" title="Clique pour plus d'infos">❔</span>
                     </fieldset>
-
+                    
+                    <span id="info-activite" title="Clique pour plus d'infos">❔</span>
                     <button type="submit">Calculer</button>
                 </form>
 
