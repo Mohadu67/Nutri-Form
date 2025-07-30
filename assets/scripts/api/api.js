@@ -15,7 +15,7 @@ export async function sauvegarderDonnees({ imc = null, calories = null }) {
 
 
   try {
-    const response = await fetch('http://localhost:3000/save-data', {
+    const response = await fetch('https://nutri-form.onrender.com/save-data', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

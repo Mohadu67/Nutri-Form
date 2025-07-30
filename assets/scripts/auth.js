@@ -110,7 +110,7 @@ export function initAuth() {
                 const motdepasse = document.getElementById('loginPassword').value;
 
                 try {
-                    const res = await fetch('http://localhost:3000/login', {
+                    const res = await fetch('https://nutri-form.onrender.com/login', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, motdepasse }),
@@ -153,7 +153,7 @@ export function initAuth() {
                 }
 
                 try {
-                    const res = await fetch('http://localhost:3000/register', {
+                    const res = await fetch('http://nutri-form.onrender.com/register', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, motdepasse }),
@@ -226,7 +226,7 @@ export function initAuth() {
             // Fonction pour afficher l’historique utilisateur
             async function chargerEtAfficherHistorique(userId) {
                 try {
-                    const res = await fetch(`http://localhost:3000/get-data/${userId}`);
+                    const res = await fetch(`https://nutri-form.onrender.com/get-data/${userId}`);
                     const data = await res.json();
 
                     const dernierIMC = document.getElementById('dernierIMC');
