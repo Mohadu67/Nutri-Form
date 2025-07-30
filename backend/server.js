@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
@@ -8,10 +10,8 @@ const app = express();
 const port = 3000;
 
 // Connexion MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/nutriform', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('🟢 Connecté à MongoDB'))
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('🟢 Connecté à MongoDB'))
   .catch(err => console.error('Erreur MongoDB :', err));
 
 // Middleware

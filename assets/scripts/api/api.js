@@ -13,13 +13,14 @@ export async function sauvegarderDonnees({ imc = null, calories = null }) {
     date: new Date().toISOString()
   };
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  try {
-    const response = await fetch('https://nutri-form.onrender.com/save-data', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+try {
+  const response = await fetch(`${API_BASE_URL}/save-data`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
 
   } catch (error) {
     console.error(' Erreur lors de la sauvegarde :', error);
