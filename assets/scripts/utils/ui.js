@@ -1,4 +1,4 @@
-// Le learn more
+// UI.js
 
 export function activerLearnMore() {
   const btns = document.querySelectorAll(".learn-more");
@@ -18,7 +18,7 @@ export function activerLearnMore() {
   });
 }
 
-// affichage message d'alerte
+
 
 export function showCustomAlert(message) {
   const alertBox = document.getElementById("customAlert");
@@ -39,7 +39,6 @@ export function closeAlert() {
 
 
 
-// affichage calorie 
 
 
 export function afficherResultats(calories) {

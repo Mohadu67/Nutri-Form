@@ -1,3 +1,5 @@
+ import { API_BASE_URL } from '../utils/config.js';
+
 export async function sauvegarderDonnees({ imc = null, calories = null }) {
   const userId = localStorage.getItem('userId');
   
@@ -13,7 +15,6 @@ export async function sauvegarderDonnees({ imc = null, calories = null }) {
     date: new Date().toISOString()
   };
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 try {
   const response = await fetch(`${API_BASE_URL}/save-data`, {

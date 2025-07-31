@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 230">
+  <defs>
+    <style>
+      .st0 { fill: #f7f6f2; }
+      .st0, .st1, .st2, .st3 { stroke: #1d1d1b; stroke-miterlimit: 10; }
+      .st1 { display: none; fill: #fff; }
+      .st2 { fill: #b8ddd1; }
+      .st3 { fill: #f7b186; }
+
+      #galet1, #galet2, #galet3 {
+        opacity: 0;
+        transform: translateY(50px);
+        animation-fill-mode: forwards;
+      }
+
+      #galet1 {
+        animation: dropGalet 0.5s ease-out 0s forwards;
+      }
+
+      #galet2 {
+        animation: dropGalet 0.5s ease-out 0.5s forwards;
+      }
+
+      #galet3 {
+        animation: dropGalet 0.5s ease-out 1s forwards;
+      }
+
+      @keyframes dropGalet {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      svg {
+        transform-origin: center;
+        animation: rotateLogo 0.6s ease-in-out 1.6s forwards;
+      }
+
+      @keyframes rotateLogo {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(8deg); }
+      }
+    </style>
+  </defs>
+
+  <path class="st1" d="M-41-465.9"/>
+  <path id="galet1" class="st2" d="M66.2,128.2c14.2-10.4,82-12.7,93.9,4.6,50.8,73.6-152.4,49.5-93.9-4.6Z"/>
+  <path id="galet2" class="st3" d="M151.7,89.4c-16-18-55-22.1-75.2-8.4-18.9,12.6-6.2,37.2,13.4,35.3,15-1.5,27.2,2.6,49.7-.5,14.1-2,23.2-14.4,12.2-26.2Z"/>
+  <path id="galet3" class="st0" d="M132.1,53.9c8.6,15.9-5.1,17.4-24.1,15-24.3-3-30.9-15-23.4-23.6,10.5-12,25.9-19.9,47.4,8.5Z"/>
+</svg>

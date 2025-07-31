@@ -1,5 +1,4 @@
-const API_BASE_URL = "https://nutri-form.onrender.com";
-
+import { API_BASE_URL } from './utils/config.js';
 
 export function initAuth() {
     // Charger le fichier HTML popup et l'injecter
@@ -24,18 +23,26 @@ export function initAuth() {
             const registerForm = document.getElementById('registerForm');
             const btnLogout = document.getElementById('logoutBtn');
 
-            // Initialiser état du bouton au chargement
+           
+            const loader = document.getElementById('loading-container');
+
+            
+            function delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            
             if (localStorage.getItem('userId')) {
                 updateLoginButton(true);
             }
 
             if (localStorage.getItem('userId')) {
-                btnLogout.style.display = 'block'; // ou 'inline-block' selon ton style
+                btnLogout.style.display = 'block'; 
             } else {
                 btnLogout.style.display = 'none';
             }
 
-            // Clic sur "Se connecter" ou "Voir mon historique"
+            
             if (btnOpen) {
                 btnOpen.addEventListener('click', () => {
                     modal.style.display = 'block';
@@ -48,13 +55,13 @@ export function initAuth() {
                 });
             }
 
-            // Fermer popup au clic sur la croix
+            
             btnClose.addEventListener('click', () => {
                 modal.style.display = 'none';
                 clearMessages();
             });
 
-            // Fermer popup si clic en dehors
+           
             window.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.style.display = 'none';
@@ -62,7 +69,7 @@ export function initAuth() {
                 }
             });
 
-            // Switch formulaire
+            
             btnShowRegister.addEventListener('click', () => {
                 loginSection.style.display = 'none';
                 registerSection.style.display = 'block';
@@ -101,24 +108,32 @@ export function initAuth() {
 
                 const reminder = document.getElementById('connectReminder');
                 if (reminder) {
-                reminder.style.display = isConnected ? 'none' : reminder.style.display;
+                    reminder.style.display = isConnected ? 'none' : reminder.style.display;
                 }
             }
 
-            // Connexion
+            
             loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+
+                loader.style.display = 'flex'; 
 
                 const email = document.getElementById('loginEmail').value;
                 const motdepasse = document.getElementById('loginPassword').value;
 
                 try {
-                    const res = await fetch(`${API_BASE_URL}/login`, {
+                    const fetchPromise = fetch(`${API_BASE_URL}/login`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, motdepasse }),
                     });
+
+                    
+                    const [res] = await Promise.all([fetchPromise, delay(3000)]);
+
                     const data = await res.json();
+
+                    loader.style.display = 'none';
 
                     if (res.ok) {
                         localStorage.setItem('userId', data.userId);
@@ -139,12 +154,15 @@ export function initAuth() {
                 } catch (err) {
                     document.getElementById('loginMessage').textContent = 'Erreur serveur';
                     console.error(err);
+                    loader.style.display = 'none'; 
                 }
             });
 
-            // Inscription
+           
             registerForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+
+                loader.style.display = 'flex'; 
 
                 const email = document.getElementById('registerEmail').value;
                 const motdepasse = document.getElementById('registerPassword').value;
@@ -152,16 +170,23 @@ export function initAuth() {
 
                 if (motdepasse !== confirm) {
                     document.getElementById('registerMessage').textContent = 'Les mots de passe ne correspondent pas.';
+                    loader.style.display = 'none';
                     return;
                 }
 
                 try {
-                    const res = await fetch(`${API_BASE_URL}/register`, {
+                    const fetchPromise = fetch(`${API_BASE_URL}/register`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email, motdepasse }),
                     });
+
+                    
+                    const [res] = await Promise.all([fetchPromise, delay(3000)]);
+
                     const data = await res.json();
+
+                    loader.style.display = 'none';
 
                     if (res.ok) {
                         document.getElementById('registerMessage').textContent = 'Compte créé, vous pouvez vous connecter.';
@@ -172,10 +197,11 @@ export function initAuth() {
                 } catch (err) {
                     document.getElementById('registerMessage').textContent = 'Erreur serveur';
                     console.error(err);
+                    loader.style.display = 'none'; 
                 }
             });
 
-            // Déconnexion
+            
             if (btnLogout) {
                 btnLogout.addEventListener('click', () => {
                     localStorage.removeItem('userId');
@@ -186,17 +212,17 @@ export function initAuth() {
                 });
             }
 
-            // 🔒 Inactivité : on lance le timer si connecté
+            // 
             if (localStorage.getItem('userId')) {
                 réinitialiserInactivité();
             }
 
-            // Réinitialiser timer à chaque activité
+           
             ['click', 'keydown', 'mousemove', 'scroll'].forEach(evt =>
                 window.addEventListener(evt, réinitialiserInactivité)
             );
 
-            // 🔒 Fonction pour déconnexion automatique
+            
             function réinitialiserInactivité() {
                 clearTimeout(window.inactivitéTimer);
 
@@ -226,7 +252,7 @@ export function initAuth() {
                 }
             }
 
-            // Fonction pour afficher l’historique utilisateur
+           
             async function chargerEtAfficherHistorique(userId) {
                 try {
                     const res = await fetch(`${API_BASE_URL}/get-data/${userId}`);
@@ -239,7 +265,7 @@ export function initAuth() {
 
                     if (!dernierIMC || !dernierCal || !ulIMC || !ulCal) return;
 
-                    // Dernier IMC
+                    
                     if (data.imc.length > 0) {
                         const last = data.imc.at(-1);
                         dernierIMC.textContent = `${last.valeur} (le ${new Date(last.date).toLocaleDateString()})`;
@@ -247,7 +273,7 @@ export function initAuth() {
                         dernierIMC.textContent = "Aucune donnée";
                     }
 
-                    // Dernier Calories
+                    
                     if (data.calories.length > 0) {
                         const last = data.calories.at(-1);
                         dernierCal.textContent = `${last.valeur} kcal (le ${new Date(last.date).toLocaleDateString()})`;
@@ -255,7 +281,7 @@ export function initAuth() {
                         dernierCal.textContent = "Aucune donnée";
                     }
 
-                    // Historique
+                    
                     ulIMC.innerHTML = data.imc.map(i =>
                         `<li>${i.valeur} (le ${new Date(i.date).toLocaleDateString()})</li>`
                     ).join('');
@@ -275,5 +301,3 @@ export function initAuth() {
             console.error('Erreur chargement popup login:', err);
         });
 }
-
-

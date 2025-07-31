@@ -1,6 +1,6 @@
 // localStorage.js
 
-// Sauvegarde auto dans localStorage
+
 export function initSauvegardeAuto() {
   const tailleInput = document.getElementById('taille');
   const poidsInput = document.getElementById('poids');
@@ -23,12 +23,13 @@ export function initSauvegardeAuto() {
   }
 }
 
+import { API_BASE_URL } from './config.js';
 
 export function sauvegarderDonnees(imc = null, calories = null) {
   const userId = localStorage.getItem('userId');
   if (!userId) return;
 
-  fetch('http://localhost:3000/save-data', {
+  fetch(`${API_BASE_URL}/save-data`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userId, imc, calories })

@@ -1,59 +1,67 @@
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+  <title>Login</title>
+
 </head>
 <body>
 
-    <!-- login-popup.html -->
-<div id="loginModal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close" id="closeLogin">&times;</span>
+  <div id="loginModal" class="modal" style="display:none;">
 
-    <div id="loginSection">
-      <h2>Connexion</h2>
-      <form id="loginForm">
-        <input type="email" id="loginEmail" placeholder="Adresse e-mail" required>
-        <input type="password" id="loginPassword" placeholder="Mot de passe" required>
-        <button type="submit">Se connecter</button>
-        <p><button id="forgotPasswordBtn" style="background: none; border: none; color: blue; cursor: pointer;">Mot de passe oublié ?</button></p>
+    <div class="modal-content">
+      <span class="close" id="closeLogin">&times;</span>
+      
+      <div id="loginSection">
+        <h2>Connexion</h2>
+        <form id="loginForm">
+          <input type="email" id="loginEmail" placeholder="Adresse e-mail" required>
+          <input type="password" id="loginPassword" placeholder="Mot de passe" required>
+          <button type="submit">Se connecter</button>
+          <p>
+            <button id="forgotPasswordBtn" style="background: none; border: none; color: blue; cursor: pointer;">
+              Mot de passe oublié ?
+            </button>
+          </p>
+        </form>
+        <p id="loginMessage"></p>
+        <p>Pas encore de compte ? <button id="showRegister">Créer un compte</button></p>
+      </div>
 
-      </form>
-      <p id="loginMessage"></p>
-      <p>Pas encore de compte ? <button id="showRegister">Créer un compte</button></p>
+      <div id="registerSection" style="display:none;">
+        <h2>Inscription</h2>
+        <form id="registerForm">
+          <input type="email" id="registerEmail" placeholder="Adresse e-mail" required>
+          <input type="password" id="registerPassword" placeholder="Mot de passe" required>
+          <input type="password" id="registerConfirmPassword" placeholder="Confirmer le mot de passe" required>
+          <button type="submit">S’inscrire</button>
+        </form>
+        <p id="registerMessage"></p>
+        <p>Déjà un compte ? <button id="showLogin">Se connecter</button></p>
+      </div>
+
+      <div id="userHistorique" style="display: none; margin-top: 30px;">
+        <h3>Mes données</h3>
+        <div><strong>Dernier IMC :</strong> <span id="dernierIMC">...</span></div>
+        <div><strong>Dernières Calories :</strong> <span id="dernierCalories">...</span></div>
+
+        <h4>Historique IMC</h4>
+        <ul id="historiqueIMC"></ul>
+
+        <h4>Historique Calories</h4>
+        <ul id="historiqueCalories"></ul>
+      </div>
+
+      <button id="logoutBtn">Se déconnecter</button>
+
+
+      <div id="loading-container" style="display:none;">
+        <object id="logo-animation" type="image/svg+xml" data="/assets/img/logo/logoAnimate.svg"></object>
+      </div>
+
     </div>
-
-    <div id="registerSection" style="display:none;">
-      <h2>Inscription</h2>
-      <form id="registerForm">
-        <input type="email" id="registerEmail" placeholder="Adresse e-mail" required>
-        <input type="password" id="registerPassword" placeholder="Mot de passe" required>
-        <input type="password" id="registerConfirmPassword" placeholder="Confirmer le mot de passe" required>
-        <button type="submit">S’inscrire</button>
-      </form>
-      <p id="registerMessage"></p>
-      <p>Déjà un compte ? <button id="showLogin">Se connecter</button></p>
-    </div>
-
-    <div id="userHistorique" style="display: none; margin-top: 30px;">
-      <h3>Mes données</h3>
-      <div><strong>Dernier IMC :</strong> <span id="dernierIMC">...</span></div>
-      <div><strong>Dernières Calories :</strong> <span id="dernierCalories">...</span></div>
-
-      <h4>Historique IMC</h4>
-      <ul id="historiqueIMC"></ul>
-
-      <h4>Historique Calories</h4>
-      <ul id="historiqueCalories"></ul>
-    </div>
-
-    <button id="logoutBtn">Se déconnecter</button>
-
-
   </div>
-</div>
 
-    
 </body>
 </html>

@@ -13,26 +13,31 @@ import { afficherArticlesCalorie } from './calorie/articles.js';
 
 import { initSauvegardeAuto, sauvegarderDonnees } from './utils/localStorage.js';
 
+import { API_BASE_URL } from './utils/config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   initAuth();
   window.closeAlert = closeAlert;
   
   const userId = localStorage.getItem('userId');
 
-  if (userId) {
-    fetch(`http://localhost:3000/get-data/${userId}`)
-      .then(res => res.json())
-      .then(data => {
-        afficherHistorique(data.imc || [], data.calories || []);
-      })
-      .catch(err => {
-        console.error("❌ Erreur lors de la récupération des données :", err);
-      });
-  } else {
-    console.warn("🔴 Aucun userId trouvé dans le localStorage, impossible d'afficher l'historique.");
-  }
+if (userId) {
+  fetch(`${API_BASE_URL}/get-data/${userId}`)
+    .then(res => res.json())
+    .then(data => {
+      afficherHistorique(data.imc || [], data.calories || []);
+    })
+    .catch(err => {
+      console.error("❌ Erreur lors de la récupération des données :", err);
+    });
+} else {
+  
+  const reminder = document.getElementById('connectReminder');
+  if (reminder) reminder.style.display = 'block'; 
+  
+}
 
-  // Détecter la page via data-page et appeler les fonctions spécifiques
+  
   const page = document.body.dataset.page;
 
   switch(page) {
@@ -40,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       initIMCForm();
       afficherArticlesIMC();
       initSauvegardeAuto();
-      initAuth();
       const reminder = document.getElementById('connectReminder');
       if (reminder && !localStorage.getItem('userId')) {
         reminder.style.display = 'block';
@@ -54,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
       sauvegarderDonnees();
       break;
 
-    // Ajoute d'autres cas si besoin
+    
 
     default:
-      // page sans besoin particulier
+      
       break;
   }
 });
