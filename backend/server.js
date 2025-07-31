@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 
 const mongoose = require('mongoose');
@@ -9,11 +10,13 @@ const User = require('./models/User');
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 // Connexion MongoDB
+console.log("🔍 URI MongoDB :", process.env.MONGODB_URI);
+
+
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('🟢 Connecté à MongoDB'))
-  .catch(err => console.error('Erreur MongoDB :', err));
+.then(() => console.log('🟢 Connecté à MongoDB'))
+.catch(err => console.error('Erreur MongoDB :', err));
 
 // Middleware
 app.use(cors());
