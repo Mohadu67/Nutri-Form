@@ -5,7 +5,7 @@ export async function afficherArticlesIMC() {
   if (!contenueIMC) return;
 
   try {
-    const response = await fetch('../data/db.json');
+    const response = await fetch('/data/db.json');
     const data = await response.json();
 
     if (!data.contenueArticlesIMC) return;
