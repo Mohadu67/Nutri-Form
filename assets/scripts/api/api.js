@@ -16,15 +16,24 @@ export async function sauvegarderDonnees({ imc = null, calories = null }) {
   };
 
 
-try {
-  const response = await fetch(`${API_BASE_URL}/save-data`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
+  try {
+    const response = await fetch(`${API_BASE_URL}/save-data`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+    
+      console.error(`❌ Erreur HTTP : ${response.status} - ${response.statusText}`);
+      return;
+    }
+
+    const result = await response.json();
+    console.log('✅ Données sauvegardées avec succès :', result);
 
   } catch (error) {
-    console.error(' Erreur lors de la sauvegarde :', error);
+    console.error('❌ Erreur lors de la sauvegarde :', error);
   }
 }
 

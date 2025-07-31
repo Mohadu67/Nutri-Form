@@ -879,6 +879,10 @@ article#article-recette li {
 
 /*---------------------- POPUP CONNEXION MODALE ----------------------*/
 
+#openLogin {
+    display: contents;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -954,8 +958,8 @@ article#article-recette li {
 #loading-container {
     display: none;
     position: absolute;
-    top: 76px;
-    left: 218px;
+    top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
     z-index: 9999;
@@ -964,13 +968,11 @@ article#article-recette li {
     align-items: center;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.2);
-    width: 150px;
-    height: 150px;
 }
 
 #logo-animation {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
 }
 
 
