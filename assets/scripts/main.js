@@ -2,18 +2,15 @@
 
 import { initAuth } from './auth.js';
 import { closeAlert } from './utils/ui.js';
-import { afficherHistorique } from './utils/localStorage.js';
-
-
-import { initIMCForm } from './imc/form.js';
-import { afficherArticlesIMC } from './imc/articles.js';
-
-import { initialiserFormulaireCalorie } from './calorie/form.js';
-import { afficherArticlesCalorie } from './calorie/articles.js';
-
 import { initSauvegardeAuto, sauvegarderDonnees } from './utils/localStorage.js';
-
+import { initIMCForm } from './imc/form.js';
+import { initialiserFormulaireCalorie } from './calorie/form.js';
+import { afficherArticlesIMC } from './imc/articles.js';
+import { afficherArticlesCalorie } from './calorie/articles.js';
+import { afficherHistorique } from './utils/localStorage.js';
 import { API_BASE_URL } from './utils/config.js';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   initAuth();
@@ -61,7 +58,7 @@ if (userId) {
     
 
     default:
-      
+
       break;
   }
 });

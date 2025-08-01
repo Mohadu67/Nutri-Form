@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Réinitialisation mot de passe</title>
+</head>
+<body>
+  <h1>Réinitialiser votre mot de passe</h1>
+  <form id="resetForm">
+    <input type="password" id="newPassword" placeholder="Nouveau mot de passe" required minlength="6" />
+    <input type="password" id="confirmPassword" placeholder="Confirmer mot de passe" required minlength="6" />
+    <button type="submit">Valider</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const token = getQueryParam('token');
+    const form = document.getElementById('resetForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (newPassword !== confirmPassword) {
+        message.textContent = 'Les mots de passe ne correspondent pas.';
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:3000/reset-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, newPassword }),
+        });
+        const data = await res.json();
+        if (res.ok) {
+          message.style.color = 'green';
+          message.textContent = data.message;
+          setTimeout(() => {
+            window.location.href = '/'; 
+          }, 3000);
+        } else {
+          message.style.color = 'red';
+          message.textContent = data.message;
+        }
+      } catch (err) {
+        message.style.color = 'red';
+        message.textContent = 'Erreur serveur.';
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

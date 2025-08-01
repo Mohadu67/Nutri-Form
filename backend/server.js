@@ -124,3 +124,85 @@ app.get('/get-data/:userId', async (req, res) => {
   }
 });
 
+
+// Dans la partie haut de ton fichier server.js
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+// Stockage temporaire tokens reset (id utilisateur + token + expiration)
+const resetTokens = new Map();
+
+// Config nodemailer (à configurer avec tes vrais identifiants)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+// Route mot de passe oublié
+app.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'Aucun utilisateur avec cet email.' });
+
+    const token = crypto.randomBytes(32).toString('hex');
+    const expires = Date.now() + 3600000; // 1h
+
+    resetTokens.set(token, { userId: user._id, expires });
+
+    const resetLink = `http://localhost:5500/reset-password.html?token=${token}`;
+
+    const mailOptions = {
+      from: `"NutriForm" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: 'Réinitialisation du mot de passe',
+      text: `Cliquez ici pour réinitialiser votre mot de passe: ${resetLink}`,
+      html: `<p>Cliquez ici pour réinitialiser votre mot de passe: <a href="${resetLink}">${resetLink}</a></p>`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Erreur envoi email.' });
+      }
+      res.json({ message: 'Email de réinitialisation envoyé.' });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erreur serveur.' });
+  }
+});
+
+// Route reset password
+app.post('/reset-password', async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  if (!resetTokens.has(token)) {
+    return res.status(400).json({ message: 'Token invalide ou expiré.' });
+  }
+
+  const data = resetTokens.get(token);
+  if (Date.now() > data.expires) {
+    resetTokens.delete(token);
+    return res.status(400).json({ message: 'Token expiré.' });
+  }
+
+  try {
+    const user = await User.findById(data.userId);
+    if (!user) return res.status(400).json({ message: 'Utilisateur non trouvé.' });
+
+    user.motdepasse = await bcrypt.hash(newPassword, 10);
+    await user.save();
+
+    resetTokens.delete(token);
+
+    res.json({ message: 'Mot de passe réinitialisé avec succès.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erreur serveur.' });
+  }
+});

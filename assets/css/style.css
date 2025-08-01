@@ -879,9 +879,6 @@ article#article-recette li {
 
 /*---------------------- POPUP CONNEXION MODALE ----------------------*/
 
-#openLogin {
-    display: contents;
-}
 
 .modal {
   display: none;
@@ -950,6 +947,35 @@ article#article-recette li {
   cursor: pointer;
 }
 
+
+.error-message, .success-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #ffe5e5;
+  color: #b10000;
+  border: 1px solid #b10000;
+}
+
+.success-message {
+  background-color: #e5ffe5;
+  color: #007700;
+  border: 1px solid #007700;
+}
+
+
+
+
+
 #loginMessage {
   font-size: 14px;
   margin-top: 15px;
@@ -975,7 +1001,20 @@ article#article-recette li {
   height: 200px;
 }
 
+.showHisto {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
 
+
+.showHisto li {
+    list-style: none;
+    margin: 10px;
+    border: 1px solid var(--couleur-bouton-action);
+    padding: 5px;
+    border-radius: 5px;
+}
 
 /*<---------------------------------------------------------- Media Queries ------------------------------------->*/
 @media (min-width: 768px) {
@@ -1103,7 +1142,7 @@ article#article-recette li {
 
         .bloc {
             padding: 10px;
-            min-height: 250px;
+            min-height: 200px;
         }
 
 

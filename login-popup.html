@@ -20,9 +20,7 @@
           <input type="password" id="loginPassword" placeholder="Mot de passe" required>
           <button type="submit">Se connecter</button>
           <p>
-            <button id="forgotPasswordBtn" style="background: none; border: none; color: blue; cursor: pointer;">
-              Mot de passe oublié ?
-            </button>
+            <p><a href="#" id="forgot-password-link">Mot de passe oublié ?</a></p>
           </p>
         </form>
         <p id="loginMessage"></p>
@@ -45,16 +43,21 @@
         <h3>Mes données</h3>
         <div><strong>Dernier IMC :</strong> <span id="dernierIMC">...</span></div>
         <div><strong>Dernières Calories :</strong> <span id="dernierCalories">...</span></div>
+        
+        <div class="showHisto">
+          <div class="histoImc">
+            <h4>Historique IMC</h4>
+            <ul id="historiqueIMC"></ul>
+          </div>
+            <div class="histoCalorie">
+              <h4>Historique Calories</h4>
+              <ul id="historiqueCalories"></ul>
+            </div>
+        </div>
 
-        <h4>Historique IMC</h4>
-        <ul id="historiqueIMC"></ul>
-
-        <h4>Historique Calories</h4>
-        <ul id="historiqueCalories"></ul>
       </div>
 
       <button id="logoutBtn">Se déconnecter</button>
-
 
       <div id="loading-container" style="display:none;">
         <object id="logo-animation" type="image/svg+xml" data="/assets/img/logo/logoAnimate.svg"></object>
