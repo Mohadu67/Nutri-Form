@@ -119,3 +119,23 @@ function displayForgotPasswordPopup() {
     }
   });
 }
+
+
+export function setupFAQToggle() {
+    const faqs = document.querySelectorAll(".faq");
+
+    faqs.forEach(faq => {
+        const question = faq.querySelector("h3");
+
+        question.addEventListener("click", () => {
+          
+            faqs.forEach(otherFaq => {
+                if (otherFaq !== faq) {
+                    otherFaq.classList.remove("open");
+                }
+            });
+            
+            faq.classList.toggle("open");
+        });
+    });
+}

@@ -9,11 +9,13 @@ import { afficherArticlesIMC } from './imc/articles.js';
 import { afficherArticlesCalorie } from './calorie/articles.js';
 import { afficherHistorique } from './utils/localStorage.js';
 import { API_BASE_URL } from './utils/config.js';
+import {setupFAQToggle} from './utils/ui.js';
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
   initAuth();
+  setupFAQToggle();
   window.closeAlert = closeAlert;
   
   const userId = localStorage.getItem('userId');
